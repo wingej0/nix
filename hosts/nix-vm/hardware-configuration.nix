@@ -14,14 +14,14 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/8d713fd7-6b04-4b5c-ab90-5f20ec53dc6d";
+    { device = "/dev/disk/by-label/nixos";
       fsType = "btrfs";
       options = [ "subvol=root" "compress=zstd" ];
     };
-
+  
   boot.initrd.postResumeCommands = lib.mkAfter ''
     mkdir /btrfs_tmp
-    mount /dev/disk/by-uuid/8d713fd7-6b04-4b5c-ab90-5f20ec53dc6d /btrfs_tmp
+    mount /dev/disk/by-label/nixos/root /btrfs_tmp
     if [[ -e /btrfs_tmp/root ]]; then
         mkdir -p /btrfs_tmp/old_roots
         timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
@@ -44,26 +44,28 @@
     umount /btrfs_tmp
   '';
 
-  fileSystems."/persistent" =
-    { device = "/dev/disk/by-uuid/8d713fd7-6b04-4b5c-ab90-5f20ec53dc6d";
+
+  fileSystems."/persist" =
+    { device = "/dev/disk/by-label/nixos";
+      neededForBoot = true;
       fsType = "btrfs";
-      options = [ "subvol=persistent" "compress=zstd" ];
+      options = [ "subvol=persist" "compress=zstd" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/8d713fd7-6b04-4b5c-ab90-5f20ec53dc6d";
+    { device = "/dev/disk/by-label/nixos";
       fsType = "btrfs";
       options = [ "subvol=nix" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/12CE-A600";
+    { device = "/dev/disk/by-label/boot";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/f037d6b4-f232-4e94-a09b-667dad8a3781"; }
+    [ { device = "/dev/disk/by-label/swap"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
