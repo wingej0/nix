@@ -66,7 +66,7 @@
         "Pictures"
         "Documents"
         "Videos"
-        ".dotfiles"
+        "dotfiles"
         { directory = ".gnupg"; mode = "0700"; }
         { directory = ".ssh"; mode = "0700"; }
         { directory = ".nixops"; mode = "0700"; }
