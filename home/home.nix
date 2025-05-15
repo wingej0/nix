@@ -8,7 +8,7 @@
 
   # Edit Mailspring desktop file
   xdg.desktopEntries.Mailspring = {
-    name="Mailspring Client";
+    name="Mailspring";
     exec="mailspring --password-store=${"gnome-libsecret"} %U";
     icon="mailspring";
   };

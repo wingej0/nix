@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
     programs.firefox.enable = true;
-    
+
     environment.systemPackages = with pkgs; [
         vim
         wget
@@ -9,5 +9,6 @@
         gh
         vscode-fhs
         mailspring
+        anytype
     ];
 }

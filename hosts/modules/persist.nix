@@ -34,6 +34,9 @@
                 ".local/share/direnv"
                 ".config/gh"
                 ".config/cosmic"
+                ".config/anytype"
+                ".config/Mailspring"
+                ".config/Code"
             ];
             files = [
                 ".screenrc"
