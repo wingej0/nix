@@ -2,13 +2,14 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, username, hostname, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.impermanence.nixosModules.impermanence
+      inputs.home-manager.nixosModules.home-manager
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -107,6 +108,22 @@
     ];
   };
 
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs username hostname; };
+
+    users.${username} = {
+        imports = [ ../../home/home.nix ];
+        programs.home-manager.enable = true;
+        home = {
+            stateVersion = "24.05";
+            username = "${username}";
+            homeDirectory = "/home/${username}";
+        };
+    };
+  };
+
   programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
@@ -116,10 +133,13 @@
     wget
     git
     gh
+    vscode-fhs
   ];
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
+  nixpkgs.config.allowUnfree = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
