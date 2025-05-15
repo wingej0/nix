@@ -6,6 +6,7 @@
         		./nix-vm/configuration.nix
                 ./modules/mailspring.nix
                 ./modules/users.nix
+                ./modules/persist.nix
         	]
         else
             [ ];
