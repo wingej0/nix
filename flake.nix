@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home Manager
     home-manager = {
@@ -10,7 +10,6 @@
     
     impermanence.url = "github:nix-community/impermanence";
     
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs = { nixpkgs, ... } @ inputs: 

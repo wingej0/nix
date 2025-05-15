@@ -9,13 +9,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.impermanence.nixosModules.impermanence
-      {
-            nix.settings = {
-              substituters = [ "https://cosmic.cachix.org/" ];
-              trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-            };
-          }
-          inputs.nixos-cosmic.nixosModules.default
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -77,6 +70,7 @@
         { directory = ".local/share/keyrings"; mode = "0700"; }
         ".local/share/direnv"
         ".config/gh"
+        ".config/cosmic"
       ];
       files = [
         ".screenrc"
