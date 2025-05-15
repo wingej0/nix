@@ -6,6 +6,7 @@
         		./nix-vm/configuration.nix
                 ./modules/users.nix
                 ./modules/persist.nix
+                ./modules/packages.nix
         	]
         else
             [ ];
