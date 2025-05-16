@@ -2,12 +2,13 @@
 {
     imports = [ inputs.home-manager.nixosModules.home-manager ];
 
-    # Define a user account. Don't forget to set a password with ‘passwd’.
-    users.users.wingej0 = {
-        isNormalUser = true;
-        initialHashedPassword = "$6$DC6usdc/o.Svf2X3$yyl4T3lbOjCUVma/io5nEWjaUxbl5ly//R39sr6tBHpLQQORaOVluRWfqOwfwSzBSA1/cwJANsEcsDAr1bDIn1";
-        extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.   
-    };
+    let inherit (import ./password.nix) hashedPassword; in
+        users.users.wingej0 = {
+            isNormalUser = true;
+            initialHashedPassword = hashedPassword;
+            extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.   
+        };
+    
 
     home-manager = {
         useGlobalPkgs = true;
