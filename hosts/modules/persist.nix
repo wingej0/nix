@@ -45,6 +45,11 @@
             files = [
                 ".screenrc"
                 ".gitconfig"
+                ".zshenv"
+                ".zprofile"
+                ".zshrc"
+                ".zlogin"
+                ".histfile"
             ];
         };
     };
