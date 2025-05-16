@@ -47,9 +47,9 @@
                 ".gitconfig"
                 ".zshenv"
                 ".zprofile"
-                ".zshrc"
                 ".zlogin"
                 ".histfile"
+                ".pk10.zsh"
             ];
         };
     };

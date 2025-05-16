@@ -3,7 +3,7 @@
     # zsh settings (powerlevel10k, wallust, fastfetch)
     programs.zsh = {
         enable = true;
-        initExtra = ''
+        initContent = ''
             source ~/.p10k.zsh
             bindkey -e
             fastfetch
