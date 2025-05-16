@@ -37,8 +37,29 @@
         mattermost-desktop
         element-desktop
         mailspring
+
+        # Games
+        gnome-2048
+        scid-vs-pc
+        stockfish
+        lc0  
+
+        # Media
+        obs-studio
+        kdePackages.kdenlive
+        mpv
+        audacity
+        gimp
+        yt-dlp
+        annotator
+        ffmpeg
+        loupe
         
         vscode-fhs
+
+        # Office
         anytype
+        onlyoffice-bin
+        evince
     ];
 }

@@ -8,6 +8,7 @@
                 ./modules/persist.nix
                 ./modules/packages.nix
                 ./modules/fonts.nix
+                ./modules/shells.nix
         	]
         else
             [ ];
