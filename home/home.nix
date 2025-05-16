@@ -4,6 +4,7 @@
   imports = 
   [
     ./programs/fastfetch.nix
+    ./programs/zsh.nix
   ];
 
   # Edit Mailspring desktop file
