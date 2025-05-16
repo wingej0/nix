@@ -8,7 +8,7 @@
     
     users.users.wingej0 = {
         isNormalUser = true;
-        initialHashedPassword = config.hashedPassword;
+        initialHashedPassword = "$6$DC6usdc/o.Svf2X3$yyl4T3lbOjCUVma/io5nEWjaUxbl5ly//R39sr6tBHpLQQORaOVluRWfqOwfwSzBSA1/cwJANsEcsDAr1bDIn1";
         extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.   
     };
     
