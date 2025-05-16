@@ -7,6 +7,7 @@
                 ./modules/users.nix
                 ./modules/persist.nix
                 ./modules/packages.nix
+                ./modules/fonts.nix
         	]
         else
             [ ];
