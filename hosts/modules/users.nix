@@ -1,13 +1,16 @@
-{ inputs, username, hostname, ... }:
+{ config, inputs, username, hostname, ... }:
 {
-    imports = [ inputs.home-manager.nixosModules.home-manager ];
+    imports = [ 
+        inputs.home-manager.nixosModules.home-manager
+        ./password.nix 
+    ];
 
-    let inherit (import ./password.nix) hashedPassword; in
-        users.users.wingej0 = {
-            isNormalUser = true;
-            initialHashedPassword = hashedPassword;
-            extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.   
-        };
+    
+    users.users.wingej0 = {
+        isNormalUser = true;
+        initialHashedPassword = config.hashedPassword;
+        extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.   
+    };
     
 
     home-manager = {
