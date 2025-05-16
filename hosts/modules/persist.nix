@@ -39,6 +39,8 @@
                 ".config/anytype"
                 ".config/Mailspring"
                 ".config/Code"
+                ".config/google-chrome"
+                ".mozilla"
             ];
             files = [
                 ".screenrc"
