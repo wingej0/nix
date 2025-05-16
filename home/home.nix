@@ -3,7 +3,7 @@
 {
   imports = 
   [
-    ./fastfetch.nix
+    ./programs/fastfetch.nix
   ];
 
   # Edit Mailspring desktop file
