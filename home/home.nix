@@ -3,7 +3,7 @@
 {
   imports = 
   [
-    
+    ./programs/git.nix
   ];
 
   # Edit Mailspring desktop file

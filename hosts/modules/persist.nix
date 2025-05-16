@@ -8,8 +8,6 @@
         enable = true;  # NB: Defaults to true, not needed
         hideMounts = true;
         directories = [
-            "/etc/passwd"
-            "/etc/shadow"
             "/var/log"
             "/var/lib/bluetooth"
             "/var/lib/nixos"
@@ -28,12 +26,14 @@
                 "Pictures"
                 "Documents"
                 "Videos"
-                "dotfiles"
+                ".dotfiles"
                 { directory = ".gnupg"; mode = "0700"; }
                 { directory = ".ssh"; mode = "0700"; }
                 { directory = ".nixops"; mode = "0700"; }
                 { directory = ".local/share/keyrings"; mode = "0700"; }
                 ".local/share/direnv"
+                ".local/state/cosmic"
+                ".local/state/cosmic-comp"
                 ".config/gh"
                 ".config/cosmic"
                 ".config/anytype"

@@ -2,12 +2,12 @@
 {
     imports = [ 
         inputs.home-manager.nixosModules.home-manager
-        ./password.nix 
     ];
 
-    users.users.${username} = {
+    users.users.wingej0 = {
         isNormalUser = true;
-        description = "${username}";        
+        description = "Jeff Winget";
+        hashedPasswordFile = "/persist/password_hash";        
         extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.   
     };
     
