@@ -9,7 +9,8 @@
                 ./modules/packages.nix
                 ./modules/fonts.nix
                 ./modules/shells.nix
-                ./modules/shells.nix
+                ./modules/system76.nix
+                ./modules/virtualization.nix
         	]
         else
             [ ];
