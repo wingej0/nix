@@ -8,6 +8,8 @@
         enable = true;  # NB: Defaults to true, not needed
         hideMounts = true;
         directories = [
+            "/etc/passwd"
+            "/etc/shadow"
             "/var/log"
             "/var/lib/bluetooth"
             "/var/lib/nixos"
