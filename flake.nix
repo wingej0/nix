@@ -15,6 +15,17 @@
   outputs = { nixpkgs, ... } @ inputs: 
   {
     nixosConfigurations = {
+      # Personal laptop (System76 Darter-Pro)
+      darter-pro = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          username = "wingej0";
+          hostname = "darter-pro";
+        };
+        modules = [
+          ./hosts
+        ];
+      };
       # Virtual Machine
       nix-vm = nixpkgs.lib.nixosSystem {
         specialArgs = {
