@@ -12,6 +12,7 @@
 		        ./modules/shells.nix
 		        ./modules/system76.nix
 		        ./modules/virtualization.nix
+				# ./modules/cosmic-applets.nix
         	]
         else if hostname == "nix-vm" then
         	[

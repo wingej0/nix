@@ -25,6 +25,7 @@
         lshw
         bat
         system-config-printer
+        github-desktop
         
         # Browsers
         google-chrome
