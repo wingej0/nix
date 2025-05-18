@@ -3,7 +3,8 @@
     imports = 
         if hostname == "darter-pro" then 
         	[
-			./darter-pro/configuration.nix
+				./darter-pro/configuration.nix
+				./modules/impermanence.nix
 		        ./modules/users.nix
 		        ./modules/persist.nix
 		        ./modules/packages.nix

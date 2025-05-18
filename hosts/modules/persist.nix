@@ -32,6 +32,7 @@
                 { directory = ".nixops"; mode = "0700"; }
                 { directory = ".local/share/keyrings"; mode = "0700"; }
                 ".local/share/direnv"
+                ".local/share/TelegramDesktop"
                 ".local/state/cosmic"
                 ".local/state/cosmic-comp"
                 ".config/gh"
@@ -40,7 +41,12 @@
                 ".config/Mailspring"
                 ".config/Code"
                 ".config/google-chrome"
+                ".config/Caprine"
+                ".config/Mattermost"
+                ".config/discord"
+                ".config/Element"
                 ".mozilla"
+                ".zsh"
             ];
             files = [
                 ".screenrc"
@@ -49,7 +55,8 @@
                 ".zprofile"
                 ".zlogin"
                 ".histfile"
-                ".pk10.zsh"
+                ".p10k.zsh"
+                ".zsh_history"
             ];
         };
     };

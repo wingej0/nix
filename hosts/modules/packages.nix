@@ -24,6 +24,7 @@
         htop
         lshw
         bat
+        system-config-printer
         
         # Browsers
         google-chrome
@@ -61,5 +62,8 @@
         anytype
         onlyoffice-bin
         evince
+
+        # cosmic
+        cosmic-ext-tweaks
     ];
 }
