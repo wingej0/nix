@@ -47,10 +47,11 @@
                 ".config/Element"
                 ".mozilla"
                 ".zsh"
+                ".vscode"
             ];
             files = [
                 ".screenrc"
-                ".gitconfig"
+                # ".gitconfig"
                 ".zshenv"
                 ".zprofile"
                 ".zlogin"
