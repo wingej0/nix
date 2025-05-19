@@ -40,7 +40,7 @@
                 ".local/share/flatpak"
                 ".local/share/themes"
                 ".local/share/applications"
-                ".config/gh"
+                # ".config/gh"
                 ".config/cosmic"
                 ".config/anytype"
                 ".config/Mailspring"

@@ -46,9 +46,6 @@
   services.flatpak.enable = true;
 
   environment.variables = {
-    # XCURSOR_PATH = [
-    #     "${config.system.path}/share/icons"
-    # ];
     XCURSOR_SIZE=24;
     XCURSOR_THEME="Bibata-Modern-Classic";
   };
@@ -68,8 +65,6 @@
     enable = true;
     pulse.enable = true;
   };
-
-  programs.firefox.enable = true;
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
