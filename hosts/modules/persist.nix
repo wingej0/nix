@@ -13,6 +13,7 @@
             "/var/lib/nixos"
             "/var/lib/systemd/coredump"
             "/etc/NetworkManager/system-connections"
+            "/etc/cups"
             { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
             "/var/lib/flatpak"
         ];
@@ -40,7 +41,7 @@
                 ".local/share/flatpak"
                 ".local/share/themes"
                 ".local/share/applications"
-                # ".config/gh"
+                ".config/gh"
                 ".config/cosmic"
                 ".config/anytype"
                 ".config/Mailspring"
@@ -56,7 +57,7 @@
             ];
             files = [
                 ".screenrc"
-                # ".gitconfig"
+                ".gitconfig"
                 # ".zshenv"
                 ".zprofile"
                 ".zlogin"
