@@ -54,6 +54,7 @@
                 ".mozilla"
                 ".zsh"
                 ".vscode"
+                ".scidvspc"
             ];
             files = [
                 ".screenrc"

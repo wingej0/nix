@@ -45,6 +45,10 @@
 
   services.flatpak.enable = true;
 
+  # enable appimage support
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+
   environment.variables = {
     XCURSOR_SIZE=24;
     XCURSOR_THEME="Bibata-Modern-Classic";
