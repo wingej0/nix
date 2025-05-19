@@ -14,6 +14,7 @@
             "/var/lib/systemd/coredump"
             "/etc/NetworkManager/system-connections"
             { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
+            "/var/lib/flatpak"
         ];
         files = [
             "/etc/machine-id"
@@ -21,6 +22,7 @@
         ];
         users.wingej0 = {
             directories = [
+                "Desktop"
                 "Downloads"
                 "Music"
                 "Pictures"
@@ -35,6 +37,9 @@
                 ".local/share/TelegramDesktop"
                 ".local/state/cosmic"
                 ".local/state/cosmic-comp"
+                ".local/share/flatpak"
+                ".local/share/themes"
+                ".local/share/applications"
                 ".config/gh"
                 ".config/cosmic"
                 ".config/anytype"
@@ -52,7 +57,7 @@
             files = [
                 ".screenrc"
                 # ".gitconfig"
-                ".zshenv"
+                # ".zshenv"
                 ".zprofile"
                 ".zlogin"
                 ".histfile"

@@ -42,6 +42,17 @@
 
   services.displayManager.cosmic-greeter.enable = true;
   services.desktopManager.cosmic.enable = true;
+
+  services.flatpak.enable = true;
+
+  environment.variables = {
+    # XCURSOR_PATH = [
+    #     "${config.system.path}/share/icons"
+    # ];
+    XCURSOR_SIZE=24;
+    XCURSOR_THEME="Bibata-Modern-Classic";
+  };
+
   
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";

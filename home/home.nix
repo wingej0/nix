@@ -5,6 +5,7 @@
   [
     ./programs/fastfetch.nix
     ./programs/zsh.nix
+    ./system/gtk.nix
   ];
 
   # Edit Mailspring desktop file

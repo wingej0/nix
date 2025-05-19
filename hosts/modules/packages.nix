@@ -56,6 +56,7 @@
         annotator
         ffmpeg
         loupe
+        cider
         
         vscode-fhs
 
