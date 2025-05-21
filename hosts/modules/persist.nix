@@ -48,6 +48,7 @@
                 ".config/discord"
                 ".config/Element"
                 ".config/nordvpn"
+                ".config/sh.cider.genten"
                 ".mozilla"
                 ".zsh"
                 ".vscode"
