@@ -37,7 +37,7 @@
                 ".local/share/flatpak"
                 ".local/share/themes"
                 ".local/share/applications"
-                ".config/gh"
+                # ".config/gh"
                 ".config/cosmic"
                 ".config/anytype"
                 ".config/Mailspring"
@@ -55,7 +55,7 @@
             ];
             files = [
                 ".screenrc"
-                ".gitconfig"
+                # ".gitconfig"
                 # ".zshenv"
                 ".zprofile"
                 ".zlogin"
