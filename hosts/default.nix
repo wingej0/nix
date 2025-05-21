@@ -12,7 +12,8 @@
 		        ./modules/shells.nix
 		        ./modules/system76.nix
 		        ./modules/virtualization.nix
-				# ./modules/cosmic-applets.nix
+				./modules/cosmic-applets.nix
+				./modules/nordvpn.nix
 
         	]
         else if hostname == "nix-vm" then

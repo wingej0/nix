@@ -25,10 +25,6 @@
             directories = [
                 "Desktop"
                 "Downloads"
-                "Music"
-                "Pictures"
-                "Documents"
-                "Videos"
                 ".dotfiles"
                 { directory = ".gnupg"; mode = "0700"; }
                 { directory = ".ssh"; mode = "0700"; }
@@ -51,6 +47,7 @@
                 ".config/Mattermost"
                 ".config/discord"
                 ".config/Element"
+                ".config/nordvpn"
                 ".mozilla"
                 ".zsh"
                 ".vscode"

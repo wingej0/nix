@@ -8,7 +8,7 @@
         isNormalUser = true;
         description = "Jeff Winget";
         hashedPasswordFile = "/persist/password_hash";        
-        extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.   
+        extraGroups = [ "wheel" "nordvpn" ]; # Enable ‘sudo’ for the user.   
     };
     
 

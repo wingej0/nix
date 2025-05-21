@@ -56,7 +56,6 @@
         annotator
         ffmpeg
         loupe
-        cider
         
         vscode-fhs
 
@@ -67,5 +66,7 @@
 
         # cosmic
         cosmic-ext-tweaks
+        papirus-maia-icon-theme
+        papirus-folders
     ];
 }

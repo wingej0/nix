@@ -43,6 +43,9 @@
   services.displayManager.cosmic-greeter.enable = true;
   services.desktopManager.cosmic.enable = true;
 
+  systemd.extraConfig = "DefaultTimeoutStopSec=5s";
+  systemd.user.extraConfig = "DefaultTimeoutStopSec=5s";
+
   services.flatpak.enable = true;
 
   # enable appimage support
@@ -73,6 +76,13 @@
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
+
+  networking.wireguard.enable = true;
+
+  # Open ports in the firewall.
+  networking.firewall.checkReversePath = false;
+  networking.firewall.allowedTCPPorts = [ 443 ];
+  networking.firewall.allowedUDPPorts = [ 1194 ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

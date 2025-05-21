@@ -11,6 +11,12 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+
+    # Nix User Repository
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
   };
 
