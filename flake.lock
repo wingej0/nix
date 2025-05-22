@@ -1,5 +1,53 @@
 {
   "nodes": {
+    "cosmic-ext-applet-caffeine": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1746209206,
+        "narHash": "sha256-yCv/lque8RrSmQTDpLM+M2CBsNJKz6zEyERD1b1ZSw4=",
+        "owner": "tropicbliss",
+        "repo": "cosmic-ext-applet-caffeine",
+        "rev": "fbed3de2e9716e333d6037b4009fa2a1760de243",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tropicbliss",
+        "repo": "cosmic-ext-applet-caffeine",
+        "type": "github"
+      }
+    },
+    "cosmic-ext-applet-clipboard-manager": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1747753154,
+        "narHash": "sha256-RmlMevxncbQXk92JEo0jHoCapCRXJJ4hp+/w65PIr5M=",
+        "owner": "cosmic-utils",
+        "repo": "clipboard-manager",
+        "rev": "d4880fbcf5fdeb5b84e4d78f27c16bf17f213ae9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmic-utils",
+        "repo": "clipboard-manager",
+        "type": "github"
+      }
+    },
+    "cosmic-ext-applet-emoji-selector": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1738014217,
+        "narHash": "sha256-G5Al0YRf0a4WuvYB7kDWCPPl+f/GBrN6M2SMVgO+U94=",
+        "owner": "leb-kuchen",
+        "repo": "cosmic-ext-applet-emoji-selector",
+        "rev": "1b2eb23ba4d337482ed10b0595be3b603020cad2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "leb-kuchen",
+        "repo": "cosmic-ext-applet-emoji-selector",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -28,11 +76,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747793476,
-        "narHash": "sha256-2qAOSixSrbb9l6MI+SI4zGineOzDcc2dgOOFK9Dx+IY=",
+        "lastModified": 1747875884,
+        "narHash": "sha256-tdVx4kghhdy62LKuTnwE2RytOe8o88tah/yhpyuL0D4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2468b2d35512d093aeb04972a1d8c20a0735793f",
+        "rev": "f9186c64fcc6ee5f0114547acf9e814c806a640b",
         "type": "github"
       },
       "original": {
@@ -81,11 +129,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1747797241,
-        "narHash": "sha256-gFGJqeI+3CvjE7zb0/P0P0PEgTjMXcsjTx0vUEF0ojY=",
+        "lastModified": 1747919556,
+        "narHash": "sha256-gB5l49hiTW55YalD2EntLuHtX2aupzNY92q2GBZEyvk=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "b2c59aab813aea0fe161e5a491a1225067255740",
+        "rev": "c19632ab4df3d1a100d4568e60ffc81f553f04b7",
         "type": "github"
       },
       "original": {
@@ -96,6 +144,9 @@
     },
     "root": {
       "inputs": {
+        "cosmic-ext-applet-caffeine": "cosmic-ext-applet-caffeine",
+        "cosmic-ext-applet-clipboard-manager": "cosmic-ext-applet-clipboard-manager",
+        "cosmic-ext-applet-emoji-selector": "cosmic-ext-applet-emoji-selector",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
