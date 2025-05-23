@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-    programs.firefox.enable = true;
+    programs.firefox.enable = false;
 
     environment.systemPackages = with pkgs; [
         # System Packages
