@@ -33,7 +33,6 @@
 
         # Communication
         telegram-desktop
-        caprine-bin
         discord
         zoom-us
         mattermost-desktop
