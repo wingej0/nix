@@ -49,6 +49,7 @@
                 ".config/Element"
                 ".config/nordvpn"
                 ".config/sh.cider.genten"
+                ".config/MongoDB Compass"
                 ".mozilla"
                 ".zsh"
                 ".vscode"

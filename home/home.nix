@@ -15,6 +15,13 @@
     icon="mailspring";
   };
 
+  # Edit MongoDB Compass desktop file
+  xdg.desktopEntries.mongodb-compass = {
+    name="MongoDB Compass";
+    exec="mongodb-compass --password-store=${"gnome-libsecret"} --ignore-additional-command-line-flags %U";
+    icon="mongodb-compass";
+  };
+
   # programs.git = {
   #   enable = true;
   #   userName  = "Jeff Winget";
