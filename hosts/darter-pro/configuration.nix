@@ -58,6 +58,7 @@
   };
 
   environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
+  environment.unixODBCDrivers = with pkgs.unixODBCDrivers; [ msodbcsql18 ];
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";

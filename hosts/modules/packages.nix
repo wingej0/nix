@@ -57,7 +57,13 @@
         ffmpeg
         loupe
         
+        # Development
         vscode-fhs
+        jetbrains.pycharm-community
+        mongodb-compass
+        insomnia
+        unixODBC
+        unixODBCDrivers.msodbcsql18
 
         # Office
         anytype
