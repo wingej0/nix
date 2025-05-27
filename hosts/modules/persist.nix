@@ -25,6 +25,7 @@
             directories = [
                 "Desktop"
                 "Downloads"
+                "Templates"
                 ".dotfiles"
                 { directory = ".gnupg"; mode = "0700"; }
                 { directory = ".ssh"; mode = "0700"; }
@@ -37,7 +38,7 @@
                 ".local/share/flatpak"
                 ".local/share/themes"
                 ".local/share/applications"
-                # ".config/gh"
+                ".config/gh"
                 ".config/cosmic"
                 ".config/anytype"
                 ".config/Mailspring"
@@ -50,14 +51,14 @@
                 ".config/nordvpn"
                 ".config/sh.cider.genten"
                 ".config/MongoDB Compass"
-                ".mozilla"
+                ".var/app/app.zen_browser.zen"
                 ".zsh"
                 ".vscode"
                 ".scidvspc"
             ];
             files = [
                 ".screenrc"
-                # ".gitconfig"
+                ".gitconfig"
                 # ".zshenv"
                 ".zprofile"
                 ".zlogin"
