@@ -26,10 +26,12 @@
         bat
         system-config-printer
         github-desktop
+        oh-my-posh
         
         # Browsers
         google-chrome
         brave
+        vivaldi
 
         # Communication
         telegram-desktop

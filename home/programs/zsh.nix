@@ -4,7 +4,6 @@
     programs.zsh = {
         enable = true;
         initContent = ''
-            source ~/.p10k.zsh
             bindkey -e
             fastfetch
             export FZF_DEFAULT_OPTS="--layout reverse --border bold --border rounded --margin 3% --color dark"
@@ -12,14 +11,17 @@
             # Set up fzf key bindings and fuzzy completion
             source <(fzf --zsh)
             bindkey -s '^e' 'vim $(fzf)\n'
+
+            # oh-my-posh
+            eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
         '';
-        plugins = [   
-            {                                                                                   
-                name = "powerlevel10k";                                                           
-                src = pkgs.zsh-powerlevel10k;                                                     
-                file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";                         
-            }
-        ];
+        # plugins = [   
+        #     {                                                                                   
+        #         name = "powerlevel10k";                                                           
+        #         src = pkgs.zsh-powerlevel10k;                                                     
+        #         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";                         
+        #     }
+        # ];
         shellAliases = {
             ls = "eza --icons";
             ll = "eza --icons -la";
