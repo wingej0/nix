@@ -3,6 +3,10 @@
     specialisation = {
 
         cosmic-desktop.configuration = {
+            # Enable the X11 windowing system.
+            services.xserver.enable = true;
+
+            # Enable Cosmic
             services.displayManager.cosmic-greeter.enable = true;
             services.desktopManager.cosmic.enable = true;
 

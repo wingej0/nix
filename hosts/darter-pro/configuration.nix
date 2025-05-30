@@ -37,9 +37,6 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
   systemd.extraConfig = "DefaultTimeoutStopSec=5s";
   systemd.user.extraConfig = "DefaultTimeoutStopSec=5s";
 

@@ -2,7 +2,7 @@
 {
     imports = [
         (_: { nixpkgs.overlays = [ inputs.qtile-flake.overlays.default ]; })
-        ./../overlays/qtile-extras-overlay.nix
+        ./../overlays/qtile-overlay.nix
     ];
     
     specialisation = {
@@ -92,7 +92,7 @@
             services.gnome.gnome-keyring.enable = true;
 
             environment.sessionVariables = {
-                WLR_NO_HARDWARE_CURSORS = "1";
+                WLR_NO_HARDWARE_CURSORS = 1;
                 NIXOS_OZONE_WL = 1;
                 MOZ_ENABLE_WAYLAND = 1;
                 ELECTRON_OZONE_PLATFORM_HINT = 1;
