@@ -40,13 +40,10 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  services.displayManager.cosmic-greeter.enable = true;
-  services.desktopManager.cosmic.enable = true;
-
   systemd.extraConfig = "DefaultTimeoutStopSec=5s";
   systemd.user.extraConfig = "DefaultTimeoutStopSec=5s";
 
-  services.flatpak.enable = true;
+  # services.flatpak.enable = true;
 
   # enable appimage support
   programs.appimage.enable = true;
