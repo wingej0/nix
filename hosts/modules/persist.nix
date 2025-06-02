@@ -51,6 +51,7 @@
                 ".config/sh.cider.genten"
                 ".config/MongoDB Compass"
                 ".config/ohmyposh"
+                ".var/app/app.zen_browser.zen"
                 ".zsh"
                 ".vscode"
                 ".scidvspc"
