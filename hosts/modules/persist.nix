@@ -59,7 +59,6 @@
             files = [
                 ".screenrc"
                 ".gitconfig"
-                # ".zshenv"
                 ".zprofile"
                 ".zlogin"
                 ".histfile"
