@@ -17,6 +17,12 @@
   # Kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
+  services.xserver.enable = true;
+
+  # Enable Cosmic
+  services.displayManager.cosmic-greeter.enable = true;
+  services.desktopManager.cosmic.enable = true;
+
   networking.hostName = "darter-pro"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -40,7 +46,7 @@
   systemd.extraConfig = "DefaultTimeoutStopSec=5s";
   systemd.user.extraConfig = "DefaultTimeoutStopSec=5s";
 
-  # services.flatpak.enable = true;
+  services.flatpak.enable = true;
 
   # enable appimage support
   programs.appimage.enable = true;

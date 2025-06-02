@@ -62,14 +62,14 @@
   # plain files is through 'home.file'.
   home.file = {
     # Source dotfiles to .config
-    ".config/dunst".source = ./configs/dunst;
-    ".config/picom".source = ./configs/picom;
+    # ".config/dunst".source = ./configs/dunst;
+    # ".config/picom".source = ./configs/picom;
     # ".config/qtile".source = ./configs/qtile;
-    ".config/rofi".source = ./configs/rofi;
-    ".config/swappy".source = ./configs/swappy;
-    ".config/swaylock".source = ./configs/swaylock;
-    ".config/wallust".source = ./configs/wallust;
-    ".config/wlogout".source = ./configs/wlogout;
+    # ".config/rofi".source = ./configs/rofi;
+    # ".config/swappy".source = ./configs/swappy;
+    # ".config/swaylock".source = ./configs/swaylock;
+    # ".config/wallust".source = ./configs/wallust;
+    # ".config/wlogout".source = ./configs/wlogout;
   };
 
   # Home Manager can also manage your environment variables through

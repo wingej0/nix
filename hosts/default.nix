@@ -14,8 +14,6 @@
 		        ./modules/virtualization.nix
 				./modules/cosmic-applets.nix
 				./modules/nordvpn.nix
-				./specialisations/cosmic.nix
-				./specialisations/qtile.nix
         	]
         else if hostname == "nix-vm" then
         	[

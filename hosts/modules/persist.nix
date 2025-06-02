@@ -50,11 +50,7 @@
                 ".config/nordvpn"
                 ".config/sh.cider.genten"
                 ".config/MongoDB Compass"
-	        ".config/vivaldi"
                 ".config/ohmyposh"
-                ".config/qtile"
-	        ".config/variety"
-	        ".cache/wallust"
                 ".zsh"
                 ".vscode"
                 ".scidvspc"
@@ -66,8 +62,6 @@
                 ".zprofile"
                 ".zlogin"
                 ".histfile"
-                ".p10k.zsh"
-                ".cache/current_wallpaper.jpg"
                 ".zsh_history"
             ];
         };

@@ -31,7 +31,7 @@
         # Browsers
         google-chrome
         brave
-        vivaldi
+        # vivaldi
 
         # Communication
         telegram-desktop
