@@ -20,10 +20,10 @@
       flake = false;
     };
 
-    cosmic-ext-applet-emoji-selector = {
-      url = "github:leb-kuchen/cosmic-ext-applet-emoji-selector";
-      flake = false;
-    };
+    # cosmic-ext-applet-emoji-selector = {
+    #   url = "github:leb-kuchen/cosmic-ext-applet-emoji-selector";
+    #   flake = false;
+    # };
 
     # Qtile
     qtile-flake = {

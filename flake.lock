@@ -32,22 +32,6 @@
         "type": "github"
       }
     },
-    "cosmic-ext-applet-emoji-selector": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1748032978,
-        "narHash": "sha256-IbRfGX/G0WcAFfvWEMkjST8wBocH0zMd0zoX6v8UYec=",
-        "owner": "leb-kuchen",
-        "repo": "cosmic-ext-applet-emoji-selector",
-        "rev": "ab4a4b98f0e6c09f54b8648330ad048b235cd017",
-        "type": "github"
-      },
-      "original": {
-        "owner": "leb-kuchen",
-        "repo": "cosmic-ext-applet-emoji-selector",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -76,11 +60,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1748830238,
-        "narHash": "sha256-EB+LzYHK0D5aqxZiYoPeoZoOzSAs8eqBDxm3R+6wMKU=",
+        "lastModified": 1748955489,
+        "narHash": "sha256-OmZXyW2g5qIuo5Te74McwR0TwauCO2sF3/SjGDVuxyg=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c7fdb7e90bff1a51b79c1eed458fb39e6649a82a",
+        "rev": "bb846c031be68a96466b683be32704ef6e07b159",
         "type": "github"
       },
       "original": {
@@ -129,11 +113,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1748864791,
-        "narHash": "sha256-YRRRbOEc8aXpzSvN3qdIkqtVQ9xjx9rgichtaSQ0qwY=",
+        "lastModified": 1748954271,
+        "narHash": "sha256-tpA8Nlj5cMqMIVAQDE/9CmA45thnFOSZseTBVtBwWlU=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "4ee0c2599266fb26e6ac3cb71836e96f25df446e",
+        "rev": "0f3c9ccce1d63b0fd1d60ce41d9714932760f3a8",
         "type": "github"
       },
       "original": {
@@ -182,7 +166,6 @@
       "inputs": {
         "cosmic-ext-applet-caffeine": "cosmic-ext-applet-caffeine",
         "cosmic-ext-applet-clipboard-manager": "cosmic-ext-applet-clipboard-manager",
-        "cosmic-ext-applet-emoji-selector": "cosmic-ext-applet-emoji-selector",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
