@@ -25,18 +25,6 @@
       flake = false;
     };
 
-    # Qtile
-    qtile-flake = {
-      url = "github:qtile/qtile";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Qtile Extras
-    qtile-extras-flake = {
-      url = "github:elparaguayo/qtile-extras";
-      flake = false;
-    };
-
     # Nix User Repository
     nur = {
       url = "github:nix-community/NUR";
