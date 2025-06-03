@@ -1,30 +1,28 @@
 {
   lib,
   fetchFromGitHub,
-  libcosmicAppHook,
   rustPlatform,
+  libcosmicAppHook,
   just,
   stdenv,
+  util-linux,
   nix-update-script,
+  inputs
 }:
 
 rustPlatform.buildRustPackage {
-  pname = "cosmic-ext-applet-clipboard-manager";
-  version = "0.1.0-unstable-2025-03-05";
+  pname = "cosmic-ext-applet-emoji-selector";
+  version = "0.1.5-unstable-2025-06-03";
 
-  src = fetchFromGitHub {
-    owner = "cosmic-utils";
-    repo = "clipboard-manager";
-    rev = "fcab4b7b8d4934bc8bcdeec33a63628655fd7d57";
-    hash = "sha256-TtYcr2BZCDI9FPHSO22pvWEV/BPiT74JTXhkdBBZrig=";
-  };
+  src = inputs.cosmic-ext-applet-emoji-selector.outPath;
 
   useFetchCargoVendor = true;
-  cargoHash = "sha256-OabpLa0mkpSOXIiJnNbnbV2QU8aTC6ybdwLNBpjm0aQ=";
+  cargoHash = "sha256-uEcxVaLCXVxSCkKPUgTom86ropE3iXiPyy6ITufWa5k=";
 
   nativeBuildInputs = [
     libcosmicAppHook
     just
+    util-linux
   ];
 
   dontUseJustBuild = true;
@@ -34,28 +32,32 @@ rustPlatform.buildRustPackage {
     "--set"
     "prefix"
     (placeholder "out")
-    "--set"
-    "env-dst"
-    "${placeholder "out"}/etc/profile.d/cosmic-ext-applet-clipboard-manager.sh"
-    "--set"
-    "bin-src"
-    "target/${stdenv.hostPlatform.rust.cargoShortTarget}/release/cosmic-ext-applet-clipboard-manager"
   ];
 
-  preCheck = ''
-    export XDG_RUNTIME_DIR="$TMP"
+  installTargets = [
+    "install"
+    "install-schema"
+  ];
+
+  postPatch = ''
+    substituteInPlace justfile \
+      --replace-fail './target/release' './target/${stdenv.hostPlatform.rust.cargoShortTarget}/release' \
+      --replace-fail '~/.config/cosmic' "$out/share/cosmic"
   '';
 
   passthru.updateScript = nix-update-script { };
 
   meta = {
-    homepage = "https://github.com/cosmic-utils/clipboard-manager";
-    description = "Clipboard manager for the COSMIC Desktop Environment";
-    license = lib.licenses.gpl3Only;
+    homepage = "https://github.com/leb-kuchen/cosmic-ext-applet-emoji-selector";
+    description = "Emoji selector applet for the COSMIC Desktop Environment";
+    license = with lib.licenses; [
+      mpl20
+      mit
+    ];
     maintainers = with lib.maintainers; [
-      # lilyinstarlight
+      wingej0
     ];
     platforms = lib.platforms.linux;
-    mainProgram = "cosmic-ext-applet-clipboard-manager";
+    mainProgram = "cosmic-ext-applet-emoji-selector";
   };
 }

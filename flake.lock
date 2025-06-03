@@ -32,6 +32,22 @@
         "type": "github"
       }
     },
+    "cosmic-ext-applet-emoji-selector": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748032978,
+        "narHash": "sha256-IbRfGX/G0WcAFfvWEMkjST8wBocH0zMd0zoX6v8UYec=",
+        "owner": "leb-kuchen",
+        "repo": "cosmic-ext-applet-emoji-selector",
+        "rev": "ab4a4b98f0e6c09f54b8648330ad048b235cd017",
+        "type": "github"
+      },
+      "original": {
+        "owner": "leb-kuchen",
+        "repo": "cosmic-ext-applet-emoji-selector",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -166,6 +182,7 @@
       "inputs": {
         "cosmic-ext-applet-caffeine": "cosmic-ext-applet-caffeine",
         "cosmic-ext-applet-clipboard-manager": "cosmic-ext-applet-clipboard-manager",
+        "cosmic-ext-applet-emoji-selector": "cosmic-ext-applet-emoji-selector",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
