@@ -9,7 +9,7 @@
   services.mongodb = {
     enable = true;
     enableAuth = true;
-    initialRootPassword = "mongodbroot";
+    initialRootPasswordFile = "/persist/mongodb";
     bind_ip = "0.0.0.0";
   };
 }
