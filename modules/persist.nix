@@ -15,7 +15,9 @@
             "/etc/NetworkManager/system-connections"
             "/etc/cups"
             { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
+            # Flatpak and virt-manager
             "/var/lib/flatpak"
+            "/var/lib/libvirt"
         ];
         files = [
             "/etc/machine-id"
