@@ -18,6 +18,8 @@
             # Flatpak and virt-manager
             "/var/lib/flatpak"
             "/var/lib/libvirt"
+            # MongoDB
+            "/var/db/mongodb"
         ];
         files = [
             "/etc/machine-id"
@@ -56,6 +58,7 @@
                 ".zsh"
                 ".vscode"
                 ".scidvspc"
+                ".mongodb"
             ];
             files = [
                 ".screenrc"
