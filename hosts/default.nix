@@ -28,6 +28,11 @@
 				./../modules/development.nix
 				./../modules/office.nix
         	]
+        else if hostname == "sjsd-holysheet" then
+		[
+			./sjsd-holysheet/configuration.nix
+			./../modules/packages.nix
+		]
         else if hostname == "nix-vm" then
         	[
         		./nix-vm/configuration.nix

@@ -46,6 +46,17 @@
           ./hosts
         ];
       };
+      # Holysheet Server
+      sjsd-holysheet = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          username = "wingej0";
+          hostname = "sjsd-holysheet";
+        };
+        modules = [
+          ./hosts
+        ];
+      };
       # Virtual Machine
       nix-vm = nixpkgs.lib.nixosSystem {
         specialArgs = {
