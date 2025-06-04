@@ -74,8 +74,7 @@
   networking.firewall.allowedTCPPorts = [ 22 ];
   networking.firewall.allowedUDPPorts = [  ];
   networking.nameservers = [
-    "205.119.75.2"
-    "205.119.75.250"
+    "127.0.0.57"
   ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
