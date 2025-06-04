@@ -21,6 +21,7 @@
 
   fileSystems."/persist" =
     { device = "/dev/disk/by-label/nixos";
+      neededForBoot = true;
       fsType = "btrfs";
       options = [ "subvol=persist" "compress=zstd" ];
     };
