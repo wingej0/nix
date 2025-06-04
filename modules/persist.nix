@@ -52,7 +52,7 @@
                 ".config/nordvpn"
                 ".config/sh.cider.genten"
                 ".config/MongoDB Compass"
-                ".config/ohmyposh"
+                # ".config/ohmyposh"
                 ".var/app/app.zen_browser.zen"
                 ".zsh"
                 ".vscode"

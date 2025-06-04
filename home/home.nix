@@ -62,6 +62,7 @@
   # plain files is through 'home.file'.
   home.file = {
     # Source dotfiles to .config
+    ".config/ohmyposh".source = ./configs/ohmyposh;
     # ".config/dunst".source = ./configs/dunst;
     # ".config/picom".source = ./configs/picom;
     # ".config/qtile".source = ./configs/qtile;
