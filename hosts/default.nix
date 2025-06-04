@@ -44,6 +44,7 @@
 				./../modules/development.nix
 				./../modules/browsers.nix
 				./../modules/mongodb.nix
+				./../modules/remote-access.nix
 			]
         else if hostname == "nix-vm" then
         	[
