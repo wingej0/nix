@@ -32,6 +32,11 @@
 			[
 				./sjsd-holysheet/configuration.nix
 				./../modules/users.nix
+
+				# Impermanence modules
+				./../modules/impermanence.nix
+				./../modules/persist.nix
+
 				# Packages
 				./../modules/packages.nix
 				./../modules/fonts.nix
