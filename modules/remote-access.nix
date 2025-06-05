@@ -11,4 +11,8 @@
             PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
         };
     };
+
+    # Open ports in the firewall.
+    networking.firewall.allowedTCPPorts = [ 22 3389 27017 ];
+    networking.firewall.allowedUDPPorts = [ 22 3389 27017 ];
 }
