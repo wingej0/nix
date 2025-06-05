@@ -76,13 +76,15 @@
 
   services.avahi = {
       enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-      publish = {
-          enable = true;
-          userServices = true;
-          addresses = true;
-      };
+  };
+
+  services.resolved = {
+    enable = true;
+    extraConfig = ''
+      LLMNR=no
+      ReadEtcHosts=no
+      DNSSEC=no
+    '';
   };
   
   # Or disable the firewall altogether.
