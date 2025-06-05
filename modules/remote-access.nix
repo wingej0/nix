@@ -1,11 +1,21 @@
 { config, pkgs, ... }:
 {
     environment.systemPackages = with pkgs; [
-        gnome-remote-desktop
-        gnome-session
-        dconf-editor
-        gnomeExtensions.rdp-and-ssh-connect
+        sunshine
+        moonlight-qt
     ];
+
+    security.wrappers.sunshine = {
+        owner = "root";
+        group = "root";
+        capabilities = "cap_sys_admin+p";
+        source = "${pkgs.sunshine}/bin/sunshine";
+    };
+
+    services.avahi.publish = {
+        enable = true;
+        userServices = true;
+    };
 
     services.openssh = {
         enable = true;
@@ -19,9 +29,10 @@
         };
     };
 
-    services.gnome.gnome-remote-desktop.enable = true;
-
     # Open ports in the firewall.
-    networking.firewall.allowedTCPPorts = [ 22 3389 27017 ];
+    networking.firewall.allowedTCPPorts = [ 22 3389 27017 47984 47989 47990 48010 ];
     networking.firewall.allowedUDPPorts = [ 22 3389 27017 ];
+    networking.firewall.allowedUDPPortRanges = [
+        {from = 47998; to = 4800;}
+    ];
 }
