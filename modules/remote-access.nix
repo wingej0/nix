@@ -18,19 +18,7 @@
         };
     };
 
-    services.xserver.displayManager.gdm.autoSuspend = false;
-    services.displayManager.autoLogin.enable = false;
     services.gnome.gnome-remote-desktop.enable = true;
-    services.xrdp.enable = true;
-    services.xrdp.defaultWindowManager = "gnome-session";
-
-    # this stops the machine trying to sleep ..
-    systemd.sleep.extraConfig = ''
-        AllowSuspend=no
-        AllowHibernation=no
-        AllowHybridSleep=no
-        AllowSuspendThenHibernate=no
-    '';
 
     # Open ports in the firewall.
     networking.firewall.allowedTCPPorts = [ 22 3389 27017 ];
