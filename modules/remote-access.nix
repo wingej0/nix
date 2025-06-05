@@ -16,7 +16,7 @@
         };
     };
 
-    services.gnome-remote-desktop.enable = true;
+    services.gnome.gnome-remote-desktop.enable = true;
 
     # Open ports in the firewall.
     networking.firewall.allowedTCPPorts = [ 22 3389 27017 ];
