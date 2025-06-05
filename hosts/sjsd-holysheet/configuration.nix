@@ -71,8 +71,8 @@
   # List services that you want to enable:
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [  ];
+  networking.firewall.allowedTCPPorts = [ 22 3389 27017 ];
+  networking.firewall.allowedUDPPorts = [ 22 3389 27017 ];
 
   services.avahi = {
       enable = true;
