@@ -4,6 +4,7 @@
         gnome-remote-desktop
         gnome-session
         dconf-editor
+        freerdp
     ];
 
     services.openssh = {
