@@ -73,6 +73,17 @@
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];
   networking.firewall.allowedUDPPorts = [  ];
+
+  services.avahi = {
+      enable = true;
+      nssmdns = true;
+      openFirewall = true;
+      publish = {
+          enable = true;
+          userServices = true;
+          addresses = true;
+      };
+  };
   
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
