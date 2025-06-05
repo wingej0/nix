@@ -28,7 +28,7 @@
 				./../modules/development.nix
 				./../modules/office.nix
         	]
-        else if hostname == "sjsd-holysheet" then
+        else if hostname == "the-holysheet" then
 			[
 				./sjsd-holysheet/configuration.nix
 				./../modules/users.nix

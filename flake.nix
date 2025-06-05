@@ -47,11 +47,11 @@
         ];
       };
       # Holysheet Server
-      sjsd-holysheet = nixpkgs.lib.nixosSystem {
+      the-holysheet = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
           username = "wingej0";
-          hostname = "sjsd-holysheet";
+          hostname = "the-holysheet";
         };
         modules = [
           ./hosts
