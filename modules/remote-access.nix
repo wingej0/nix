@@ -3,7 +3,7 @@
     environment.systemPackages = with pkgs; [
         gnome-remote-desktop
         gnome-session
-        xrdp
+        dconf-editor
     ];
 
     services.openssh = {
