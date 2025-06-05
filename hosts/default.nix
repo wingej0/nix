@@ -30,17 +30,13 @@
         	]
         else if hostname == "the-holysheet" then
 			[
-				./sjsd-holysheet/configuration.nix
+				./the-holysheet/configuration.nix
 				./../modules/users.nix
-
-				# Impermanence modules
-				./../modules/impermanence.nix
-				./../modules/persist.nix
 
 				# Packages
 				./../modules/packages.nix
 				./../modules/fonts.nix
-		        ./../modules/shells.nix
+		        	./../modules/shells.nix
 				./../modules/development.nix
 				./../modules/browsers.nix
 				./../modules/mongodb.nix
