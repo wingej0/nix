@@ -16,9 +16,7 @@
         };
     };
 
-    services.xrdp.enable = true;
-    services.xrdp.defaultWindowManager = "gnome-remote-desktop";
-    services.xrdp.openFirewall = true;
+    services.gnome-remote-desktop.enable = true;
 
     # Open ports in the firewall.
     networking.firewall.allowedTCPPorts = [ 22 3389 27017 ];
