@@ -1,21 +1,9 @@
 { config, pkgs, ... }:
 {
     environment.systemPackages = with pkgs; [
-        sunshine
-        moonlight-qt
+        rustdesk-flutter
+        rustdesk-server
     ];
-
-    security.wrappers.sunshine = {
-        owner = "root";
-        group = "root";
-        capabilities = "cap_sys_admin+p";
-        source = "${pkgs.sunshine}/bin/sunshine";
-    };
-
-    services.avahi.publish = {
-        enable = true;
-        userServices = true;
-    };
 
     services.openssh = {
         enable = true;
@@ -30,9 +18,6 @@
     };
 
     # Open ports in the firewall.
-    networking.firewall.allowedTCPPorts = [ 22 3389 27017 47984 47989 47990 48010 ];
-    networking.firewall.allowedUDPPorts = [ 22 3389 27017 ];
-    networking.firewall.allowedUDPPortRanges = [
-        {from = 47998; to = 4800;}
-    ];
+    networking.firewall.allowedTCPPorts = [ 22 27017 ];
+    networking.firewall.allowedUDPPorts = [ 22 27017 ];
 }
