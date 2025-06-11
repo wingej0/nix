@@ -54,6 +54,7 @@
                 ".config/nordvpn"
                 ".config/sh.cider.genten"
                 ".config/MongoDB Compass"
+                ".config/rustdesk"
                 ".var/app/app.zen_browser.zen"
                 ".zsh"
                 ".vscode"
