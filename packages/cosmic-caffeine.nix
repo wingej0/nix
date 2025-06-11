@@ -6,14 +6,18 @@
   libcosmicAppHook,
   just,
   nix-update-script,
-  inputs
 }:
 
 rustPlatform.buildRustPackage {
   pname = "cosmic-ext-applet-caffeine";
   version = "0-unstable-2025-03-10";
 
-  src = inputs.cosmic-ext-applet-caffeine.outPath;
+  src = fetchFromGitHub {
+    owner = "tropicbliss";
+    repo = "cosmic-ext-applet-caffeine";
+    rev = "dd52bc2974372bd2c4da49935aab0c108012580a";
+    hash = "sha256-klaqJkigfzWokVVC2UWefE6AVvcrOi1Izvpc5FUxMGo=";
+  };
 
   useFetchCargoVendor = true;
   cargoHash = "sha256-xTJwVus28p7rNbfYRANo1UYkXDvwOc4ozuu+kPM3GDI=";

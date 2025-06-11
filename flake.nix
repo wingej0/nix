@@ -15,15 +15,15 @@
       flake = false;
     };
 
-    cosmic-ext-applet-caffeine = {
-      url = "github:tropicbliss/cosmic-ext-applet-caffeine";
-      flake = false;
-    };
+    # cosmic-ext-applet-caffeine = {
+    #   url = "github:tropicbliss/cosmic-ext-applet-caffeine";
+    #   flake = false;
+    # };
 
-    cosmic-ext-applet-emoji-selector = {
-      url = "github:leb-kuchen/cosmic-ext-applet-emoji-selector";
-      flake = false;
-    };
+    # cosmic-ext-applet-emoji-selector = {
+    #   url = "github:leb-kuchen/cosmic-ext-applet-emoji-selector";
+    #   flake = false;
+    # };
 
     # Nix User Repository
     nur = {
