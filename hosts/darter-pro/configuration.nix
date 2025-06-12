@@ -17,13 +17,6 @@
   # Kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # Enable xserver
-  services.xserver.enable = true;
-
-  # Enable Cosmic
-  services.displayManager.cosmic-greeter.enable = true;
-  services.desktopManager.cosmic.enable = true;
-
   # Networking
   networking.hostName = "darter-pro";
   networking.networkmanager.enable = true;
@@ -38,9 +31,6 @@
   systemd.extraConfig = "DefaultTimeoutStopSec=5s";
   systemd.user.extraConfig = "DefaultTimeoutStopSec=5s";
 
-  # Enable flatpaks
-  services.flatpak.enable = true;
-
   # Enable appimage support
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
@@ -50,8 +40,6 @@
     XCURSOR_SIZE=24;
     XCURSOR_THEME="Bibata-Modern-Classic";
   };
-
-  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
   
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";

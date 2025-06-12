@@ -6,6 +6,10 @@
 				./darter-pro/configuration.nix
 				./../modules/users.nix
 
+				# Desktops
+				./../desktops/cosmic.nix
+				./../desktops/cinnamon.nix
+
 				# Impermanence modules
 				./../modules/impermanence.nix
 				./../modules/persist.nix
@@ -18,8 +22,6 @@
 		        ./../modules/fonts.nix
 		        ./../modules/shells.nix
 		        ./../modules/virtualization.nix
-				./../modules/cosmic-applets.nix
-				./../modules/cosmic-themes.nix
 				./../modules/nordvpn.nix
 				./../modules/browsers.nix
 				./../modules/communication.nix

@@ -15,11 +15,16 @@
             "/etc/NetworkManager/system-connections"
             "/etc/cups"
             { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
+            
             # Flatpak and virt-manager
             "/var/lib/flatpak"
             "/var/lib/libvirt"
+            
             # MongoDB
             "/var/db/mongodb"
+
+            # Nordvpn
+            "/var/lib/nordvpn"
         ];
         files = [
             "/etc/machine-id"
@@ -37,13 +42,10 @@
                 { directory = ".local/share/keyrings"; mode = "0700"; }
                 ".local/share/direnv"
                 ".local/share/TelegramDesktop"
-                ".local/state/cosmic"
-                ".local/state/cosmic-comp"
                 ".local/share/flatpak"
                 ".local/share/themes"
                 ".local/share/applications"
                 ".config/gh"
-                ".config/cosmic"
                 ".config/anytype"
                 ".config/Mailspring"
                 ".config/Code"
@@ -60,6 +62,18 @@
                 ".vscode"
                 ".scidvspc"
                 ".mongodb"
+
+                # Cosmic Desktop
+                ".local/state/cosmic-comp"
+                ".local/state/cosmic"
+                ".config/cosmic"
+
+                # Cinnamon Desktop
+                ".config/cinnamon"
+                ".config/cinnamon-session"
+                ".local/share/cinnamon"
+                ".config/dconf"
+
             ];
             files = [
                 ".screenrc"
