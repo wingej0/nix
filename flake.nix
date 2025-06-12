@@ -15,15 +15,15 @@
       flake = false;
     };
 
-    # cosmic-ext-applet-caffeine = {
-    #   url = "github:tropicbliss/cosmic-ext-applet-caffeine";
-    #   flake = false;
-    # };
+    qtile-flake = {
+      url = "github:qtile/qtile";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    # cosmic-ext-applet-emoji-selector = {
-    #   url = "github:leb-kuchen/cosmic-ext-applet-emoji-selector";
-    #   flake = false;
-    # };
+    qtile-extras = {
+      url = "github:elparaguayo/qtile-extras";
+      flake = false;
+    };
 
     # Nix User Repository
     nur = {

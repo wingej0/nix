@@ -110,13 +110,51 @@
         "type": "github"
       }
     },
+    "qtile-extras": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1749530350,
+        "narHash": "sha256-NMbgSStXJV8fVtula1cyIwFlD8WrO8kBnOphDxbig04=",
+        "owner": "elparaguayo",
+        "repo": "qtile-extras",
+        "rev": "4474df55a9a815ac8a2be6e09bc94e017e5e1b50",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elparaguayo",
+        "repo": "qtile-extras",
+        "type": "github"
+      }
+    },
+    "qtile-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1749516886,
+        "narHash": "sha256-UF4gRmcevtH9WNA7g/pwcciJcDariXcMNpqya68mQ38=",
+        "owner": "qtile",
+        "repo": "qtile",
+        "rev": "db58974991621f8606a580cecb6ed2d84cba6dc4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qtile",
+        "repo": "qtile",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "cosmic-ext-applet-clipboard-manager": "cosmic-ext-applet-clipboard-manager",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
-        "nur": "nur"
+        "nur": "nur",
+        "qtile-extras": "qtile-extras",
+        "qtile-flake": "qtile-flake"
       }
     },
     "treefmt-nix": {
