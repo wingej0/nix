@@ -26,6 +26,18 @@
 
         };
         services.displayManager.defaultSession = "xfce";
+        services.gnome.gnome-keyring.enable = true;
+
+        # Enable flatpaks
+        services.flatpak.enable = true;
+
+        xdg.portal = {
+            enable = true;
+            config.common.default = "*";
+            extraPortals = with pkgs; [
+                xdg-desktop-portal-gtk
+            ];
+        };
 
         environment.systemPackages = with pkgs; [
 
@@ -35,7 +47,7 @@
                 peek
                 variety
                 wallust
-                rofiak
+                rofi
                 brightnessctl
                 python3
             ];
