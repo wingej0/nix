@@ -60,7 +60,7 @@
     # ".config/dunst".source = ./configs/dunst;
     # ".config/picom".source = ./configs/picom;
     # ".config/qtile".source = ./configs/qtile;
-    # ".config/rofi".source = ./configs/rofi;
+    ".config/rofi".source = ./configs/rofi;
     # ".config/swappy".source = ./configs/swappy;
     # ".config/swaylock".source = ./configs/swaylock;
     # ".config/wallust".source = ./configs/wallust;
