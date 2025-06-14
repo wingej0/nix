@@ -30,6 +30,7 @@
 
         # Enable flatpaks
         services.flatpak.enable = true;
+        services.blueman.enable = true;
 
         xdg.portal = {
             enable = true;
@@ -50,6 +51,7 @@
                 rofi
                 brightnessctl
                 python3
+                haskellPackages.greenclip
             ];
         };
  
@@ -66,13 +68,13 @@
   
             gtk3 = {
                 extraConfig = {
-                    gtk-application-prefer-dark-theme = 0;
+                    gtk-application-prefer-dark-theme = 1;
                 };
             };
 
             gtk4 = {
                 extraConfig = {
-                    gtk-application-prefer-dark-theme = 0;
+                    gtk-application-prefer-dark-theme = 1;
                 };
             };
 
