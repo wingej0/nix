@@ -19,7 +19,8 @@
             ls = "eza --icons";
             ll = "eza --icons -la";
             cat="bat";
-            fzf="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'";     
+            fzf="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"; 
+            nrs = "sudo nixos-rebuild switch --flake . --verbose --show-trace --specialisation";    
         };
     };
 }

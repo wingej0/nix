@@ -5,7 +5,7 @@
   [
     ./programs/fastfetch.nix
     ./programs/zsh.nix
-    ./system/gtk.nix
+    # ./system/gtk.nix
     ./programs/kitty.nix
   ];
 
@@ -22,12 +22,6 @@
     exec="mongodb-compass --password-store=${"gnome-libsecret"} --ignore-additional-command-line-flags %U";
     icon="mongodb-compass";
   };
-
-  # programs.git = {
-  #   enable = true;
-  #   userName  = "Jeff Winget";
-  #   userEmail = "jeff@3dgradebook.com";
-  # };
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

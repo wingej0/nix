@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, username, ... }:
 {
     imports = [
         # (_: { nixpkgs.overlays = [ inputs.qtile-flake.overlays.default ]; })
@@ -51,6 +51,45 @@
                 brightnessctl
                 python3
             ];
+        };
+ 
+    };
+
+    home-manager.users.${username} = {
+
+        programs.zsh.initContent = ''
+            cat ~/.cache/wallust/sequences
+        '';
+
+        gtk = {
+            enable = true;
+  
+            gtk3 = {
+                extraConfig = {
+                    gtk-application-prefer-dark-theme = 0;
+                };
+            };
+
+            gtk4 = {
+                extraConfig = {
+                    gtk-application-prefer-dark-theme = 0;
+                };
+            };
+
+            font = {
+                name = "Fira Code Nerd Font";
+                size = 11;
+            };
+
+            theme = {
+                name = "Orchis";
+                package = pkgs.orchis-theme;
+            };
+
+            iconTheme = {
+                name = "Tela-dark";
+                package = pkgs.tela-icon-theme;
+            };
         };
     };
 }
