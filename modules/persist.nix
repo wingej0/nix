@@ -62,6 +62,7 @@
                 ".vscode"
                 ".scidvspc"
                 ".mongodb"
+                ".config/obs-studio"
 
                 # Cosmic Desktop
                 ".local/state/cosmic-comp"

@@ -52,46 +52,48 @@
                 brightnessctl
                 python3
                 haskellPackages.greenclip
+                file-roller
+                playerctl
             ];
+
+        home-manager.users.${username} = {
+
+            programs.zsh.initContent = ''
+                cat ~/.cache/wallust/sequences
+            '';
+
+            gtk = {
+                enable = true;
+    
+                gtk3 = {
+                    extraConfig = {
+                        gtk-application-prefer-dark-theme = 1;
+                    };
+                };
+
+                gtk4 = {
+                    extraConfig = {
+                        gtk-application-prefer-dark-theme = 1;
+                    };
+                };
+
+                font = {
+                    name = "Fira Code Nerd Font";
+                    size = 11;
+                };
+
+                theme = {
+                    name = "Orchis";
+                    package = pkgs.orchis-theme;
+                };
+
+                iconTheme = {
+                    name = "Tela-dark";
+                    package = pkgs.tela-icon-theme;
+                };
+            };
         };
- 
     };
-
-    home-manager.users.${username} = {
-
-        programs.zsh.initContent = ''
-            cat ~/.cache/wallust/sequences
-        '';
-
-        gtk = {
-            enable = true;
-  
-            gtk3 = {
-                extraConfig = {
-                    gtk-application-prefer-dark-theme = 1;
-                };
-            };
-
-            gtk4 = {
-                extraConfig = {
-                    gtk-application-prefer-dark-theme = 1;
-                };
-            };
-
-            font = {
-                name = "Fira Code Nerd Font";
-                size = 11;
-            };
-
-            theme = {
-                name = "Orchis";
-                package = pkgs.orchis-theme;
-            };
-
-            iconTheme = {
-                name = "Tela-dark";
-                package = pkgs.tela-icon-theme;
-            };
-        };
+ 
     };
 }

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username, ... }:
 {
     imports = [
         ./../modules/cosmic-applets.nix
@@ -24,6 +24,28 @@
                 papirus-maia-icon-theme
                 papirus-folders
             ];
+
+            home-manager.users.${username} = {
+                gtk = {
+                    enable = true;
+
+                    cursorTheme = {
+                        name = "Bibata-Modern-Classic";
+                        package = pkgs.bibata-cursors;
+                        size = 24;
+                    };
+
+                    theme = {
+                        name = "flexoki";
+                    };
+
+                    gtk3 = {
+                        extraConfig = {
+                            gtk-cursor-theme-name = "Bibata-Modern-Classic";
+                        };
+                    };
+                };
+            };
         };
     };
 }
