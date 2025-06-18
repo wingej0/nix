@@ -70,10 +70,10 @@
                 ".config/cosmic"
 
                 # Cinnamon Desktop
-                ".config/cinnamon"
-                ".config/cinnamon-session"
-                ".local/share/cinnamon"
-                ".config/dconf"
+                # ".config/cinnamon"
+                # ".config/cinnamon-session"
+                # ".local/share/cinnamon"
+                # ".config/dconf"
 
                 # Qtile
                 ".config/qtile"

@@ -8,8 +8,8 @@
 
 				# Desktops
 				./../desktops/cosmic.nix
-				./../desktops/cinnamon.nix
-				./../desktops/qtile.nix
+				# ./../desktops/cinnamon.nix
+				# ./../desktops/qtile.nix
 				./../desktops/xfce.nix
 
 				# Impermanence modules
