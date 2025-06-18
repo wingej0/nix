@@ -8,8 +8,6 @@
 
 				# Desktops
 				./../desktops/cosmic.nix
-				# ./../desktops/cinnamon.nix
-				# ./../desktops/qtile.nix
 				./../desktops/xfce.nix
 
 				# Impermanence modules
@@ -40,7 +38,7 @@
 				# Packages
 				./../modules/packages.nix
 				./../modules/fonts.nix
-		        	./../modules/shells.nix
+		        ./../modules/shells.nix
 				./../modules/development.nix
 				./../modules/browsers.nix
 				./../modules/mongodb.nix
