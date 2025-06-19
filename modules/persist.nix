@@ -25,6 +25,11 @@
 
             # Nordvpn
             "/var/lib/nordvpn"
+
+            # Ollama
+            "/var/lib/private/ollama"
+            "/var/lib/private/open-webui"
+
         ];
         files = [
             "/etc/machine-id"

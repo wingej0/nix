@@ -29,6 +29,7 @@
 				./../modules/media.nix
 				./../modules/development.nix
 				./../modules/office.nix
+				./../modules/ollama.nix
         	]
         else if hostname == "the-holysheet" then
 			[
