@@ -45,6 +45,20 @@
 				./../modules/mongodb.nix
 				./../modules/remote-access.nix
 			]
+		else if hostname == "dis-winget" then
+			[
+				./dis-winget/configuration.nix
+				./../modules/users.nix
+
+				# Packages
+				./../modules/packages.nix
+				./../modules/fonts.nix
+		        ./../modules/shells.nix
+				./../modules/development.nix
+				./../modules/browsers.nix
+				./../modules/mongodb.nix
+				./../modules/remote-access.nix
+			]
         else if hostname == "nix-vm" then
         	[
         		./nix-vm/configuration.nix

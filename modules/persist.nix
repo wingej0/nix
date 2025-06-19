@@ -62,7 +62,7 @@
                 ".config/sh.cider.genten"
                 ".config/MongoDB Compass"
                 ".config/rustdesk"
-                ".var/app/app.zen_browser.zen"
+                ".config/vivaldi"
                 ".zsh"
                 ".vscode"
                 ".scidvspc"

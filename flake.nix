@@ -57,6 +57,17 @@
           ./hosts
         ];
       };
+      # Work laptop
+      dis-winget = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          username = "wingej0";
+          hostname = "dis-winget";
+        };
+        modules = [
+          ./hosts
+        ];
+      };
       # Virtual Machine
       nix-vm = nixpkgs.lib.nixosSystem {
         specialArgs = {
