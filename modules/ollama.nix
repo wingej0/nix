@@ -2,7 +2,7 @@
 {
     services.ollama = {
         enable = true;
-        acceleration = false;
+        acceleration = "cuda";
         loadModels = [
             "deepseek-r1"
             "codellama"
