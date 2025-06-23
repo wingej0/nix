@@ -50,6 +50,9 @@
 				./dis-winget/configuration.nix
 				./../modules/users.nix
 
+				# Desktops
+				./../desktops/cosmic.nix
+
 				# Packages
 				./../modules/packages.nix
 				./../modules/fonts.nix
