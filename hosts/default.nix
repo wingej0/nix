@@ -62,6 +62,7 @@
 				./../modules/remote-access.nix
 				./../modules/ollama.nix
 				./../modules/n8n.nix
+				./../modules/nvidia.nix
 			]
         else if hostname == "nix-vm" then
         	[
