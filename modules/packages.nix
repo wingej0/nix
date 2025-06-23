@@ -25,6 +25,5 @@
         system-config-printer
         oh-my-posh
         gearlever
-        rustdesk-flutter
     ];
 }

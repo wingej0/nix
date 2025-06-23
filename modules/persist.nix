@@ -20,15 +20,8 @@
             "/var/lib/flatpak"
             "/var/lib/libvirt"
             
-            # MongoDB
-            "/var/db/mongodb"
-
             # Nordvpn
             "/var/lib/nordvpn"
-
-            # Ollama
-            "/var/lib/private/ollama"
-            "/var/lib/private/open-webui"
 
         ];
         files = [
@@ -61,12 +54,11 @@
                 ".config/nordvpn"
                 ".config/sh.cider.genten"
                 ".config/MongoDB Compass"
-                ".config/rustdesk"
                 ".config/vivaldi"
+                ".config/remmina"
                 ".zsh"
                 ".vscode"
                 ".scidvspc"
-                ".mongodb"
                 ".config/obs-studio"
 
                 # Cosmic Desktop
@@ -81,19 +73,19 @@
                 # ".config/dconf"
 
                 # Qtile
-                ".config/qtile"
-                ".local/share/qtile"
-                ".config/picom"
-                ".config/wallust"
-                ".cache/qtile"
-                ".cache/rofi"
-                ".cache/wlogout"
-		        ".config/variety"
+                # ".config/qtile"
+                # ".local/share/qtile"
+                # ".config/picom"
+                # ".config/wallust"
+                # ".cache/qtile"
+                # ".cache/rofi"
+                # ".cache/wlogout"
+		        # ".config/variety"
 
                 # XFCE
-                ".config/xfce4"
-		        ".cache/sessions"
-                ".config/autostart"
+                # ".config/xfce4"
+		        # ".cache/sessions"
+                # ".config/autostart"
 
             ];
             files = [
