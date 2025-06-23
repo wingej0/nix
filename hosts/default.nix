@@ -8,7 +8,7 @@
 
 				# Desktops
 				./../desktops/cosmic.nix
-				./../desktops/xfce.nix
+				# ./../desktops/xfce.nix
 
 				# Impermanence modules
 				./../modules/impermanence.nix
@@ -22,7 +22,7 @@
 		        ./../modules/fonts.nix
 		        ./../modules/shells.nix
 		        ./../modules/virtualization.nix
-				./../modules/nordvpn.nix
+				# ./../modules/nordvpn.nix
 				./../modules/browsers.nix
 				./../modules/communication.nix
 				./../modules/games.nix
