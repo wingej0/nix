@@ -56,8 +56,9 @@
 		        ./../modules/shells.nix
 				./../modules/development.nix
 				./../modules/browsers.nix
-				./../modules/mongodb.nix
 				./../modules/remote-access.nix
+				./../modules/ollama.nix
+				./../modules/n8n.nix
 			]
         else if hostname == "nix-vm" then
         	[
