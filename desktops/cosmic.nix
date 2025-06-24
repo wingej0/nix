@@ -14,6 +14,12 @@
 
     environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
 
+    # Environment variables
+    environment.variables = {
+        XCURSOR_SIZE=24;
+        XCURSOR_THEME="Bibata-Modern-Classic";
+    };
+
     # Enable flatpaks
     services.flatpak.enable = true;
 
@@ -23,27 +29,4 @@
         papirus-maia-icon-theme
         papirus-folders
     ];
-
-    home-manager.users.${username} = {
-        gtk = {
-            enable = true;
-
-            cursorTheme = {
-                name = "Bibata-Modern-Classic";
-                package = pkgs.bibata-cursors;
-                size = 24;
-            };
-
-            theme = {
-                name = "flexoki";
-            };
-
-            gtk3 = {
-                extraConfig = {
-                    gtk-cursor-theme-name = "Bibata-Modern-Classic";
-                };
-            };
-        };
-    };
-
 }

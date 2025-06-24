@@ -5,7 +5,7 @@
   [
     ./programs/fastfetch.nix
     ./programs/zsh.nix
-    # ./system/gtk.nix
+    ./system/gtk.nix
     ./programs/kitty.nix
   ];
 
@@ -57,14 +57,6 @@
   home.file = {
     # Source dotfiles to .config
     ".config/ohmyposh".source = ./configs/ohmyposh;
-    # ".config/dunst".source = ./configs/dunst;
-    # ".config/picom".source = ./configs/picom;
-    # ".config/qtile".source = ./configs/qtile;
-    ".config/rofi".source = ./configs/rofi;
-    # ".config/swappy".source = ./configs/swappy;
-    # ".config/swaylock".source = ./configs/swaylock;
-    # ".config/wallust".source = ./configs/wallust;
-    # ".config/wlogout".source = ./configs/wlogout;
   };
 
   # Home Manager can also manage your environment variables through

@@ -8,7 +8,6 @@
 
 				# Desktops
 				./../desktops/cosmic.nix
-				# ./../desktops/xfce.nix
 
 				# Impermanence modules
 				./../modules/impermanence.nix
@@ -29,16 +28,6 @@
 				./../modules/media.nix
 				./../modules/development.nix
 				./../modules/office.nix
-        	]
-        else if hostname == "nix-vm" then
-        	[
-        		./nix-vm/configuration.nix
-		        ./../modules/users.nix
-		        ./../modules/persist.nix
-		        ./../modules/packages.nix
-		        ./../modules/fonts.nix
-		        ./../modules/shells.nix
-		        ./../modules/virtualization.nix
         	]
         else
             [ ];

@@ -15,7 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Networking
   networking.hostName = "darter-pro";
@@ -37,12 +37,6 @@
   # Enable appimage support
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
-
-  # Environment variables
-  environment.variables = {
-    XCURSOR_SIZE=24;
-    XCURSOR_THEME="Bibata-Modern-Classic";
-  };
   
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";

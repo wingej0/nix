@@ -15,16 +15,6 @@
       flake = false;
     };
 
-    qtile-flake = {
-      url = "github:qtile/qtile";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    qtile-extras = {
-      url = "github:elparaguayo/qtile-extras";
-      flake = false;
-    };
-
     # Nix User Repository
     nur = {
       url = "github:nix-community/NUR";
@@ -41,39 +31,6 @@
           inherit inputs;
           username = "wingej0";
           hostname = "darter-pro";
-        };
-        modules = [
-          ./hosts
-        ];
-      };
-      # Holysheet Server
-      the-holysheet = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          username = "wingej0";
-          hostname = "the-holysheet";
-        };
-        modules = [
-          ./hosts
-        ];
-      };
-      # Work laptop
-      dis-winget = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          username = "wingej0";
-          hostname = "dis-winget";
-        };
-        modules = [
-          ./hosts
-        ];
-      };
-      # Virtual Machine
-      nix-vm = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          username = "wingej0";
-          hostname = "nix-vm";
         };
         modules = [
           ./hosts

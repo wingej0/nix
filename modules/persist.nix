@@ -65,28 +65,6 @@
                 ".local/state/cosmic-comp"
                 ".local/state/cosmic"
                 ".config/cosmic"
-
-                # Cinnamon Desktop
-                # ".config/cinnamon"
-                # ".config/cinnamon-session"
-                # ".local/share/cinnamon"
-                # ".config/dconf"
-
-                # Qtile
-                # ".config/qtile"
-                # ".local/share/qtile"
-                # ".config/picom"
-                # ".config/wallust"
-                # ".cache/qtile"
-                # ".cache/rofi"
-                # ".cache/wlogout"
-		        # ".config/variety"
-
-                # XFCE
-                # ".config/xfce4"
-		        # ".cache/sessions"
-                # ".config/autostart"
-
             ];
             files = [
                 ".screenrc"
