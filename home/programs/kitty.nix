@@ -18,43 +18,43 @@
         inactive_tab_background = "#282726";
         inactive_tab_foreground = "#878580";
 
-        foreground = "#CECDC3";
-        background = "#100F0F";
+        foreground = "#C4C4C4";
+        background = "#1B1B1B";
         selection_foreground = "#CECDC3";
         selection_background = "#403E3C";
-        cursor = "#CECDC3";
+        cursor = "#C4C4C4";
 
         # black
-        color0 = "#100F0F";
-        color8 = "#6F6E69";
+        color0 = "#1B1B1B";
+        color8 = "#808080";
 
         # red
-        color1 = "#AF3029";
-        color9 = "#D14D41";
+        color1 = "#F16161";
+        color9 = "#FF8985";
 
         # green
-        color2 = "#66800B";
-        color10 = "#879A39";
+        color2 = "#7CB987";
+        color10 = "#97D5A0";
 
         # yellow
-        color3 = "#AD8301";
-        color11 = "#D0A215";
+        color3 = "#DDC74C";
+        color11 = "#FAE365";
 
         # blue
-        color4 = "#205EA6";
-        color12 = "#4385BE";
+        color4 = "#6296BE";
+        color12 = "#7DB1DA";
 
         # magenta
-        color5 = "#A02F6F";
-        color13 = "#CE5D97";
+        color5 = "#BE6DEE";
+        color13 = "#D68EFF";
 
         # cyan
-        color6 = "#24837B";
-        color14 = "#3AA99F";
+        color6 = "#49BAC8";
+        color14 = "#49BAC8";
 
         # white
-        color7 = "#878580";
-        color15 = "#CECDC3";
+        color7 = "#BEBEBE";
+        color15 = "#C4C4C4";
     };
   };
 }

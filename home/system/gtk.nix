@@ -19,7 +19,8 @@
         };
 
         theme = {
-            name = "flexoki";
+            name = "Pop-dark";
+            package = pkgs.pop-gtk-theme;
         };
 
         gtk3 = {

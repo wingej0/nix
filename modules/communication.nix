@@ -8,5 +8,6 @@
         mattermost-desktop
         element-desktop
         mailspring
+        caprine
     ];
 }
