@@ -61,6 +61,7 @@
                 ".scidvspc"
                 ".config/obs-studio"
                 ".config/Caprine"
+		".config/dconf"
 
                 # Cosmic Desktop
                 ".local/state/cosmic-comp"

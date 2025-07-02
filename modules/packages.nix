@@ -25,5 +25,7 @@
         system-config-printer
         oh-my-posh
         gearlever
+        deja-dup
+        papirus-maia-icon-theme
     ];
 }
