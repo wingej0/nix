@@ -99,5 +99,5 @@ Reboot
 Create a file in /persist called password_hash, and paste the output of this command in it.  Without this, as soon as you activate impermanence and reboot, your user credentials will be gone.
 
 ```bash
-mkpasswd -m sha-512 my_password # Replace my_password with your actual login password.
+mkpasswd -m sha-512 <password> 
 ```
