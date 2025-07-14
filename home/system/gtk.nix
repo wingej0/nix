@@ -18,13 +18,30 @@
             size = 24;
         };
 
+        font = {
+            name = "Fira Code Nerd Font";
+            size = 11;
+        };
+
         theme = {
-            name = "Flexoki";
+            name = "Orchis";
+            package = pkgs.orchis-theme;
+        };
+
+        iconTheme = {
+            name = "Tela-dark";
+            package = pkgs.tela-icon-theme;
         };
 
         gtk3 = {
             extraConfig = {
                 gtk-cursor-theme-name = "Bibata-Modern-Classic";
+            };
+        };
+
+        gtk4 = {
+            extraConfig = {
+                gtk-application-prefer-dark-theme = 1;
             };
         };
     };

@@ -61,12 +61,26 @@
                 ".scidvspc"
                 ".config/obs-studio"
                 ".config/Caprine"
-		".config/dconf"
+		        ".config/dconf"
 
                 # Cosmic Desktop
                 ".local/state/cosmic-comp"
                 ".local/state/cosmic"
                 ".config/cosmic"
+
+                # Qtile
+                ".config/qtile"
+                ".local/share/qtile"
+                ".config/picom"
+                ".config/wallust"
+                ".cache/qtile"
+                ".config/rofi"
+                ".config/variety"
+
+                # XFCE
+                ".config/xfce4"
+		        ".cache/sessions"
+                ".config/autostart"
             ];
             files = [
                 ".screenrc"
