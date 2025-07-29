@@ -4,7 +4,6 @@
         # Development
         vscode-fhs
         github-desktop
-        jetbrains.pycharm-community
         mongodb-compass
         insomnia
         unixODBC

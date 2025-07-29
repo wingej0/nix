@@ -69,18 +69,18 @@
                 ".config/cosmic"
 
                 # Qtile
-                ".config/qtile"
-                ".local/share/qtile"
-                ".config/picom"
-                ".config/wallust"
-                ".cache/qtile"
-                ".config/rofi"
-                ".config/variety"
+                # ".config/qtile"
+                # ".local/share/qtile"
+                # ".config/picom"
+                # ".config/wallust"
+                # ".cache/qtile"
+                # ".config/rofi"
+                # ".config/variety"
 
                 # XFCE
-                ".config/xfce4"
-		        ".cache/sessions"
-                ".config/autostart"
+                # ".config/xfce4"
+		        # ".cache/sessions"
+                # ".config/autostart"
             ];
             files = [
                 ".screenrc"

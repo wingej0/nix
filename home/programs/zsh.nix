@@ -14,7 +14,7 @@
 
             # oh-my-posh
             eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
-            cat ~/.cache/wallust/sequences
+            # cat ~/.cache/wallust/sequences
         '';
         shellAliases = {
             ls = "eza --icons";
