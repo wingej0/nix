@@ -31,8 +31,8 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Speed up the shutdown
-  systemd.extraConfig = "DefaultTimeoutStopSec=5s";
-  systemd.user.extraConfig = "DefaultTimeoutStopSec=5s";
+  # systemd.settings.Manager = "DefaultTimeoutStopSec=5s";
+  # systemd.user.extraConfig = "DefaultTimeoutStopSec=5s";
 
   # Enable appimage support
   programs.appimage.enable = true;

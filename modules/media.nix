@@ -11,5 +11,6 @@
         annotator
         ffmpeg
         loupe
+        czkawka-full 
     ];
 }
