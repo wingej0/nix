@@ -57,6 +57,7 @@
   home.file = {
     # Source dotfiles to .config
     ".config/ohmyposh".source = ./configs/ohmyposh;
+    ".config/qtile".source = ./configs/qtile;
   };
 
   # Home Manager can also manage your environment variables through

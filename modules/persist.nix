@@ -69,7 +69,7 @@
                 ".config/cosmic"
 
                 # Qtile
-                ".config/qtile"
+                # ".config/qtile"
                 ".local/share/qtile"
                 ".config/picom"
                 ".config/wallust"

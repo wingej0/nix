@@ -24,8 +24,8 @@
         };
 
         theme = {
-            name = "Orchis";
-            package = pkgs.orchis-theme;
+            name = "Juno";
+            package = pkgs.juno-theme;
         };
 
         iconTheme = {
