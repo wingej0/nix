@@ -24,13 +24,13 @@
         };
 
         theme = {
-            name = "Juno";
-            package = pkgs.juno-theme;
+            name = "Dracula";
+            package = pkgs.dracula-theme;
         };
 
         iconTheme = {
-            name = "Tela-dark";
-            package = pkgs.tela-icon-theme;
+            name = "Dracula";
+            package = pkgs.dracula-icon-theme;
         };
 
         gtk3 = {

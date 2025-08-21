@@ -13,8 +13,8 @@ rustPlatform.buildRustPackage {
 
   src = inputs.cosmic-ext-applet-clipboard-manager.outPath;
 
-  useFetchCargoVendor = true;
-  cargoHash = "sha256-txGU/tNzD7yiroXAxH8PGAn6l9c4yDtqDhViPBulhj8=";
+  # useFetchCargoVendor = true;
+  cargoHash = "sha256-Ynqb71OnHULvouvulBKQBo41j61aQpLoHnCJwJihTrY=";
 
   nativeBuildInputs = [
     libcosmicAppHook

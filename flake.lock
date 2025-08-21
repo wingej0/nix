@@ -44,11 +44,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755442500,
-        "narHash": "sha256-RHK4H6SWzkAtW/5WBHsyugaXJX25yr5y7FAZznxcBJs=",
+        "lastModified": 1755625756,
+        "narHash": "sha256-t57ayMEdV9g1aCfHzoQjHj1Fh3LDeyblceADm2hsLHM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d2ffdedfc39c591367b1ddf22b4ce107f029dcc3",
+        "rev": "dd026d86420781e84d0732f2fa28e1c051117b59",
         "type": "github"
       },
       "original": {
@@ -96,16 +96,52 @@
         ]
       },
       "locked": {
-        "lastModified": 1755441713,
-        "narHash": "sha256-bxN6mZti2vbHl4NUYLDaYdqULNay1qbkxUeVAN6DE+8=",
+        "lastModified": 1755642738,
+        "narHash": "sha256-4JcSvs6hTeu/IqZv5a6xe0kI6X+57YRRNN2J0tPqR7w=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "8509a13591f79f1772501d1d30c48f921c2aed3e",
+        "rev": "3e82dc5daac83381ac7dd68f1af6602e92b6ae35",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "NUR",
+        "type": "github"
+      }
+    },
+    "qtile-extras-flake": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1754844414,
+        "narHash": "sha256-OlxX39/kGe0/xLeIwukrOVhHNtJhGAK9dvk9z+1ALHw=",
+        "owner": "elparaguayo",
+        "repo": "qtile-extras",
+        "rev": "7a54fbf1f5d867c33f4b7f73daa58bfab2863c4e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elparaguayo",
+        "repo": "qtile-extras",
+        "type": "github"
+      }
+    },
+    "qtile-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1755654110,
+        "narHash": "sha256-MZtPF3vT0USgnpCQOT9N/6nvhgMjejo8l1w8C+Z7ASU=",
+        "owner": "qtile",
+        "repo": "qtile",
+        "rev": "e0fa1b982654f516675afb4c39a7772e9acfc8fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "qtile",
+        "repo": "qtile",
         "type": "github"
       }
     },
@@ -115,7 +151,9 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
-        "nur": "nur"
+        "nur": "nur",
+        "qtile-extras-flake": "qtile-extras-flake",
+        "qtile-flake": "qtile-flake"
       }
     }
   },

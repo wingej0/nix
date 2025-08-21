@@ -9,52 +9,63 @@
         tab_bar_style = "powerline";
         tab_powerline_style = "round";
         hide_window_decorations = true;
-        background_opacity = 0.8;
+        background_opacity = 0.9;
         window_padding_width = 10;
         confirm_os_window_close = 0;
 
-        active_tab_background = "#403E3C";
-        active_tab_foreground = "#CECDC3";
-        inactive_tab_background = "#282726";
-        inactive_tab_foreground = "#878580";
+        url_color = "#8be9fd";
 
-        foreground = "#CECDC3";
-        background = "#100F0F";
-        selection_foreground = "#CECDC3";
-        selection_background = "#403E3C";
-        cursor = "#CECDC3";
+        active_tab_background = "#f8f8f2";
+        active_tab_foreground = "#282a36";
+        inactive_tab_background = "#6272a4";
+        inactive_tab_foreground = "#282a36";
+
+        foreground = "#f8f8f2";
+        background = "#282a36";
+        selection_foreground = "#ffffff";
+        selection_background = "#44475a";
+        cursor = "#f8f8f2";
+        cursor_text_color = "background";
 
         # black
-        color0 = "#100F0F";
-        color8 = "#6F6E69";
+        color0 = "#21222c";
+        color8 = "#6272a4";
 
         # red
-        color1 = "#AF3029";
-        color9 = "#D14D41";
+        color1 = "#ff5555";
+        color9 = "#ff6e6e";
 
         # green
-        color2 = "#66800B";
-        color10 = "#879A39";
+        color2 = "#50fa7b";
+        color10 = "#69ff94";
 
         # yellow
-        color3 = "#AD8301";
-        color11 = "#D0A215";
+        color3 = "#f1fa8c";
+        color11 = "#ffffa5";
 
         # blue
-        color4 = "#205EA6";
-        color12 = "#4385BE";
+        color4 = "#bd93f9";
+        color12 = "#d6acff";
 
         # magenta
-        color5 = "#A02F6F";
-        color13 = "#CE5D97";
+        color5 = "#ff79c6";
+        color13 = "#ff92df";
 
         # cyan
-        color6 = "#24837B";
-        color14 = "#3AA99F";
+        color6 = "#8be9fd";
+        color14 = "#a4ffff";
 
         # white
-        color7 = "#878580";
-        color15 = "#CECDC3";
+        color7 = "#f8f8f2";
+        color15 = "#ffffff";
+
+        # Marks
+        mark1_foreground = "#282a36";
+        mark1_background = "#ff5555";
+
+        # Splits/Windows
+        active_border_color = "#f8f8f2";
+        inactive_border_color = "#6272a4";
     };
   };
 }

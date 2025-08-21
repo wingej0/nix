@@ -7,8 +7,8 @@
 				./../modules/users.nix
 
 				# Desktops
-				# ./../desktops/cosmic.nix
-				./../desktops/xfce.nix
+				./../desktops/cosmic.nix
+				# ./../desktops/xfce.nix
 
 				# Impermanence modules
 				./../modules/impermanence.nix

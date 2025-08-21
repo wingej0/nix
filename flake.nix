@@ -20,6 +20,17 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    qtile-flake = {
+      url = "github:qtile/qtile";
+      # url = "github:mooncubes/qtile/z-layer-management";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    qtile-extras-flake = {
+      url = "github:elparaguayo/qtile-extras";
+      flake = false;
+    };
   };
 
   outputs = { nixpkgs, ... } @ inputs: 
