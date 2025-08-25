@@ -1,7 +1,11 @@
-{ config, lib, pkgs, username, ... }:
+{ config, lib, pkgs, username, inputs, ... }:
 {
     imports = [
         ./../modules/cosmic-applets.nix
+        # Apply the overlay here
+        # ({
+        #   nixpkgs.overlays = [ inputs.cosmic-nightly.overlays.default ];
+        # })
     ];
 
     

@@ -6,7 +6,6 @@
         discord
         zoom-us
         mattermost-desktop
-        element-desktop
         mailspring
         caprine
     ];

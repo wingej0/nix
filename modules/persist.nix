@@ -50,7 +50,6 @@
                 ".config/google-chrome"
                 ".config/Mattermost"
                 ".config/discord"
-                ".config/Element"
                 ".config/nordvpn"
                 ".config/sh.cider.genten"
                 ".config/MongoDB Compass"

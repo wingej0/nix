@@ -31,6 +31,9 @@
       url = "github:elparaguayo/qtile-extras";
       flake = false;
     };
+
+    # Add the COSMIC nightly flake
+    # cosmic-nightly.url = "github:busyboredom/cosmic-nightly-flake";
   };
 
   outputs = { nixpkgs, ... } @ inputs: 
