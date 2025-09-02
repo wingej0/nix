@@ -33,7 +33,7 @@
     };
 
     # Add the COSMIC nightly flake
-    # cosmic-nightly.url = "github:busyboredom/cosmic-nightly-flake";
+    cosmic-nightly.url = "github:busyboredom/cosmic-nightly-flake";
   };
 
   outputs = { nixpkgs, ... } @ inputs: 
