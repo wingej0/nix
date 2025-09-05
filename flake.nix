@@ -10,10 +10,10 @@
     
     impermanence.url = "github:nix-community/impermanence";
 
-    cosmic-ext-applet-clipboard-manager = {
-      url = "github:cosmic-utils/clipboard-manager";
-      flake = false;
-    };
+    # cosmic-ext-applet-clipboard-manager = {
+    #   url = "github:cosmic-utils/clipboard-manager";
+    #   flake = false;
+    # };
 
     # Nix User Repository
     nur = {
@@ -33,7 +33,9 @@
     };
 
     # Add the COSMIC nightly flake
-    cosmic-nightly.url = "github:busyboredom/cosmic-nightly-flake";
+    # cosmic-nightly.url = "github:busyboredom/cosmic-nightly-flake";
+
+    cosmic-applets-collection.url = "github:wingej0/ext-cosmic-applets-flake";
   };
 
   outputs = { nixpkgs, ... } @ inputs: 

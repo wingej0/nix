@@ -42,6 +42,7 @@
                 ".local/share/TelegramDesktop"
                 ".local/share/flatpak"
                 ".local/share/themes"
+                ".local/share/icons"
                 ".local/share/applications"
                 ".config/gh"
                 ".config/anytype"
