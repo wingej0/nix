@@ -29,6 +29,9 @@
 				./../modules/media.nix
 				./../modules/development.nix
 				./../modules/office.nix
+
+				# Services
+				./../modules/cosmic-bg.nix
         	]
         else
             [ ];

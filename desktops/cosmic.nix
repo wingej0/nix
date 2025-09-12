@@ -31,4 +31,5 @@
         cosmic-ext-tweaks
         inputs.cosmic-applets-collection.packages."${system}".default
     ];
+
 }

@@ -10,27 +10,22 @@
     
     impermanence.url = "github:nix-community/impermanence";
 
-    # cosmic-ext-applet-clipboard-manager = {
-    #   url = "github:cosmic-utils/clipboard-manager";
-    #   flake = false;
-    # };
-
     # Nix User Repository
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    qtile-flake = {
-      url = "github:qtile/qtile";
-      # url = "github:mooncubes/qtile/z-layer-management";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # qtile-flake = {
+    #   url = "github:qtile/qtile";
+    #   # url = "github:mooncubes/qtile/z-layer-management";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    qtile-extras-flake = {
-      url = "github:elparaguayo/qtile-extras";
-      flake = false;
-    };
+    # qtile-extras-flake = {
+    #   url = "github:elparaguayo/qtile-extras";
+    #   flake = false;
+    # };
 
     # Add the COSMIC nightly flake
     # cosmic-nightly.url = "github:busyboredom/cosmic-nightly-flake";

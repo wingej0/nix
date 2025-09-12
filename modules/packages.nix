@@ -27,5 +27,7 @@
         gearlever
         deja-dup
         inotify-tools
+        variety
+        wallust
     ];
 }
