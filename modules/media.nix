@@ -11,6 +11,8 @@
         annotator
         ffmpeg
         loupe
-        czkawka-full 
+        # czkawka-full - Nix package currently broken; using flatpak
+        audacious
+        strawberry
     ];
 }
