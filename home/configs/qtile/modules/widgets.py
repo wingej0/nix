@@ -57,7 +57,7 @@ def init_widgets(monitor):
             **dark_widgets
         ),
         widget.TextBox(
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=14,
             foreground=colors['color15'],
             text="",  
@@ -89,7 +89,7 @@ def init_widgets(monitor):
         ),
         widget.TextBox(
             text='',
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             foreground=colors['color0'],
             margin=0,
@@ -113,7 +113,7 @@ def init_widgets(monitor):
         ), 
         widget.TextBox(
             text='',
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             foreground=colors['color0'],
             margin=0,
@@ -136,7 +136,7 @@ def init_widgets(monitor):
         ), 
         widget.TextBox(
             text='',
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             foreground=colors['color0'],
             padding=5,
@@ -163,7 +163,7 @@ def init_widgets(monitor):
         ),
         widget.TextBox(
             text='',
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             foreground=colors['color0'],
             **light_widgets
@@ -182,7 +182,7 @@ def init_widgets(monitor):
             **light_widgets
         ), 
         widget.TextBox(
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             foreground=colors['color0'],
             text="",
@@ -239,7 +239,7 @@ def init_widgets(monitor):
             borderwidth = 2,
             foreground=colors['color15'],
             disable_drag=True,
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=11,
             hide_unused=False,
             highlight_color=['#00000000', '#00000000'],
@@ -273,7 +273,7 @@ def init_widgets(monitor):
             **mid_widgets
         ),
         widget.TextBox(
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             text="",
             foreground=colors['color15'],
             **mid_widgets
@@ -300,7 +300,7 @@ def init_widgets(monitor):
             **light_widgets
         ),
         widget.TextBox(
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             foreground=colors['color0'],
             text="",
@@ -338,7 +338,7 @@ def init_widgets(monitor):
         ),
         widget.TextBox(
             foreground=colors['color0'],
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             text='',
             mouse_callbacks={
@@ -348,7 +348,7 @@ def init_widgets(monitor):
         ),
         widget.TextBox(
             foreground=colors['color0'],
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             text='',
             mouse_callbacks={
@@ -358,7 +358,7 @@ def init_widgets(monitor):
         ),
         widget.TextBox(
             foreground=colors['color0'],
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             text='',
             mouse_callbacks={
@@ -368,7 +368,7 @@ def init_widgets(monitor):
         ),
         widget.Bluetooth(
             default_text = "",
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             foreground = colors['color0'],
             **light_widgets
@@ -422,7 +422,7 @@ def init_widgets(monitor):
     if qtile.core.name == "x11":
         clipboard = widget.TextBox(
             foreground=colors['color0'],
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             text='',
             mouse_callbacks={
@@ -433,7 +433,7 @@ def init_widgets(monitor):
 
         screenshot = widget.TextBox(
             foreground=colors['color0'],
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             text='',
             mouse_callbacks={
@@ -445,7 +445,7 @@ def init_widgets(monitor):
     elif qtile.core.name == "wayland":
         clipboard = widget.TextBox(
             foreground=colors['color0'],
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             text='',
             mouse_callbacks={
@@ -456,7 +456,7 @@ def init_widgets(monitor):
 
         screenshot = widget.TextBox(
             foreground=colors['color0'],
-            font="FontAwesome6Free",
+            font="FontAwesome7Free",
             fontsize=12,
             text='',
             mouse_callbacks={

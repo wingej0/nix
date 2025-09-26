@@ -71,7 +71,7 @@
                 # Qtile
                 # ".local/share/qtile"
                 # ".config/picom"
-                ".config/wallust"
+                # ".config/wallust"
                 # ".cache/qtile"
                 # ".config/rofi"
                 ".config/variety"

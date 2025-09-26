@@ -24,13 +24,13 @@
         };
 
         theme = {
-            name = "Pop";
-            package = pkgs.pop-gtk-theme;
+            name = "Orchis-Dark";
+            package = pkgs.orchis-theme;
         };
 
         iconTheme = {
-            name = "Pop";
-            package = pkgs.pop-icon-theme;
+            name = "Tela";
+            package = pkgs.tela-icon-theme;
         };
 
         gtk3 = {

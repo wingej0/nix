@@ -20,6 +20,7 @@
         eza
         yazi
         htop
+        btop
         lshw
         bat
         system-config-printer
