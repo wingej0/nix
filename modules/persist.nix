@@ -62,6 +62,7 @@
                 ".config/obs-studio"
                 ".config/Caprine"
 		        ".config/dconf"
+                ".var/app/app.zen_browser.zen"
 
                 # Cosmic Desktop
                 ".local/state/cosmic-comp"
