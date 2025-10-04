@@ -72,7 +72,7 @@
                 # Qtile
                 # ".local/share/qtile"
                 # ".config/picom"
-                # ".config/wallust"
+                ".config/wallust"
                 # ".cache/qtile"
                 # ".config/rofi"
                 ".config/variety"
@@ -89,6 +89,7 @@
                 ".zlogin"
                 ".histfile"
                 ".zsh_history"
+                ".config/cosmic-initial-setup-done"
             ];
         };
     };
