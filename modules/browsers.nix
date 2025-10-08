@@ -4,6 +4,5 @@
         # Browsers
         google-chrome
         brave
-        vivaldi
     ];
 }

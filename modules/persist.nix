@@ -54,7 +54,6 @@
                 ".config/nordvpn"
                 ".config/sh.cider.genten"
                 ".config/MongoDB Compass"
-                ".config/vivaldi"
                 ".config/remmina"
                 ".zsh"
                 ".vscode"
