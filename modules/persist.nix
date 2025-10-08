@@ -64,11 +64,6 @@
 		        ".config/dconf"
                 ".var/app/app.zen_browser.zen"
 
-                # Cosmic Desktop
-                ".local/state/cosmic-comp"
-                ".local/state/cosmic"
-                ".config/cosmic"
-
                 # Qtile
                 # ".local/share/qtile"
                 # ".config/picom"
@@ -89,8 +84,13 @@
                 ".zlogin"
                 ".histfile"
                 ".zsh_history"
-                ".config/cosmic-initial-setup-done"
+                ".cache/wallust/sequences"
             ];
         };
     };
+
+    security.sudo.extraConfig = ''
+        # rollback results in sudo lectures after each reboot
+        Defaults lecture = never
+    '';
 }

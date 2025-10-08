@@ -32,4 +32,19 @@
         inputs.cosmic-applets-collection.packages."${system}".default
     ];
 
+    # Persistence
+    environment.persistence."/persist" = {
+        users.wingej0 = {
+            directories = [
+                # Cosmic Desktop
+                ".local/state/cosmic-comp"
+                ".local/state/cosmic"
+                ".config/cosmic"
+            ];
+            files = [
+                ".config/cosmic-initial-setup-done"
+            ];
+        };
+    };
+
 }

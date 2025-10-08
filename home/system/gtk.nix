@@ -4,7 +4,7 @@
         enable = true;
         settings = {
             "org/gnome/desktop/interface" = {
-                color-scheme = "prefer-dark";
+                color-scheme = "prefer-light";
                 cursor-theme = "Bibata-Modern-Classic";
             };
         };
@@ -24,13 +24,13 @@
         };
 
         theme = {
-            name = "Orchis-Dark";
+            name = "Orchis";
             package = pkgs.orchis-theme;
         };
 
         iconTheme = {
-            name = "Tela";
-            package = pkgs.tela-icon-theme;
+            name = "Tela-circle";
+            package = pkgs.tela-circle-icon-theme;
         };
 
         gtk3 = {
@@ -41,7 +41,7 @@
 
         gtk4 = {
             extraConfig = {
-                gtk-application-prefer-dark-theme = 1;
+                gtk-application-prefer-dark-theme = 0;
             };
         };
     };

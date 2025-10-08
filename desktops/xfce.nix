@@ -52,4 +52,22 @@
         file-roller
         playerctl
     ];
+
+    # Persistence
+    environment.persistence."/persist" = {
+        users.wingej0 = {
+            directories = [
+                # Qtile
+                ".local/share/qtile"
+                ".config/picom"
+                ".cache/qtile"
+                ".config/rofi"
+
+                # XFCE
+                ".config/xfce4"
+		        ".cache/sessions"
+                ".config/autostart"
+            ];
+        };
+    };
 }
