@@ -4,7 +4,7 @@
         # Communication
         telegram-desktop
         discord
-        zoom-us
+        # zoom-us ## Using flatpak version.  Nix package is buggy.
         mattermost-desktop
         mailspring
         caprine

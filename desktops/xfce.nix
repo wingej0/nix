@@ -60,8 +60,11 @@
                 # Qtile
                 ".local/share/qtile"
                 ".config/picom"
-                ".cache/qtile"
                 ".config/rofi"
+
+                # wallust template files
+                ".cache/qtile"
+                ".cache/rofi"
 
                 # XFCE
                 ".config/xfce4"

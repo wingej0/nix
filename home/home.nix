@@ -7,6 +7,7 @@
     ./programs/zsh.nix
     ./system/gtk.nix
     ./programs/kitty.nix
+    ./system/default-apps.nix
   ];
 
   # Edit Mailspring desktop file
