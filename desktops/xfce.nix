@@ -58,8 +58,8 @@
             directories = [
                 # Qtile
                 ".local/share/qtile"
-                ".config/picom"
-                ".config/rofi"
+                # ".config/picom"
+                # ".config/rofi"
 
                 # wallust template files
                 ".cache/qtile"

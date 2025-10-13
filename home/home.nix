@@ -59,6 +59,8 @@
     # Source dotfiles to .config
     ".config/ohmyposh".source = ./configs/ohmyposh;
     ".config/qtile".source = ./configs/qtile;
+    ".config/rofi".source = ./configs/rofi;
+    ".config/picom".source = ./configs/picom;
   };
 
   # Home Manager can also manage your environment variables through

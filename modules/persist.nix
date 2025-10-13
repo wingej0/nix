@@ -61,6 +61,7 @@
                 ".config/obs-studio"
                 ".config/Caprine"
 		        ".config/dconf"
+                # ".config/Element"
                 ".var/app/app.zen_browser.zen"
 
                 # Qtile
