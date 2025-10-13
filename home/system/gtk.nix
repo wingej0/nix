@@ -29,8 +29,8 @@
         };
 
         iconTheme = {
-            name = "Tela-circle";
-            package = pkgs.tela-circle-icon-theme;
+            name = "Tela";
+            package = pkgs.tela-icon-theme;
         };
 
         gtk3 = {

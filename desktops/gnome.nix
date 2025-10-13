@@ -103,6 +103,7 @@
                     enable-hot-corners = false;
                     clock-format = "12h";
                     clock-show-weekday = true;
+                    clock-show-date = true;
                 };
 
                 "org/gnome/desktop/peripherals/touchpad" = {

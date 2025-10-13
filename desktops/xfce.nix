@@ -40,7 +40,6 @@
     };
 
     environment.systemPackages = with pkgs; [
-        # X11 Programs
         picom
         peek
         variety
