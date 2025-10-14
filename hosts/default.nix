@@ -35,6 +35,24 @@
 				# Services
 				./../modules/cosmic-bg.nix
         	]
+	else if hostname == "nix-vm" then
+		[
+			./nix-vm/configuration.nix
+			./../modules/users.nix
+			./../modules/persist.nix
+			./../desktops/gnome.nix
+			./../modules/impermanence.nix
+		        # Packages
+		        ./../modules/packages.nix
+		        ./../modules/fonts.nix
+		        ./../modules/shells.nix
+		        ./../modules/virtualization.nix
+				./../modules/browsers.nix
+				./../modules/communication.nix
+				./../modules/games.nix
+				./../modules/media.nix
+				./../modules/development.nix
+		]
         else
             [ ];
 }

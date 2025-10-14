@@ -47,6 +47,16 @@
           ./hosts
         ];
       };
+      nix-vm = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          username = "wingej0";
+          hostname = "nix-vm";
+        };
+        modules = [
+          ./hosts
+        ];
+      };
     };
   };
 }
