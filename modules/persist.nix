@@ -63,19 +63,8 @@
 		        ".config/dconf"
                 # ".config/Element"
                 ".var/app/app.zen_browser.zen"
-
-                # Qtile
-                # ".local/share/qtile"
-                # ".config/picom"
                 ".config/wallust"
-                # ".cache/qtile"
-                # ".config/rofi"
                 ".config/variety"
-
-                # XFCE
-                # ".config/xfce4"
-		        # ".cache/sessions"
-                # ".config/autostart"
             ];
             files = [
                 ".screenrc"

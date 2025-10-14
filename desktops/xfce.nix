@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, username, ... }:
 {
     services.xserver = {
         enable = true;
@@ -39,11 +39,10 @@
         ];
     };
 
+    # Qtile specific packages
     environment.systemPackages = with pkgs; [
         picom
         peek
-        variety
-        wallust
         rofi
         brightnessctl
         python3
@@ -58,9 +57,7 @@
             directories = [
                 # Qtile
                 ".local/share/qtile"
-                # ".config/picom"
-                # ".config/rofi"
-
+                
                 # wallust template files
                 ".cache/qtile"
                 ".cache/rofi"
@@ -70,6 +67,15 @@
 		        ".cache/sessions"
                 ".config/autostart"
             ];
+        };
+    };
+
+    # Config files
+    home-manager.users.${username} = {
+        home.file = {
+            ".config/qtile".source = ./../home/configs/qtile;
+            ".config/rofi".source = ./../home/configs/rofi;
+            ".config/picom".source = ./../home/configs/picom;
         };
     };
 }
