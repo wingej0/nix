@@ -205,7 +205,7 @@
                 "org/gnome/shell/extensions/dash-to-dock" = {
                     multi-monitor = true;
                     dock-position = "LEFT";
-                    dash-max-icon-size = 24;
+                    dash-max-icon-size = 20;
                     hot-keys = false;
                     running-indicator-style = "DASHES";
                     show-mounts = false;
