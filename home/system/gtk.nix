@@ -4,7 +4,7 @@
         enable = true;
         settings = {
             "org/gnome/desktop/interface" = {
-                color-scheme = "prefer-light";
+                color-scheme = "prefer-dark";
                 cursor-theme = "Bibata-Modern-Classic";
             };
         };
@@ -41,7 +41,7 @@
 
         gtk4 = {
             extraConfig = {
-                gtk-application-prefer-dark-theme = 0;
+                gtk-application-prefer-dark-theme = 1;
             };
         };
     };
