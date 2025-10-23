@@ -31,6 +31,7 @@
 				./../modules/media.nix
 				./../modules/development.nix
 				./../modules/office.nix
+				./../modules/flatpak.nix
 
 				# Services
 				./../modules/cosmic-bg.nix

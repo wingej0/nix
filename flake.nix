@@ -16,6 +16,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Flatpaks
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+
     # qtile-flake = {
     #   url = "github:qtile/qtile";
     #   # url = "github:mooncubes/qtile/z-layer-management";
