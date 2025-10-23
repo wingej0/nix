@@ -13,5 +13,7 @@
         loupe
         czkawka-full
         lollypop
+        vlc
+        gnome-network-displays
     ];
 }
