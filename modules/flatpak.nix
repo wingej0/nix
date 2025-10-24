@@ -27,6 +27,7 @@
     environment.persistence."/persist" = {
         users.wingej0 = {
             directories = [
+                ".local/share/flatpak"
                 ".var/app/app.zen_browser.zen"
                 ".var/app/us.zoom.Zoom"
             ];

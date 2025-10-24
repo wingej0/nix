@@ -6,4 +6,12 @@
         onlyoffice-bin
         evince
     ];
+
+    environment.persistence."/persist" = {
+        users.wingej0 = {
+            directories = [
+                ".config/anytype"
+            ];
+        };
+    };
 }

@@ -3,7 +3,6 @@
     environment.systemPackages = with pkgs; [
         # Development
         vscode-fhs
-        github-desktop
         mongodb-compass
         insomnia
         unixODBC
@@ -11,4 +10,14 @@
     ];
 
     environment.unixODBCDrivers = with pkgs.unixODBCDrivers; [ msodbcsql18 ];
+
+    environment.persistence."/persist" = {
+        users.wingej0 = {
+            directories = [
+                ".config/Code"
+                ".config/MongoDB Compass"
+                ".vscode"
+            ];
+        };
+    };
 }

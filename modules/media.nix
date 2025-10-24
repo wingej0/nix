@@ -16,4 +16,14 @@
         vlc
         gnome-network-displays
     ];
+
+    environment.persistence."/persist" = {
+        users.wingej0 = {
+            directories = [
+                ".local/share/lollypop"
+                ".cache/lollypop"
+                ".config/obs-studio"
+            ];
+        };
+    };
 }

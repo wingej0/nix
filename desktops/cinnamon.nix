@@ -7,9 +7,6 @@
     services.xserver.displayManager.lightdm.enable = true;
     services.xserver.desktopManager.cinnamon.enable = true;
 
-    # Enable flatpaks
-    services.flatpak.enable = true;
-
     services.gnome.gnome-keyring.enable = true;
 
     # Persistence

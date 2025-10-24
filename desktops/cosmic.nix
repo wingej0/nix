@@ -23,9 +23,6 @@
         XCURSOR_THEME="Bibata-Modern-Classic";
     };
 
-    # Enable flatpaks
-    # services.flatpak.enable = true;
-
     environment.systemPackages = with pkgs; [
         # cosmic
         cosmic-ext-tweaks

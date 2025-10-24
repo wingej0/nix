@@ -3,8 +3,6 @@
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
 
-    # Enable flatpaks
-    services.flatpak.enable = true;
     services.blueman.enable = true;
 
     environment.systemPackages = with pkgs; [

@@ -4,10 +4,20 @@
         # Communication
         telegram-desktop
         discord
-        # zoom-us ## Using flatpak version.  Nix package is buggy.
         mattermost-desktop
         mailspring
         caprine
-        # element-desktop
     ];
+
+    environment.persistence."/persist" = {
+        users.wingej0 = {
+            directories = [
+                ".local/share/TelegramDesktop"
+                ".config/discord"
+                ".config/Mattermost"
+                ".config/Mailspring"
+                ".config/Caprine"
+            ];
+        };
+    };
 }

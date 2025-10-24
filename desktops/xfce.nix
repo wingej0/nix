@@ -27,8 +27,6 @@
     services.displayManager.defaultSession = "xfce";
     services.gnome.gnome-keyring.enable = true;
 
-    # Enable flatpaks
-    services.flatpak.enable = true;
     services.blueman.enable = true;
 
     xdg.portal = {

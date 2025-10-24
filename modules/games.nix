@@ -7,4 +7,13 @@
         stockfish
         lc0  
     ];
+
+    environment.persistence."/persist" = {
+        users.wingej0 = {
+            directories = [
+                ".scidvspc"
+                ".local/share/gnome-2048"
+            ];
+        };
+    };
 }
