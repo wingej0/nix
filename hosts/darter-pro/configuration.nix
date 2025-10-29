@@ -58,8 +58,8 @@
 
   # Open ports in the firewall.
   networking.firewall.checkReversePath = false;
-  networking.firewall.allowedTCPPorts = [ 443 ];
-  networking.firewall.allowedUDPPorts = [ 1194 ];
+  networking.firewall.allowedTCPPorts = [ 443 7236 7250 ];
+  networking.firewall.allowedUDPPorts = [ 1194 7236 5353 ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

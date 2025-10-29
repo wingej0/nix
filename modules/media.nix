@@ -13,8 +13,6 @@
         loupe
         czkawka-full
         lollypop
-        vlc
-        gnome-network-displays
     ];
 
     environment.persistence."/persist" = {

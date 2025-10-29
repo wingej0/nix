@@ -20,6 +20,7 @@
         packages = [
             "app.zen_browser.zen"
             "us.zoom.Zoom"
+            "org.gnome.NetworkDisplays"
         ];
     };
 

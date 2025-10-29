@@ -7,8 +7,8 @@
 				./../modules/users.nix
 
 				# Desktops
-				./../desktops/cosmic.nix
-				# ./../desktops/xfce.nix
+				# ./../desktops/cosmic.nix
+				./../desktops/xfce.nix
 				# ./../desktops/cinnamon.nix
 				# ./../desktops/gnome.nix
 
@@ -24,7 +24,7 @@
 		        ./../modules/fonts.nix
 		        ./../modules/shells.nix
 		        ./../modules/virtualization.nix
-				# ./../modules/nordvpn.nix
+				./../modules/nordvpn.nix
 				./../modules/browsers.nix
 				./../modules/communication.nix
 				./../modules/games.nix
