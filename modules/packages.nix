@@ -30,6 +30,6 @@
         inotify-tools
         variety
         wallust
-        bitwarden
+        bitwarden-desktop
     ];
 }

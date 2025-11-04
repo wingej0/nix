@@ -1,16 +1,16 @@
 { config, pkgs, ... }:
 {
+    # AI
     environment.systemPackages = with pkgs; [
-        # Office
-        anytype
-        onlyoffice-desktopeditors
-        evince
+        gemini-cli
+        claude-code
     ];
 
     environment.persistence."/persist" = {
         users.wingej0 = {
             directories = [
-                ".config/anytype"
+                ".gemini"
+                ".claude"
             ];
         };
     };

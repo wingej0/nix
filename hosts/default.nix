@@ -8,9 +8,9 @@
 
 				# Desktops
 				# ./../desktops/cosmic.nix
-				./../desktops/xfce.nix
+				# ./../desktops/xfce.nix
 				# ./../desktops/cinnamon.nix
-				# ./../desktops/gnome.nix
+				./../desktops/gnome.nix
 
 				# Impermanence modules
 				./../modules/impermanence.nix
@@ -32,6 +32,7 @@
 				./../modules/development.nix
 				./../modules/office.nix
 				./../modules/flatpak.nix
+				./../modules/ai.nix
 
 				# Services
 				./../modules/cosmic-bg.nix

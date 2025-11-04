@@ -2,7 +2,7 @@
 {
     # Allow installation of unfree corefonts package
     nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [ "corefonts" "vistafonts" ];
+    builtins.elem (lib.getName pkg) [ "corefonts" "vista-fonts" ];
 
     fonts.packages = with pkgs; [
         noto-fonts
@@ -12,6 +12,6 @@
         nerd-fonts.fira-code
         font-awesome
         corefonts
-        vistafonts
+        vista-fonts
     ];
 }
