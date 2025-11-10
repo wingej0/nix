@@ -9,7 +9,7 @@
         # Gnome extensions
         pkgs.gnome-tweaks
         gnomeExtensions.dash-to-dock
-        # gnomeExtensions.blur-my-shell
+        gnomeExtensions.blur-my-shell
         gnomeExtensions.appindicator
         gnomeExtensions.caffeine
         gnomeExtensions.clipboard-indicator
