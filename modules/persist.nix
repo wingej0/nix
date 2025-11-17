@@ -1,4 +1,4 @@
-{ lib, inputs, ... }:
+{ lib, inputs, username, ... }:
 {
     imports = [
         inputs.impermanence.nixosModules.impermanence
@@ -28,7 +28,7 @@
             "/etc/machine-id"
             { file = "/var/keys/secret_file"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
         ];
-        users.wingej0 = {
+        users.${username} = {
             directories = [
                 "Desktop"
                 "Downloads"

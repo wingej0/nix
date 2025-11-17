@@ -51,7 +51,7 @@
 
     # Persistence
     environment.persistence."/persist" = {
-        users.wingej0 = {
+        users.${username} = {
             directories = [
                 # Qtile
                 ".local/share/qtile"

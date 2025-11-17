@@ -26,12 +26,12 @@
     environment.systemPackages = with pkgs; [
         # cosmic
         cosmic-ext-tweaks
-        inputs.cosmic-applets-collection.packages."${system}".default
+        inputs.cosmic-applets-collection.packages."${pkgs.system}".default
     ];
 
     # Persistence
     environment.persistence."/persist" = {
-        users.wingej0 = {
+        users.${username} = {
             directories = [
                 # Cosmic Desktop
                 ".local/state/cosmic-comp"

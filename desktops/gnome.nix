@@ -24,7 +24,7 @@
 
     # Persistence
     environment.persistence."/persist" = {
-        users.wingej0 = {
+        users.${username} = {
             files = [
                 ".config/gnome-initial-setup-done"
             ];

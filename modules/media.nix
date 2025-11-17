@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 {
     environment.systemPackages = with pkgs; [
         # Media
@@ -16,7 +16,7 @@
     ];
 
     environment.persistence."/persist" = {
-        users.wingej0 = {
+        users.${username} = {
             directories = [
                 ".local/share/lollypop"
                 ".cache/lollypop"

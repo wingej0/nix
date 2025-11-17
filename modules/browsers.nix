@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 {
     # Note: I have installed the Zen browser as a flatpak in flatpak.nix
     environment.systemPackages = with pkgs; [
@@ -8,7 +8,7 @@
     ];
 
     environment.persistence."/persist" = {
-        users.wingej0 = {
+        users.${username} = {
             directories = [
                 ".config/google-chrome"
                 ".config/BraveSoftware"

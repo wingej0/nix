@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 {
     environment.systemPackages = with pkgs; [
         # Games
@@ -9,7 +9,7 @@
     ];
 
     environment.persistence."/persist" = {
-        users.wingej0 = {
+        users.${username} = {
             directories = [
                 ".scidvspc"
                 ".local/share/gnome-2048"

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 {
     environment.systemPackages = with pkgs; [
         # Development
@@ -12,7 +12,7 @@
     environment.unixODBCDrivers = with pkgs.unixODBCDrivers; [ msodbcsql18 ];
 
     environment.persistence."/persist" = {
-        users.wingej0 = {
+        users.${username} = {
             directories = [
                 ".config/Code"
                 ".config/MongoDB Compass"

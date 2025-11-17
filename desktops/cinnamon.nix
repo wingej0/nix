@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, username, ... }:
 {
     # Enable the X11 windowing system.
     services.xserver.enable = true;
@@ -11,7 +11,7 @@
 
     # Persistence
     environment.persistence."/persist" = {
-        users.wingej0 = {
+        users.${username} = {
             directories = [
                 # Cinnamon Desktop
                 ".config/cinnamon"

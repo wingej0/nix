@@ -4,7 +4,7 @@
         inputs.home-manager.nixosModules.home-manager
     ];
 
-    users.users.wingej0 = {
+    users.users.${username} = {
         isNormalUser = true;
         description = "Jeff Winget";
         hashedPasswordFile = "/persist/password_hash";        

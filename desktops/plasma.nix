@@ -8,7 +8,7 @@
     security.pam.services.login.enableGnomeKeyring = true;
 
     environment.persistence."/persist" = {
-        users.wingej0 = {
+        users.${username} = {
 
             directories = [
                 ".config/gtk-3.0" # fuse mounted from /nix/dotfiles/Plasma/.config/gtk-3.0

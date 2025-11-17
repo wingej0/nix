@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 {
     environment.systemPackages = with pkgs; [
         # Office
@@ -8,7 +8,7 @@
     ];
 
     environment.persistence."/persist" = {
-        users.wingej0 = {
+        users.${username} = {
             directories = [
                 ".config/anytype"
             ];

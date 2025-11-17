@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, username, ... }:
 {
     imports = [
         inputs.nix-flatpak.nixosModules.nix-flatpak
@@ -26,7 +26,7 @@
 
     # Persist any folders for flatpaks
     environment.persistence."/persist" = {
-        users.wingej0 = {
+        users.${username} = {
             directories = [
                 ".local/share/flatpak"
                 ".var/app/app.zen_browser.zen"

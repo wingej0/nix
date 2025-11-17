@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 {
     # AI
     environment.systemPackages = with pkgs; [
@@ -7,7 +7,7 @@
     ];
 
     environment.persistence."/persist" = {
-        users.wingej0 = {
+        users.${username} = {
             directories = [
                 ".gemini"
                 ".claude"

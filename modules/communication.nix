@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 {
     environment.systemPackages = with pkgs; [
         # Communication
@@ -10,7 +10,7 @@
     ];
 
     environment.persistence."/persist" = {
-        users.wingej0 = {
+        users.${username} = {
             directories = [
                 ".local/share/TelegramDesktop"
                 ".config/discord"
