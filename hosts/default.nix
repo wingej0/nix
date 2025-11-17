@@ -33,15 +33,15 @@ let
       # Desktop environment
       # desktops.gnome
       # desktops.plasma
-      desktops.cosmic
-      # desktops.xfce
+      # desktops.cosmic
+      desktops.xfce
       # desktops.cinnamon
 
       # System76 drivers
       ./../modules/system76.nix
 
       # Additional packages
-      ./../modules/nordvpn.nix
+      # ./../modules/nordvpn.nix
       ./../modules/office.nix
       ./../modules/flatpak.nix
       ./../modules/ai.nix
