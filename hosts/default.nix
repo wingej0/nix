@@ -7,10 +7,10 @@
 				./../modules/users.nix
 
 				# Desktops
-				./../desktops/cosmic.nix
+				# ./../desktops/cosmic.nix
 				# ./../desktops/xfce.nix
 				# ./../desktops/cinnamon.nix
-				# ./../desktops/gnome.nix
+				./../desktops/gnome.nix
 				# ./../desktops/plasma.nix
 
 				# Impermanence modules
