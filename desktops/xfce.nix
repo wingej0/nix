@@ -34,7 +34,6 @@
     security.pam.services.lightdm.enableGnomeKeyring = true;
 
     services.blueman.enable = true;
-    services.picom.enable = true;
 
     xdg.portal = {
         enable = true;
@@ -89,7 +88,11 @@
         home.file = {
             ".config/qtile".source = ./../home/configs/qtile;
             ".config/rofi".source = ./../home/configs/rofi;
-            ".config/picom".source = ./../home/configs/picom;
+        };
+
+        services.picom = {
+            enable = true;
+            package = pkgs.picom;
         };
     };
 }
