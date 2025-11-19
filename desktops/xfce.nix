@@ -82,6 +82,10 @@
                 "sessions/Failsafe/Count" = 1;
                 "sessions/Failsafe/Client0_Command" = [ "qtile" "start" ];
             };
+            xfce4-keyboard-shortcuts = {
+                "xfwm4/custom" = null;
+                "xfwm4/default" = null;
+            };
         };
         
         home.file = {
