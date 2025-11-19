@@ -31,8 +31,10 @@
 
     services.displayManager.defaultSession = "xfce";
     services.gnome.gnome-keyring.enable = true;
+    security.pam.services.lightdm.enableGnomeKeyring = true;
 
     services.blueman.enable = true;
+    services.picom.enable = true;
 
     xdg.portal = {
         enable = true;
