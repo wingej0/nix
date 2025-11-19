@@ -2,16 +2,27 @@
 {
     services.xserver = {
         enable = true;
-        desktopManager = {
-            xterm.enable = false;
-            xfce.enable = true;
-        };
+
         windowManager.qtile = {
             enable = true;
             extraPackages = python3Packages: with python3Packages; [
                 qtile-extras
             ];
         };
+
+        desktopManager = {
+            xterm.enable = false;
+            xfce.enable = true;
+            xfce.noDesktop = true;
+            xfce.enableXfwm = false;
+        };
+
+        displayManager = {
+            sessionCommands = ''
+                qtile start
+            '';
+        };
+        
         # windowManager.qtile = {
         #     enable = true;
         #     package = inputs.qtile-flake.packages.${pkgs.system}.default;

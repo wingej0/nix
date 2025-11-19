@@ -54,10 +54,10 @@ let
       ./nix-vm/configuration.nix
 
       # Desktop environment
-      desktops.gnome
+      # desktops.gnome
       # desktops.plasma
       # desktops.cosmic
-      # desktops.xfce
+      desktops.xfce
       # desktops.cinnamon
     ];
   };
