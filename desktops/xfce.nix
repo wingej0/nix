@@ -17,13 +17,6 @@
             xfce.enableXfwm = false;
         };
 
-        displayManager = {
-            sessionCommands = ''
-                qtile start &
-                picom
-            '';
-        };
-        
         # windowManager.qtile = {
         #     enable = true;
         #     package = inputs.qtile-flake.packages.${pkgs.system}.default;
@@ -82,6 +75,15 @@
 
     # Config files
     home-manager.users.${username} = {
+        xfconf.settings = {
+            xfce4-session = {
+                "general/SaveOnExit" = false;
+                "sessions/Failsafe/IsFailsafe" = true;
+                "sessions/Failsafe/Count" = 1;
+                "sessions/Failsafe/Client0_Command" = [ "qtile" "start" ];
+            };
+        };
+        
         home.file = {
             ".config/qtile".source = ./../home/configs/qtile;
             ".config/rofi".source = ./../home/configs/rofi;
