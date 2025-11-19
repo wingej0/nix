@@ -19,7 +19,6 @@
         bibata-cursors
         eza
         yazi
-        htop
         btop
         lshw
         bat
