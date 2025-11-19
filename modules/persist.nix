@@ -48,7 +48,6 @@
                 ".config/remmina"
                 ".zsh"
 		        ".config/dconf"
-                ".config/wallust"
                 ".config/variety"
             ];
             files = [

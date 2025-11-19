@@ -19,7 +19,8 @@
 
         displayManager = {
             sessionCommands = ''
-                qtile start
+                qtile start &
+                picom
             '';
         };
         

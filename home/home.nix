@@ -58,6 +58,7 @@
   home.file = {
     # Source dotfiles to .config
     ".config/ohmyposh".source = ./configs/ohmyposh;
+    ".config/wallust".source = ./configs/wallust;
     # ".config/qtile".source = ./configs/qtile;
     # ".config/rofi".source = ./configs/rofi;
     # ".config/picom".source = ./configs/picom;
