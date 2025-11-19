@@ -93,6 +93,7 @@
         services.picom = {
             enable = true;
             package = pkgs.picom;
+            extraArgs = [ "--config" "/home/${username}/.config/picom/picom.conf" ];
         };
     };
 }
