@@ -45,7 +45,6 @@
 
     # Qtile specific packages
     environment.systemPackages = with pkgs; [
-        picom
         peek
         rofi
         brightnessctl
@@ -88,6 +87,7 @@
         home.file = {
             ".config/qtile".source = ./../home/configs/qtile;
             ".config/rofi".source = ./../home/configs/rofi;
+            ".config/picom".source = ./../home/configs/picom;
         };
 
         services.picom = {
