@@ -95,5 +95,20 @@
             package = pkgs.picom;
             extraArgs = [ "--config" "/home/${username}/.config/picom/picom.conf" ];
         };
+
+        systemd.user.services.greenclip = {
+            Unit = {
+                Description = "Greenclip clipboard manager daemon";
+                After = [ "graphical-session-pre.target" ];
+                PartOf = [ "graphical-session.target" ];
+            };
+            Service = {
+                ExecStart = "${pkgs.haskellPackages.greenclip}/bin/greenclip daemon";
+                Restart = "always";
+            };
+            Install = {
+                WantedBy = [ "graphical-session.target" ];
+            };
+        };
     };
 }
