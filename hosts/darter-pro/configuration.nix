@@ -15,7 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Networking
   networking.hostName = "darter-pro";

@@ -31,9 +31,9 @@ let
       ./darter-pro/configuration.nix
 
       # Desktop environment
-      # desktops.gnome
+      desktops.gnome
       # desktops.plasma
-      desktops.cosmic
+      # desktops.cosmic
       # desktops.xfce
       # desktops.cinnamon
 
@@ -41,7 +41,7 @@ let
       ./../modules/system76.nix
 
       # Additional packages
-      # ./../modules/nordvpn.nix
+      ./../modules/nordvpn.nix
       ./../modules/office.nix
       ./../modules/flatpak.nix
       ./../modules/ai.nix

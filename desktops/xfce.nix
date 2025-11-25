@@ -66,9 +66,7 @@
                 ".cache/rofi"
 
                 # XFCE
-                ".config/xfce4"
-		        ".cache/sessions"
-                ".config/autostart"
+                ".config/xfce4/xfconf"
             ];
         };
     };
@@ -81,10 +79,6 @@
                 "sessions/Failsafe/IsFailsafe" = true;
                 "sessions/Failsafe/Count" = 1;
                 "sessions/Failsafe/Client0_Command" = [ "qtile" "start" ];
-            };
-            xfce4-keyboard-shortcuts = {
-                "xfwm4/custom" = null;
-                "xfwm4/default" = null;
             };
         };
         
