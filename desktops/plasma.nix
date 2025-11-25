@@ -8,12 +8,17 @@
         users.${username} = {
 
             directories = [
+                ".config/gtk-3.0"
+                ".config/gtk-4.0"
                 ".config/KDE"
                 ".config/kde.org"
+                ".config/kdeconnect"
+                ".config/kdedefaults"
                 ".config/plasma-workspace"
+                ".config/session"
                 ".config/xsettingsd"
                 ".kde"
-                ".local/share/baloo"
+
                 ".local/share/dolphin"
                 ".local/share/kactivitymanagerd"
                 ".local/share/kate"
@@ -22,13 +27,13 @@
                 ".local/share/kscreen"
                 ".local/share/kwalletd"
                 ".local/share/kxmlgui5"
+                ".local/share/plasma"
+                ".local/share/plasmashell"
                 ".local/share/RecentDocuments"
                 ".local/share/sddm"
             ];
             files = [
                 ".config/akregatorrc"
-                ".config/baloofileinformationrc"
-                ".config/baloofilerc"
                 ".config/bluedevilglobalrc"
                 ".config/device_automounter_kcmrc"
                 ".config/dolphinrc"
@@ -58,6 +63,8 @@
                 ".config/ksmserverrc"
                 ".config/ksplashrc"
                 ".config/ktimezonedrc"
+                ".config/kwalletrc"
+                ".config/kwinoutputconfig.json"
                 ".config/kwinrc"
                 ".config/kwinrulesrc"
                 ".config/kxkbrc"
@@ -76,8 +83,9 @@
                 ".config/spectaclerc"
                 ".config/startkderc"
                 ".config/systemsettingsrc"
-                ".config/Trolltech.conf"
-                ".config/user-dirs.dirs"
+                ".config/touchpadxlibinputrc"
+                #         ".config/Trolltech.conf"
+                #         ".config/user-dirs.dirs"
                 ".config/user-dirs.locale"
 
                 ".local/share/krunnerstaterc"
