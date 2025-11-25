@@ -14,4 +14,29 @@
         libsecret
     ];
 
+    # Persist KDE Plasma 6 configuration and state
+    environment.persistence."/persist".users.${username}.directories = [
+        ".config/kdedefaults"
+        ".config/plasma-workspace"
+        ".config/plasmashellrc"
+        ".config/plasmarc"
+        ".config/kdeglobals"
+        ".config/kwinrc"
+        ".config/kglobalshortcutsrc"
+        ".config/systemsettingsrc"
+        ".config/kscreenlockerrc"
+        ".config/kcminputrc"
+        ".config/khotkeysrc"
+        ".config/ksmserverrc"
+        ".config/Trolltech.conf"
+        ".local/share/plasma"
+        ".local/share/kwalletd"
+        ".local/share/kactivitymanagerd"
+        ".local/share/kscreen"
+        ".local/share/baloo"
+        ".local/share/dolphin"
+        ".local/share/konsole"
+        ".cache/plasma"
+    ];
+
 }
