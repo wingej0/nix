@@ -4,9 +4,8 @@
     services.displayManager.sddm.wayland.enable = true;
     services.desktopManager.plasma6.enable = true;
 
-    environment.persistence."/persist/Plasma" = {
+    environment.persistence."/persist" = {
         users.${username} = {
-            removePrefixDirectory = false;
 
             directories = [
                 ".config/KDE"
