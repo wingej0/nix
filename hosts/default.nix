@@ -55,9 +55,9 @@ let
 
       # Desktop environment
       # desktops.gnome
-      # desktops.plasma
+      desktops.plasma
       # desktops.cosmic
-      desktops.xfce
+      # desktops.xfce
       # desktops.cinnamon
     ];
   };
