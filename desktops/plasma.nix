@@ -7,8 +7,7 @@
     environment.persistence."/persist/Plasma" = {
         users.${username} = {
             removePrefixDirectory = false;
-            allowOther = true;
-            
+
             directories = [
                 ".config/KDE"
                 ".config/kde.org"
