@@ -62,6 +62,9 @@
                     # Window Management
                     "Window Close" = "Meta+Q";
 
+                    # Overview
+                    "Overview" = "Meta+D";
+
                     # Workspace Switching (1-12)
                     "Switch to Desktop 1" = "Meta+1";
                     "Switch to Desktop 2" = "Meta+2";
