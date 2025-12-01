@@ -19,21 +19,14 @@
     # Flatpaks
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
-    # qtile-flake = {
-    #   url = "github:qtile/qtile";
-    #   # url = "github:mooncubes/qtile/z-layer-management";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # qtile-extras-flake = {
-    #   url = "github:elparaguayo/qtile-extras";
-    #   flake = false;
-    # };
-
-    # Add the COSMIC nightly flake
-    # cosmic-nightly.url = "github:busyboredom/cosmic-nightly-flake";
-
     cosmic-applets-collection.url = "github:wingej0/ext-cosmic-applets-flake";
+
+    # Plasma Manager
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs = { nixpkgs, ... } @ inputs: 

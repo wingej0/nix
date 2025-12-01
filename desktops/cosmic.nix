@@ -1,12 +1,6 @@
 { config, lib, pkgs, username, inputs, ... }:
 {
-    imports = [
-        # Apply the overlay here
-        # ({
-        #   nixpkgs.overlays = [ inputs.cosmic-nightly.overlays.default ];
-        # })
-    ];
-
+    imports = [];
     
     # Enable xserver
     services.xserver.enable = true;
