@@ -4,6 +4,16 @@
     services.displayManager.sddm.wayland.enable = true;
     services.desktopManager.plasma6.enable = true;
 
+    # Persistence
+    environment.persistence."/persist" = {
+        users.${username} = {
+            files = [
+                # Monitor config
+                ".config/kwinoutputconfig.json"
+            ];
+        };
+    };
+
     home-manager.users.${username} = {
         imports = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
 
@@ -17,6 +27,7 @@
             workspace = {
                 theme = "breeze-dark";
                 colorScheme = "BreezeDark";
+                wallpaper = "${config.home-manager.users.${username}.home.homeDirectory}/Pictures/current_wallpaper.jpg";
             };
 
             #
@@ -32,6 +43,16 @@
                     name = "Launch Files";
                     key = "Meta+Shift+Return";
                     command = "dolphin";
+                };
+                "next-wallpaper" = {
+                    name = "Next Wallpaper";
+                    key = "Meta+W";
+                    command = "variety -n";
+                };
+                "previous-wallpaper" = {
+                    name = "Previous Wallpaper";
+                    key = "Meta+Shift+W";
+                    command = "variety -p";
                 };
             };
 
@@ -99,10 +120,20 @@
             # Low-level configuration:
             #
             configFile = {
-                "kwinrc"."Desktops"."Number" = {
-                    value = 12;
-                    immutable = true;
+                "kwinrc"."Desktops" = {
+                    "Number" = {
+                        value = 9;
+                    };
+                    "Rows" = {
+                        value = 3;
+                    };
                 };
+                kwinrc.Xwayland.Scale = 1;
+                kwinrc.Plugins.blurEnabled = true;
+                kwinrc.TabBox.LayoutName = "coverswitch";
+                kwinrc.Windows.AutoRaise = true;
+                kwinrc.Windows.FocusPolicy = "FocusFollowsMouse";
+                kwinrc.Windows.NextFocusPrefersMouse = true;
             };
         };
     };

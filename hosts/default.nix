@@ -32,8 +32,8 @@ let
 
       # Desktop environment
       # desktops.gnome
-      # desktops.plasma
-      desktops.cosmic
+      desktops.plasma
+      # desktops.cosmic
       # desktops.xfce
       # desktops.cinnamon
 
