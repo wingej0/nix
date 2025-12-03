@@ -133,10 +133,10 @@ keys = [
 
     # Switch focus of monitors
     Key([mod], "comma",
-        lazy.prev_screen(),
+        lazy.next_screen(),
         desc='Move focus to next monitor'),
     Key([mod], "period",
-        lazy.next_screen(),
+        lazy.prev_screen(),
         desc='Move focus to prev monitor'),
 ]
 

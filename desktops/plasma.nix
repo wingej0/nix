@@ -15,7 +15,7 @@
     };
 
     home-manager.users.${username} = {
-        imports = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+        imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
 
         programs.plasma = {
             enable = true;
@@ -134,6 +134,10 @@
                 kwinrc.Windows.AutoRaise = true;
                 kwinrc.Windows.FocusPolicy = "FocusFollowsMouse";
                 kwinrc.Windows.NextFocusPrefersMouse = true;
+                # Set natural scrolling for touchpad
+                kcminputrc."Libinput/1267/12864/ELAN0412:00 04F3:3240 Touchpad".NaturalScroll = true;
+                # Cursor Theme
+                kcminputrc.Mouse.cursorTheme = "Bibata-Modern-Classic";
             };
         };
     };
