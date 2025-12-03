@@ -134,8 +134,8 @@
                 kwinrc.Windows.AutoRaise = true;
                 kwinrc.Windows.FocusPolicy = "FocusFollowsMouse";
                 kwinrc.Windows.NextFocusPrefersMouse = true;
-                # Set natural scrolling for touchpad
-                kcminputrc."Libinput/1267/12864/ELAN0412:00 04F3:3240 Touchpad".NaturalScroll = true;
+                # Set natural scrolling for all touchpads
+                kcminputrc.Libinput.NaturalScroll = true;
                 # Cursor Theme
                 kcminputrc.Mouse.cursorTheme = "Bibata-Modern-Classic";
             };
