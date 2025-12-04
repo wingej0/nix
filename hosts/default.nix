@@ -23,6 +23,7 @@ let
     cosmic = ./../desktops/cosmic.nix;
     xfce = ./../desktops/xfce.nix;
     cinnamon = ./../desktops/cinnamon.nix;
+    qtile = ./../desktops/qtile.nix;
   };
 
   # Host-specific configurations
@@ -33,9 +34,10 @@ let
       # Desktop environment
       # desktops.gnome
       # desktops.plasma
-      # desktops.cosmic
-      desktops.xfce
+      desktops.cosmic
+      # desktops.xfce
       # desktops.cinnamon
+      # desktops.qtile
 
       # System76 drivers
       ./../modules/system76.nix

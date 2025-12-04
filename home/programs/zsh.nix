@@ -21,7 +21,8 @@
             ll = "eza --icons -la";
             cat="bat";
             fzf="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"; 
-            nrs = "sudo nixos-rebuild switch --flake . --verbose --show-trace --specialisation";    
+            office = "wlr-randr --output eDP-1 --off --output DP-7 --mode 1280x720 --pos 0,0 --transform 90 --output DP-6 --mode 1920x1080 --pos 720,0 --output DP-5 --mode 1920x1080 --pos 2640,0";
+            laptop = "wlr-randr --output eDP-1 --mode 1920x1080";    
         };
     };
 }

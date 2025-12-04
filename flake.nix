@@ -19,6 +19,7 @@
     # Flatpaks
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
+    # Cosmic Applets
     cosmic-applets-collection.url = "github:wingej0/ext-cosmic-applets-flake";
 
     # Plasma Manager
@@ -27,6 +28,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    # qtile-flake = {
+    #   url = "github:qtile/qtile";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    # qtile-extras-flake = {
+    #   url = "github:elparaguayo/qtile-extras";
+    #   flake = false;
+    # };
   };
 
   outputs = { nixpkgs, ... } @ inputs: 

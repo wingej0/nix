@@ -3,6 +3,17 @@
     services.xserver = {
         enable = true;
 
+        # windowManager.qtile = {
+        #     enable = true;
+        #     package = inputs.qtile-flake.packages.${pkgs.system}.default;
+        #     extraPackages = python3Packages:
+        #         with python3Packages; [
+        #             (qtile-extras.overridePythonAttrs (oldAttrs: {
+        #                 src = inputs.qtile-extras-flake.outPath;
+        #             }))
+        #         ];
+        # };
+
         windowManager.qtile = {
             enable = true;
             extraPackages = python3Packages: with python3Packages; [
@@ -16,17 +27,6 @@
             xfce.noDesktop = true;
             xfce.enableXfwm = false;
         };
-
-        # windowManager.qtile = {
-        #     enable = true;
-        #     package = inputs.qtile-flake.packages.${pkgs.system}.default;
-        #     extraPackages = python3Packages:
-        #         with python3Packages; [
-        #             (qtile-extras.overridePythonAttrs (oldAttrs: {
-        #                 src = inputs.qtile-extras-flake.outPath;
-        #             }))
-        #         ];
-        # };
     };
 
     services.displayManager.defaultSession = "xfce";

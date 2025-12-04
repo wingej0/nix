@@ -172,8 +172,6 @@ mouse = [
 
 # Application keybindings
 keys.extend([
-    Key([mod, "shift"], "Return", lazy.spawn("thunar"),
-        desc="Launch file browser"),
     Key([mod], "Space", lazy.spawn("rofi -show drun"),
         desc="Application launcher"),
     Key([mod], "b", lazy.spawn("firefox"),
@@ -215,6 +213,8 @@ keys.extend([
 # Add X11-specific keybindings
 if qtile.core.name == "x11":
     keys.extend([
+        Key([mod, "shift"], "Return", lazy.spawn("thunar"),
+            desc="Launch file browser"),
         Key([mod, "shift"], "r", lazy.restart(),
             desc="Restart Qtile"),
         Key([mod], "Escape", lazy.spawn("xflock4"),
@@ -227,6 +227,8 @@ if qtile.core.name == "x11":
 # Add Wayland-specific keybindings
 elif qtile.core.name == "wayland":
     keys.extend([
+        Key([mod, "shift"], "Return", lazy.spawn("nautilus"),
+            desc="Launch file browser"),
         Key([mod, "shift"], "r", lazy.reload_config(),
             desc="Reload Qtile config"),
         Key([mod], "Escape", lazy.spawn("swaylock"),

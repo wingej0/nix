@@ -404,7 +404,7 @@ def init_widgets(monitor):
             fontsize=12,
             format=' %b %d | %I:%M %p',
             mouse_callbacks={
-                'Button1' : lazy.spawn('xfce4-session-logout'),
+                'Button1' : lazy.spawn('wlogout'),
             },
             **dark_widgets
         ),
