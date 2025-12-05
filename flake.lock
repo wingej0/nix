@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1760364987,
-        "narHash": "sha256-7WVGlF9sjvBrF1YqDdfWCTNboC1kGio2OdCWipyPaNs=",
+        "lastModified": 1764895756,
+        "narHash": "sha256-AK1a9UhYC34hIaHc7rUz63MBaB4HZxQS7UdcJh0Tg6M=",
         "owner": "wingej0",
         "repo": "ext-cosmic-applets-flake",
-        "rev": "5a41152d2c15eb1c8230137ce53d8ab29eb2438c",
+        "rev": "0f148d413bfecd03142524c3d5af9de117b56815",
         "type": "github"
       },
       "original": {
@@ -46,11 +46,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764872372,
-        "narHash": "sha256-uZuXRz9CzeCHsRbc2MQvKomwoX6GcFC5BUMEk3ouSFU=",
+        "lastModified": 1764891212,
+        "narHash": "sha256-74ZPvCEmT5JatN227aSBOnORAtW3RWcMjjAkeiHp8UE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "05a56dbf24f195c62286e3273a2671d3b4904b00",
+        "rev": "df7bac2b2bdbaae8f9100be4e4cd21c7155611e9",
         "type": "github"
       },
       "original": {
