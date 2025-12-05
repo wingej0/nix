@@ -57,9 +57,9 @@ let
 
       # Desktop environment
       # desktops.gnome
-      desktops.qtile
+      # desktops.qtile
       # desktops.cosmic
-      # desktops.xfce
+      desktops.xfce
       # desktops.cinnamon
     ];
   };

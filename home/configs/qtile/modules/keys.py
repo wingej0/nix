@@ -145,10 +145,6 @@ for i in groups:
     keys.extend([
         Key([mod], i.name, lazy.group[i.name].toscreen(),
             desc="Mod + number to move to that group."),
-        Key(["mod1"], "Tab", lazy.screen.next_group(),
-            desc="Move to next group."),
-        Key(["mod1", "shift"], "Tab", lazy.screen.prev_group(),
-            desc="Move to previous group."),
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
             desc="Move focused window to new group."),
     ])
@@ -172,6 +168,11 @@ mouse = [
 
 # Application keybindings
 keys.extend([
+    # Scroll through groups
+    Key(["mod1"], "Tab", lazy.screen.next_group(),
+        desc="Move to next group."),
+    Key(["mod1", "shift"], "Tab", lazy.screen.prev_group(),
+        desc="Move to previous group."),
     Key([mod, "shift"], "Return", lazy.spawn("thunar"),
             desc="Launch file browser"),
     Key([mod], "Space", lazy.spawn("rofi -show drun"),
