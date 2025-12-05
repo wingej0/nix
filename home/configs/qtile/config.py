@@ -2,7 +2,7 @@ import os
 
 from modules.get_theme import colors
 from modules.groups import groups
-from modules.hooks import *
+# from modules.hooks import *
 from modules.keys import keys, mod
 from modules.layouts import layouts, floating_layout
 from modules.screens import screens

@@ -121,5 +121,69 @@
             name = "Bibata-Modern-Classic";
             size = 24;
         };
+
+        # Systemd user services for autostart
+        systemd.user.services = {
+            polkit-gnome = {
+                Unit = {
+                    Description = "PolicyKit Authentication Agent";
+                    After = [ "graphical-session.target" ];
+                    PartOf = [ "graphical-session.target" ];
+                };
+                Service = {
+                    Type = "simple";
+                    ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+                    Restart = "on-failure";
+                    RestartSec = 1;
+                };
+                Install.WantedBy = [ "graphical-session.target" ];
+            };
+
+            system76-power-daemon = {
+                Unit = {
+                    Description = "System76 Power Management Daemon";
+                    After = [ "graphical-session.target" ];
+                    PartOf = [ "graphical-session.target" ];
+                };
+                Service = {
+                    Type = "simple";
+                    ExecStart = "${pkgs.system76-power}/bin/system76-power daemon";
+                    Restart = "on-failure";
+                };
+                Install.WantedBy = [ "graphical-session.target" ];
+            };
+
+            variety = {
+                Unit = {
+                    Description = "Variety Wallpaper Manager";
+                    After = [ "graphical-session.target" ];
+                    PartOf = [ "graphical-session.target" ];
+                };
+                Service = {
+                    Type = "simple";
+                    ExecStartPre = "${pkgs.coreutils}/bin/cp ${config.users.users.${username}.home}/.dotfiles/home/configs/qtile/scripts/variety-wayland.sh ${config.users.users.${username}.home}/.config/variety/scripts/set_wallpaper";
+                    ExecStart = "${pkgs.variety}/bin/variety";
+                    Restart = "on-failure";
+                };
+                Install.WantedBy = [ "graphical-session.target" ];
+            };
+        };
+
+        # Home Manager services
+        services = {
+            dunst.enable = true;
+
+            swayidle = {
+                enable = true;
+                timeouts = [
+                    { timeout = 600; command = "${pkgs.swaylock-effects}/bin/swaylock -f"; }
+                ];
+            };
+
+            cliphist = {
+                enable = true;
+                systemdTarget = "graphical-session.target";
+            };
+        };
     };
 }
