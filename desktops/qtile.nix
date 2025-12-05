@@ -62,8 +62,7 @@
         brightnessctl
         xwayland
         nwg-look
-        libadwaita
-        gtk4
+        gnome-desktop
     ];
 
     programs.xwayland.enable = true;
