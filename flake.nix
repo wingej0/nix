@@ -37,7 +37,7 @@
     qtile-extras-flake = {
       url = "github:elparaguayo/qtile-extras";
       flake = false;
-    # };
+    };
   };
 
   outputs = { nixpkgs, ... } @ inputs: 
