@@ -40,7 +40,7 @@
         xdg-desktop-portal-gtk
 
         # File Manager
-        pcmanfm
+        xfce.thunar
 
         # Wayland Programs
         rofi
@@ -98,6 +98,7 @@
                 # wallust template files
                 ".cache/qtile"
                 ".cache/rofi"
+                ".cache/wlogout"
 
                 # XFCE
                 ".config/xfce4/xfconf"
@@ -113,6 +114,7 @@
             ".config/rofi".source = ./../home/configs/rofi;
             ".config/swappy".source = ./../home/configs/swappy;
             ".config/swaylock".source = ./../home/configs/swaylock;
+            ".config/wlogout".source = ./../home/configs/wlogout;
         };
         home.pointerCursor = {
             gtk.enable = true;
@@ -167,6 +169,35 @@
                 };
                 Install.WantedBy = [ "graphical-session.target" ];
             };
+
+            cliphist-text = {
+                Unit = {
+                    Description = "Clipboard history daemon (text)";
+                    After = [ "graphical-session.target" ];
+                    PartOf = [ "graphical-session.target" ];
+                };
+                Service = {
+                    Type = "simple";
+                    ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store";
+                    Restart = "on-failure";
+                };
+                Install.WantedBy = [ "graphical-session.target" ];
+            };
+
+            cliphist-image = {
+                Unit = {
+                    Description = "Clipboard history daemon (images)";
+                    After = [ "graphical-session.target" ];
+                    PartOf = [ "graphical-session.target" ];
+                };
+                Service = {
+                    Type = "simple";
+                    ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store";
+                    Restart = "on-failure";
+                };
+                Install.WantedBy = [ "graphical-session.target" ];
+            };
+
         };
 
         # Home Manager services
@@ -175,14 +206,12 @@
 
             swayidle = {
                 enable = true;
+                events = {
+                    before-sleep = "${pkgs.swaylock-effects}/bin/swaylock -f";
+                };
                 timeouts = [
                     { timeout = 600; command = "${pkgs.swaylock-effects}/bin/swaylock -f"; }
                 ];
-            };
-
-            cliphist = {
-                enable = true;
-                systemdTarget = "graphical-session.target";
             };
         };
     };
