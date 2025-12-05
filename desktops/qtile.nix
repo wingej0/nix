@@ -3,7 +3,7 @@
     # Enable the X11 windowing system.
     services.xserver.enable = true;
 
-    # services.displayManager.sddm.enable = true;
+    services.displayManager.sddm.enable = true;
     # services.xserver.windowManager.qtile = {
     #     enable = true;
     #     extraPackages = python3Packages: with python3Packages; [
