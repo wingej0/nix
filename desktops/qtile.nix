@@ -40,7 +40,7 @@
         xdg-desktop-portal-gtk
 
         # File Manager
-        nautilus
+        pcmanfm
 
         # Wayland Programs
         rofi
@@ -62,7 +62,6 @@
         brightnessctl
         xwayland
         nwg-look
-        gnome-desktop
     ];
 
     programs.xwayland.enable = true;

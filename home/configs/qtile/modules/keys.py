@@ -227,7 +227,7 @@ if qtile.core.name == "x11":
 # Add Wayland-specific keybindings
 elif qtile.core.name == "wayland":
     keys.extend([
-        Key([mod, "shift"], "Return", lazy.spawn("nautilus"),
+        Key([mod, "shift"], "Return", lazy.spawn("pcmanfm"),
             desc="Launch file browser"),
         Key([mod, "shift"], "r", lazy.reload_config(),
             desc="Reload Qtile config"),
