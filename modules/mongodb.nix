@@ -14,7 +14,6 @@
   };
 
   environment.persistence."/persist" = {
-        
         directories = [
             "/var/db"
         ];
