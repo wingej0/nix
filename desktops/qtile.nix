@@ -3,7 +3,9 @@
     # Enable the X11 windowing system.
     services.xserver.enable = true;
 
-    services.displayManager.sddm.enable = true;
+    services.displayManager.sddm = {
+        enable = true;
+    };
     # services.xserver.windowManager.qtile = {
     #     enable = true;
     #     extraPackages = python3Packages: with python3Packages; [
@@ -62,6 +64,7 @@
         brightnessctl
         xwayland
         nwg-look
+        wtype
     ];
 
     programs.xwayland.enable = true;
@@ -92,11 +95,38 @@
         };
     };
 
+    # Swayidle for screen locking and idle management
+    systemd.user.services.swayidle = {
+        description = "Idle manager for Wayland";
+        documentation = [ "man:swayidle(1)" ];
+        wantedBy = [ "graphical-session.target" ];
+        after = [ "graphical-session.target" ];
+        serviceConfig = {
+            Type = "simple";
+            ExecStart = ''
+                ${pkgs.swayidle}/bin/swayidle -w \
+                    timeout 600 '${pkgs.swaylock-effects}/bin/swaylock -f' \
+                    before-sleep '${pkgs.swaylock-effects}/bin/swaylock -f'
+            '';
+            Restart = "on-failure";
+            RestartSec = 3;
+        };
+    };
+
     services.gnome.gnome-keyring.enable = true;
     security.pam.services.sddm.enableGnomeKeyring = true;
 
     # Enable pam for swaylock, so it will actually unlock
     security.pam.services.swaylock = {};
+
+    # Lid close handling - suspend when lid is closed
+    services.logind.settings.Login = {
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchExternalPower = "suspend";
+        HandleLidSwitchDocked = "ignore";
+        HandlePowerKey = "suspend";
+        IdleAction = "ignore";
+    };
 
     environment.sessionVariables = {
         NIXOS_OZONE_WL = "1";

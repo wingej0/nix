@@ -1,3 +1,5 @@
+import os
+
 from libqtile import qtile
 from libqtile.config import Click, Drag, Key
 from libqtile.lazy import lazy
@@ -220,10 +222,8 @@ if qtile.core.name == "x11":
             desc="Restart Qtile"),
         Key([mod], "Escape", lazy.spawn("xflock4"),
             desc="Lock screen"),
-        Key([mod], "v", lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/greenclip.sh"),
+        Key([mod], "v", lazy.spawn(f"{os.path.expanduser('~')}/.dotfiles/home/configs/qtile/scripts/greenclip.sh"),
             desc="Clipboard Manager"),
-        Key([], "XF86TouchpadToggle", lazy.spawn("/home/wingej0/dotfiles/scripts/touchpad-toggle.sh"),
-            desc="Toggle Touchpad"),
     ])
 # Add Wayland-specific keybindings
 elif qtile.core.name == "wayland":
@@ -234,9 +234,9 @@ elif qtile.core.name == "wayland":
             desc="Lock screen"),
         Key(["control", "mod1"], "delete", lazy.spawn("wlogout"),
             desc="Launch powermenu"),
-        Key([mod], "v", lazy.spawn("/home/wingej0/.dotfiles/configs/qtile/scripts/clipboard.sh"),
+        Key([mod], "v", lazy.spawn(f"{os.path.expanduser('~')}/.dotfiles/home/configs/qtile/scripts/clipboard.sh"),
             desc="Clipboard Manager"),
-        Key([mod], "print", lazy.spawn("/home/wingej0/.dotfiles/configs/qtile/scripts/gif-recorder.sh"),
+        Key([mod], "print", lazy.spawn(f"{os.path.expanduser('~')}/.dotfiles/home/configs/qtile/scripts/gif-recorder.sh"),
             desc="Gif Recorder")
     ])
 

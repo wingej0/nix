@@ -47,9 +47,6 @@ let
       ./../modules/office.nix
       ./../modules/flatpak.nix
       ./../modules/ai.nix
-
-      # Services
-      ./../modules/cosmic-bg.nix
     ];
 
     nix-vm = [

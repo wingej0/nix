@@ -1,6 +1,8 @@
 { config, lib, pkgs, username, inputs, ... }:
 {
-    imports = [];
+    imports = [
+        ./../modules/cosmic-bg.nix
+    ];
     
     # Enable xserver
     services.xserver.enable = true;
@@ -21,6 +23,7 @@
         # cosmic
         cosmic-ext-tweaks
         inputs.cosmic-applets-collection.packages."${pkgs.system}".default
+        wl-clipboard
     ];
 
     # Persistence

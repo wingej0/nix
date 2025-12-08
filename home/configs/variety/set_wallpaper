@@ -43,7 +43,7 @@ wallust run $WP
 cp $WP ~/Pictures/current_wallpaper.jpg
 
 # Set wallpaper in qtile
-qtile cmd-obj -o cmd -f restart
+qtile cmd-obj -o cmd -f reload_config
 
 detect_desktop() {
     if [ -n "$XDG_CURRENT_DESKTOP" ]; then

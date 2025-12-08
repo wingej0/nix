@@ -30,7 +30,7 @@ focus_on_window_activation = "smart"
 reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing
-# focus, should we respect this or not?from libqtile.backend.wayland import InputConfig
+# focus, should we respect this or not?
 auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.

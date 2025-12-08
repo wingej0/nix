@@ -17,6 +17,10 @@
   # Kernel
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # Hibernation configuration
+  boot.resumeDevice = "/dev/disk/by-uuid/d37128be-6d28-497f-a491-f2d40f9b2372";
+  boot.kernelParams = [ "resume=/dev/disk/by-uuid/d37128be-6d28-497f-a491-f2d40f9b2372" ];
+
   # Networking
   networking.hostName = "darter-pro";
   networking.networkmanager.enable = true;
