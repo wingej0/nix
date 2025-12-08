@@ -31,6 +31,10 @@
         };
     };
 
+    systemd.services.gnome-remote-desktop = {
+      wantedBy = [ "graphical.target" ];
+    };
+
     home-manager.users.${username} = {
 
         dconf = {
