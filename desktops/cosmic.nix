@@ -23,7 +23,6 @@
         # cosmic
         cosmic-ext-tweaks
         inputs.cosmic-applets-collection.packages."${pkgs.system}".default
-        wl-clipboard
     ];
 
     # Persistence
