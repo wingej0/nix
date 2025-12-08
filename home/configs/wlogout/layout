@@ -6,7 +6,7 @@
 }
 {
     "label" : "hibernate",
-    "action" : "sleep 1; systemctl hibernate; swaylock",
+    "action" : "sleep 1; systemctl hibernate",
     "text" : "Hibernate",
     "keybind" : "h"
 }
