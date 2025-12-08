@@ -15,7 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Kernel
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Hibernation configuration
   boot.resumeDevice = "/dev/disk/by-uuid/d37128be-6d28-497f-a491-f2d40f9b2372";

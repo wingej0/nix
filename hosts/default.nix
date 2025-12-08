@@ -47,6 +47,7 @@ let
       ./../modules/office.nix
       ./../modules/flatpak.nix
       ./../modules/ai.nix
+      ./../modules/mongodb.nix
     ];
 
     nix-vm = [
