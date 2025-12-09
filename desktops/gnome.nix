@@ -33,6 +33,7 @@
 
         gnome-calculator
         gnome-remote-desktop  # Provides grdctl CLI tool
+        openssl  # Required for generating RDP TLS certificates
     ];
 
     # Persistence
