@@ -247,6 +247,8 @@
                     enable = true;
                     view-only = false;
                     screen-share-mode = "mirror";
+                    tls-cert = "\${HOME}/.local/share/gnome-remote-desktop/rdp-tls.crt";
+                    tls-key = "\${HOME}/.local/share/gnome-remote-desktop/rdp-tls.key";
                 };
             };
         };
