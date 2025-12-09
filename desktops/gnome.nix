@@ -28,14 +28,30 @@
             files = [
                 ".config/gnome-initial-setup-done"
             ];
+            directories = [
+                ".local/share/gnome-remote-desktop"
+            ];
         };
     };
 
-    systemd.services.gnome-remote-desktop = {
-      wantedBy = [ "graphical.target" ];
-    };
-
     home-manager.users.${username} = {
+
+        # Enable gnome-remote-desktop using the official systemd service
+        systemd.user.services.gnome-remote-desktop = {
+            Unit = {
+                Description = "GNOME Remote Desktop";
+                After = [ "graphical-session.target" ];
+            };
+            Service = {
+                Type = "dbus";
+                BusName = "org.gnome.RemoteDesktop.User";
+                ExecStart = "${pkgs.gnome-remote-desktop}/libexec/gnome-remote-desktop-daemon";
+                Restart = "on-failure";
+            };
+            Install = {
+                WantedBy = [ "gnome-session.target" ];
+            };
+        };
 
         dconf = {
             enable = true;
@@ -224,6 +240,12 @@
                     maximize-with-gap = true;
                     dynamic-keybinding-behavior = 2;
                     tile-edit-mode = ["<Super>g"];
+                };
+
+                "org/gnome/desktop/remote-desktop/rdp" = {
+                    enable = true;
+                    view-only = false;
+                    screen-share-mode = "extend";
                 };
             };
         };
