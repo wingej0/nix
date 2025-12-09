@@ -3,6 +3,9 @@
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
 
+    # Enable GNOME Remote Desktop service
+    services.gnome.gnome-remote-desktop.enable = true;
+
     services.blueman.enable = true;
 
     environment.systemPackages = with pkgs; [
@@ -19,7 +22,6 @@
         gnomeExtensions.gnordvpn-local
 
         gnome-calculator
-        gnome-remote-desktop
     ];
 
     # Persistence
@@ -35,23 +37,6 @@
     };
 
     home-manager.users.${username} = {
-
-        # Enable gnome-remote-desktop using the official systemd service
-        systemd.user.services.gnome-remote-desktop = {
-            Unit = {
-                Description = "GNOME Remote Desktop";
-                After = [ "graphical-session.target" ];
-            };
-            Service = {
-                Type = "dbus";
-                BusName = "org.gnome.RemoteDesktop.User";
-                ExecStart = "${pkgs.gnome-remote-desktop}/libexec/gnome-remote-desktop-daemon";
-                Restart = "on-failure";
-            };
-            Install = {
-                WantedBy = [ "gnome-session.target" ];
-            };
-        };
 
         dconf = {
             enable = true;
@@ -245,7 +230,7 @@
                 "org/gnome/desktop/remote-desktop/rdp" = {
                     enable = true;
                     view-only = false;
-                    screen-share-mode = "extend";
+                    screen-share-mode = "mirror";
                 };
             };
         };
