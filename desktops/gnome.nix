@@ -20,6 +20,7 @@
 
         gnome-calculator
         gnome-remote-desktop
+	openssl
     ];
 
     # Persistence
