@@ -6,6 +6,16 @@
     # Enable GNOME Remote Desktop service
     services.gnome.gnome-remote-desktop.enable = true;
 
+    # Enable the systemd user service (workaround for GNOME 47 bug)
+    systemd.user.services.gnome-remote-desktop = {
+        wantedBy = [ "default.target" ];
+        unitConfig.ConditionUser = "!@system";
+    };
+
+    # Open firewall for RDP
+    networking.firewall.allowedTCPPorts = [ 3389 ];
+    networking.firewall.allowedUDPPorts = [ 3389 ];
+
     services.blueman.enable = true;
 
     environment.systemPackages = with pkgs; [
@@ -22,6 +32,7 @@
         gnomeExtensions.gnordvpn-local
 
         gnome-calculator
+        gnome-remote-desktop  # Provides grdctl CLI tool
     ];
 
     # Persistence
@@ -31,7 +42,7 @@
                 ".config/gnome-initial-setup-done"
             ];
             directories = [
-                ".local/share/gnome-remote-desktop"
+                ".local/share/gnome-remote-desktop"  # Stores credentials and TLS certs
             ];
         };
     };
