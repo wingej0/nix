@@ -74,6 +74,12 @@
       options = [ "subvol=videos" "compress=zstd" ];
     };
 
+  fileSystems."/var/lib/immich" =
+    { device = "/dev/disk/by-label/vault";
+      fsType = "btrfs";
+      options = [ "subvol=immich" "compress=zstd" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-label/swap"; }
     ];

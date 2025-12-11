@@ -8,6 +8,8 @@ let
     ./../modules/packages.nix
     ./../modules/fonts.nix
     ./../modules/shells.nix
+    ./../modules/ssh.nix
+    ./../modules/mdns.nix
     ./../modules/virtualization.nix
     ./../modules/browsers.nix
     ./../modules/communication.nix
@@ -49,6 +51,7 @@ let
       ./../modules/ai.nix
       ./../modules/mongodb.nix
       ./../modules/n8n.nix
+      ./../modules/immich.nix
     ];
 
     nix-vm = [
