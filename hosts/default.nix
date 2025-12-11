@@ -32,12 +32,12 @@ let
       ./darter-pro/configuration.nix
 
       # Desktop environment
-      # desktops.gnome
+      desktops.gnome
       # desktops.plasma
       # desktops.cosmic
       # desktops.xfce
       # desktops.cinnamon
-      desktops.qtile
+      # desktops.qtile
 
       # System76 drivers
       ./../modules/system76.nix

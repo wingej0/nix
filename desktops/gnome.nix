@@ -20,7 +20,7 @@
 
         gnome-calculator
         gnome-remote-desktop
-	openssl
+	    openssl
     ];
 
     # Persistence
@@ -108,10 +108,6 @@
                     dynamic-workspaces = true;
                     workspaces-only-on-primary = true;
                 };
-
-                # "org/gnome/desktop/wm/preferences" = {
-                #     num-workspaces = 12;
-                # };
 
                 "org/gnome/shell/extensions/user-theme" = {
                     name = "Orchis";
