@@ -16,4 +16,7 @@
       deny-interfaces=virbr0,docker0
     '';
   };
+
+  # Open mDNS port in firewall
+  networking.firewall.allowedUDPPorts = [ 5353 ];
 }

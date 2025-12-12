@@ -5,6 +5,10 @@
 
     services.blueman.enable = true;
 
+    # Open RDP ports for GNOME Remote Desktop
+    networking.firewall.allowedTCPPorts = [ 3389 ];
+    networking.firewall.allowedUDPPorts = [ 3389 ];
+
     environment.systemPackages = with pkgs; [
         # Gnome extensions
         pkgs.gnome-tweaks

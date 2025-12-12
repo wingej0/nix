@@ -34,9 +34,9 @@ let
       ./darter-pro/configuration.nix
 
       # Desktop environment
-      desktops.gnome
+      # desktops.gnome
       # desktops.plasma
-      # desktops.cosmic
+      desktops.cosmic
       # desktops.xfce
       # desktops.cinnamon
       # desktops.qtile

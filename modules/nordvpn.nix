@@ -14,4 +14,12 @@
 
   # Enable the service
   services.nordvpn.enable = true;
+
+  # Enable WireGuard for NordVPN
+  networking.wireguard.enable = true;
+
+  # Configure firewall for NordVPN
+  networking.firewall.checkReversePath = false; # Required for NordVPN to work properly
+  networking.firewall.allowedTCPPorts = [ 443 ]; # NordVPN alternative connection method
+  networking.firewall.allowedUDPPorts = [ 1194 ]; # OpenVPN port
 }
