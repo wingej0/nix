@@ -465,6 +465,85 @@ detect_swap_uuid() {
 }
 
 # ============================================================================
+# HARDWARE CONFIGURATION FIXING
+# ============================================================================
+
+fix_hardware_configuration() {
+    local hw_config="$1"
+
+    log_info "Automatically fixing hardware-configuration.nix..."
+
+    # Create backup
+    cp "$hw_config" "${hw_config}.bak"
+
+    # Get the actual UUIDs/labels from the system
+    local nixos_uuid=$(blkid -L nixos -s UUID -o value 2>/dev/null)
+    local boot_uuid=$(blkid -L boot -s UUID -o value 2>/dev/null)
+    local swap_uuid=$(blkid -L swap -s UUID -o value 2>/dev/null)
+
+    if [[ -z "$nixos_uuid" ]] || [[ -z "$boot_uuid" ]]; then
+        log_error "Could not detect disk labels. Make sure you used labels when formatting."
+        return 1
+    fi
+
+    # Fix root filesystem
+    if grep -q "fileSystems.\"/\"" "$hw_config"; then
+        # Replace the entire root filesystem block
+        sed -i '/fileSystems."\/"/,/};/{
+            s|device = "/dev/disk/by-uuid/[^"]*"|device = "/dev/disk/by-label/nixos"|
+            s|options = \[ [^]]*\]|options = [ "subvol=root" "compress=zstd" ]|
+        }' "$hw_config"
+        log_success "Fixed root (/) mount"
+    fi
+
+    # Fix persist filesystem - need to add neededForBoot
+    if grep -q "fileSystems.\"/persist\"" "$hw_config"; then
+        # Replace device and add neededForBoot
+        sed -i '/fileSystems."\/persist"/,/};/{
+            s|device = "/dev/disk/by-uuid/[^"]*"|device = "/dev/disk/by-label/nixos"|
+            /device = .*nixos/a\    neededForBoot = true;
+            s|options = \[ [^]]*\]|options = [ "subvol=persist" "compress=zstd" ]|
+        }' "$hw_config"
+
+        # Remove duplicate neededForBoot if any
+        awk '!seen[$0]++ || !/neededForBoot/' "$hw_config" > "${hw_config}.tmp"
+        mv "${hw_config}.tmp" "$hw_config"
+
+        log_success "Fixed /persist mount (added neededForBoot)"
+    fi
+
+    # Fix nix filesystem
+    if grep -q "fileSystems.\"/nix\"" "$hw_config"; then
+        sed -i '/fileSystems."\/nix"/,/};/{
+            s|device = "/dev/disk/by-uuid/[^"]*"|device = "/dev/disk/by-label/nixos"|
+            s|options = \[ [^]]*\]|options = [ "subvol=nix" "compress=zstd" "noatime" ]|
+        }' "$hw_config"
+        log_success "Fixed /nix mount"
+    fi
+
+    # Fix boot filesystem
+    if grep -q "fileSystems.\"/boot\"" "$hw_config"; then
+        sed -i '/fileSystems."\/boot"/,/};/{
+            s|device = "/dev/disk/by-uuid/[^"]*"|device = "/dev/disk/by-label/boot"|
+        }' "$hw_config"
+        log_success "Fixed /boot mount"
+    fi
+
+    # Fix swap
+    if grep -q "swapDevices" "$hw_config"; then
+        sed -i '/swapDevices/,/\];/{
+            s|device = "/dev/disk/by-uuid/[^"]*"|device = "/dev/disk/by-label/swap"|
+        }' "$hw_config"
+        log_success "Fixed swap device"
+    fi
+
+    log_success "Hardware configuration automatically fixed!"
+    log_info "Original saved as ${hw_config}.bak"
+
+    return 0
+}
+
+# ============================================================================
 # CONFIGURATION FILE GENERATION
 # ============================================================================
 
@@ -722,10 +801,17 @@ generate_host_configuration() {
         if nixos-generate-config --root /mnt --dir "$host_dir"; then
             log_success "Generated hardware-configuration.nix"
 
+            # Automatically fix the hardware configuration
+            if ! fix_hardware_configuration "${host_dir}/hardware-configuration.nix"; then
+                log_error "Failed to automatically fix hardware-configuration.nix"
+                log_info "You may need to manually edit it"
+                return 1
+            fi
+
             # Validate
             if ! validate_btrfs_mounts "${host_dir}/hardware-configuration.nix"; then
-                log_error "You must fix hardware-configuration.nix before proceeding"
-                log_info "See README.md for correct mount options"
+                log_error "Hardware configuration validation failed after automatic fixes"
+                log_info "Please check ${host_dir}/hardware-configuration.nix manually"
                 return 1
             fi
         else
