@@ -41,8 +41,8 @@ mount /dev/disk/by-label/boot /mnt/boot
 
 ```bash
 nix-shell -p git
-cd /mnt
-git clone https://github.com/yourusername/dotfiles .dotfiles
+cd /mnt/persist
+git clone https://github.com/wingej0/nix .dotfiles
 cd .dotfiles
 ```
 
