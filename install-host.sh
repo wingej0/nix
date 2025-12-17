@@ -331,7 +331,11 @@ gather_host_info() {
     STATE_VERSION=$(prompt_with_default "Enter NixOS state version" "25.05")
 
     echo ""
-    ENABLE_HIBERNATION=$(prompt_yes_no "Enable hibernation support?" "n")
+    if prompt_yes_no "Enable hibernation support?" "n"; then
+        ENABLE_HIBERNATION="true"
+    else
+        ENABLE_HIBERNATION="false"
+    fi
 }
 
 # ============================================================================
