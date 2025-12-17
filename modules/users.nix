@@ -7,11 +7,6 @@ let
       hashedPasswordFile = "/persist/password_hash";
       extraGroups = [ "wheel" "nordvpn" "libvirtd" ];
     };
-    ow = {
-      description = "Owen Winget";
-      hashedPasswordFile = "/persist/ow_password_hash";
-      extraGroups = [ "wheel" ];
-    };
   };
 
   # Get the current user's config
