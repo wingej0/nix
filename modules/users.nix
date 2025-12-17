@@ -1,14 +1,32 @@
 { config, inputs, username, hostname, ... }:
+let
+  # User configuration mapping
+  userConfigs = {
+    wingej0 = {
+      description = "Jeff Winget";
+      hashedPasswordFile = "/persist/password_hash";
+      extraGroups = [ "wheel" "nordvpn" "libvirtd" ];
+    };
+    ow = {
+      description = "Owen Winget";
+      hashedPasswordFile = "/persist/ow_password_hash";
+      extraGroups = [ "wheel" ];
+    };
+  };
+
+  # Get the current user's config
+  userConfig = userConfigs.${username};
+in
 {
-    imports = [ 
+    imports = [
         inputs.home-manager.nixosModules.home-manager
     ];
 
     users.users.${username} = {
         isNormalUser = true;
-        description = "Jeff Winget";
-        hashedPasswordFile = "/persist/password_hash";        
-        extraGroups = [ "wheel" "nordvpn" "libvirtd" ]; # Enable 'sudo' for the user.   
+        description = userConfig.description;
+        hashedPasswordFile = userConfig.hashedPasswordFile;
+        extraGroups = userConfig.extraGroups;
     };
     
 
