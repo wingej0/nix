@@ -251,10 +251,12 @@ prompt_selection() {
     shift
     local options=("$@")
 
-    echo -e "${BLUE}${prompt}${NC}"
+    echo "" >&2
+    echo -e "${BLUE}${prompt}${NC}" >&2
     for i in "${!options[@]}"; do
-        echo "  $((i+1))) ${options[$i]}"
+        echo "  $((i+1))) ${options[$i]}" >&2
     done
+    echo "" >&2
 
     local selection
     while true; do
