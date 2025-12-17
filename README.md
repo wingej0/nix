@@ -1,8 +1,8 @@
 # NixOS Configuration with Impermanence
 
-## Installation with Impermanence
+## Automated Installation (Recommended)
 
-### Partition and Format Drives
+### 1. Partition and Format Drives
 
 Use cfdisk to create three partitions (swap can be any size):
 - 512MB - EFI System Partition
@@ -25,9 +25,9 @@ btrfs subvolume create /mnt/nix
 umount /mnt
 ```
 
-### Mount Drives
+### 2. Mount Drives
 
-Run the following commands to mount the drives using drive labels.
+Run the following commands to mount the drives using drive labels:
 
 ```bash
 mount -o compress=zstd,subvol=root /dev/disk/by-label/nixos /mnt
@@ -37,14 +37,101 @@ mount -o compress=zstd,noatime,subvol=nix /dev/disk/by-label/nixos /mnt/nix
 mount /dev/disk/by-label/boot /mnt/boot
 ```
 
-### Generate Config, Add Mount Options, and Install NixOS
+### 3. Clone Dotfiles Repository
+
+```bash
+nix-shell -p git
+cd /mnt
+git clone https://github.com/yourusername/dotfiles .dotfiles
+cd .dotfiles
+```
+
+### 4. Run the Install Script
+
+```bash
+./install-host.sh
+```
+
+The script will:
+- Validate your installation environment (btrfs mounts, required commands)
+- Interactively prompt for:
+  - Hostname
+  - Username
+  - Desktop environment (qtile, gnome, plasma, cosmic, xfce, cinnamon)
+  - Optional modules (system76, nordvpn, office, flatpak, ai, mongodb, n8n, immich)
+  - System settings (timezone, locale, kernel)
+  - Hibernation support
+- **Check if user exists** in `modules/users.nix`
+  - If not found, automatically add the user by prompting for:
+    - Full name
+    - Password hash file location
+    - Group memberships (wheel, nordvpn, libvirtd)
+- Generate hardware-configuration.nix with `nixos-generate-config`
+- **Automatically fix** hardware-configuration.nix with correct:
+  - Disk labels instead of UUIDs
+  - Btrfs mount options and subvolumes
+  - `neededForBoot = true` for /persist
+  - `noatime` for /nix
+- Generate configuration.nix with your settings
+- Create password hash in `/mnt/persist/password_hash` (or custom location for new users)
+- Display the configuration snippets you need to add manually
+
+### 5. Manual Configuration Steps
+
+After the script completes, you need to manually add the generated entries to two files:
+
+**Edit `hosts/default.nix`:**
+```bash
+vim hosts/default.nix
+```
+Add the entry shown by the script inside the `hostConfigs = {` section.
+
+**Edit `flake.nix`:**
+```bash
+vim flake.nix
+```
+Add the entry shown by the script inside the `nixosConfigurations = {` section.
+
+### 6. Validate Configuration
+
+```bash
+nix flake check
+nix eval .#nixosConfigurations.<hostname>.config.networking.hostName
+```
+
+### 7. Install NixOS
+
+```bash
+nixos-install --flake .#<hostname>
+# Set root password when prompted (will be lost after first boot due to impermanence)
+```
+
+### 8. Reboot
+
+```bash
+reboot
+```
+
+Your user password will be the one you set during the script's password hash creation step.
+
+---
+
+## Manual Installation (Advanced)
+
+If you prefer to set up the configuration manually or need to understand the process:
+
+### 1-2. Partition, Format, and Mount Drives
+
+Follow steps 1-2 from the automated installation above.
+
+### 3. Generate Hardware Configuration
 
 ```bash
 nixos-generate-config --root /mnt
 vim /mnt/etc/nixos/hardware-configuration.nix
 ```
 
-Add mount options to newly created partitions in the hardware-configuration and change mounts to labels.  See example:
+Add mount options to newly created partitions in the hardware-configuration and change mounts to labels:
 
 ```nix
 fileSystems."/" =
@@ -55,7 +142,7 @@ fileSystems."/" =
 
 fileSystems."/persist" =
     { device = "/dev/disk/by-label/nixos";
-        neededForBoot = true;  # This line is important!
+        neededForBoot = true;  # This line is critical for impermanence!
         fsType = "btrfs";
         options = [ "subvol=persist" "compress=zstd" ];
     };
@@ -77,27 +164,54 @@ swapDevices =
     ];
 ```
 
-After adding the mount points, edit configuration.nix to enable a user, add a text editor, and install git.  See installation documentation if needed.
+### 4. Add User to Configuration
+
+If your username doesn't exist in `modules/users.nix`, add it to the `userConfigs` attribute set:
+
+```bash
+vim modules/users.nix
+```
+
+Example user entry:
+```nix
+userConfigs = {
+  youruser = {
+    description = "Your Full Name";
+    hashedPasswordFile = "/persist/youruser_password_hash";
+    extraGroups = [ "wheel" "nordvpn" "libvirtd" ];
+  };
+  # ... other users
+};
+```
+
+### 5. Create Password Hash
+
+Create a password hash file matching the path in users.nix. Without this, your user credentials will be lost on reboot.
+
+```bash
+mkpasswd -m sha-512 <password> > /mnt/persist/youruser_password_hash
+chmod 600 /mnt/persist/youruser_password_hash
+```
+
+### 6. Configure Basic System (Optional)
+
+If needed, edit configuration.nix to add additional packages or settings:
 
 ```bash
 vim /mnt/etc/nixos/configuration.nix
 ```
 
-Install NixOS.
+### 7. Install NixOS
 
 ```bash
 nixos-install
-# Set root password - However, this will go away with impermanence
-# Set user password for initial login
-nixos-enter --root /mnt -c 'passwd <username>'
+# Set root password (will be lost after first boot due to impermanence)
 ```
 
-Reboot
-
-## Persist the User
-
-Create a file in /persist called password_hash, and paste the output of this command in it.  Without this, as soon as you activate impermanence and reboot, your user credentials will be gone.
+### 8. Reboot
 
 ```bash
-mkpasswd -m sha-512 <password> 
+reboot
 ```
+
+Your user password will be read from the password hash file you created in step 5.

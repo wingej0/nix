@@ -23,6 +23,7 @@ readonly NC='\033[0m' # No Color
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOTFILES_ROOT="$SCRIPT_DIR"
 DRY_RUN=0
+PASSWORD_HASH_FILE=""  # Set by add_user_to_config if user is added
 
 # ============================================================================
 # LOGGING FUNCTIONS
@@ -140,6 +141,99 @@ check_hostname_conflict() {
         log_error "Hostname '${hostname}' already exists in flake.nix"
         return 1
     fi
+
+    return 0
+}
+
+check_user_in_config() {
+    local username="$1"
+    local users_nix="${DOTFILES_ROOT}/modules/users.nix"
+
+    if [[ ! -f "$users_nix" ]]; then
+        log_error "Cannot find users.nix at $users_nix"
+        return 1
+    fi
+
+    # Check if username exists in userConfigs
+    if grep -A 100 "userConfigs = {" "$users_nix" | grep -q "^[[:space:]]*${username}[[:space:]]*="; then
+        log_success "User '$username' already exists in users.nix"
+        return 0
+    else
+        log_warn "User '$username' does not exist in users.nix"
+        return 1
+    fi
+}
+
+add_user_to_config() {
+    local username="$1"
+    local users_nix="${DOTFILES_ROOT}/modules/users.nix"
+
+    log_section "Adding User to Configuration"
+
+    # Get user details
+    local full_name
+    full_name=$(prompt_with_default "Enter full name for $username" "$username")
+
+    # Get password hash file location
+    local hash_file
+    hash_file=$(prompt_with_default "Password hash file path" "/persist/${username}_password_hash")
+
+    # Ask about extra groups
+    log_info "User groups (wheel is required for sudo access):"
+    local groups=("wheel")
+
+    if prompt_yes_no "Add nordvpn group access?" "n"; then
+        groups+=("nordvpn")
+    fi
+
+    if prompt_yes_no "Add libvirtd group access (for virtual machines)?" "n"; then
+        groups+=("libvirtd")
+    fi
+
+    # Format groups array for Nix
+    local groups_str="[ "
+    for group in "${groups[@]}"; do
+        groups_str+="\"${group}\" "
+    done
+    groups_str+="]"
+
+    # Create the user entry
+    local user_entry="    ${username} = {
+      description = \"${full_name}\";
+      hashedPasswordFile = \"${hash_file}\";
+      extraGroups = ${groups_str};
+    };"
+
+    if [[ $DRY_RUN -eq 1 ]]; then
+        log_info "[DRY RUN] Would add to users.nix:"
+        echo "$user_entry"
+        return 0
+    fi
+
+    # Create backup
+    cp "$users_nix" "${users_nix}.bak"
+    log_info "Created backup: ${users_nix}.bak"
+
+    # Find the userConfigs section and add the new user
+    # We'll add it before the closing brace of userConfigs
+    awk -v user="$username" -v entry="$user_entry" '
+    /^[[:space:]]*};$/ && in_userconfigs {
+        print entry
+        print $0
+        in_userconfigs=0
+        next
+    }
+    /userConfigs = {/ {
+        in_userconfigs=1
+    }
+    {print}
+    ' "$users_nix" > "${users_nix}.tmp"
+
+    mv "${users_nix}.tmp" "$users_nix"
+    log_success "Added user '$username' to users.nix"
+
+    # Update the password hash file variable
+    PASSWORD_HASH_FILE="$hash_file"
 
     return 0
 }
@@ -289,6 +383,21 @@ gather_host_info() {
         fi
         echo ""
     done
+
+    # Check if user exists in users.nix
+    echo ""
+    if ! check_user_in_config "$USERNAME"; then
+        echo ""
+        if prompt_yes_no "User not found in configuration. Add user to users.nix?" "y"; then
+            if ! add_user_to_config "$USERNAME"; then
+                die "Failed to add user to configuration"
+            fi
+        else
+            log_error "User must be added to modules/users.nix before installation"
+            log_error "Please add the user manually and run this script again"
+            exit 1
+        fi
+    fi
 
     echo ""
     # Desktop environment
@@ -685,7 +794,15 @@ EOF
 # ============================================================================
 
 create_password_hash() {
-    local hash_file="/mnt/persist/password_hash"
+    # Use custom hash file if set by add_user_to_config, otherwise default
+    local hash_file
+    if [[ -n "${PASSWORD_HASH_FILE:-}" ]]; then
+        # PASSWORD_HASH_FILE is like "/persist/username_password_hash"
+        # Need to prepend /mnt for live USB context
+        hash_file="/mnt${PASSWORD_HASH_FILE}"
+    else
+        hash_file="/mnt/persist/password_hash"
+    fi
 
     log_section "Password Hash Setup"
 
@@ -701,6 +818,7 @@ create_password_hash() {
     fi
 
     log_info "Creating password hash for user account"
+    log_info "Hash will be saved to: $hash_file"
     log_warn "This password will be used for login after installation"
 
     # Prompt for password twice
