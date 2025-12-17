@@ -419,7 +419,7 @@ gather_host_info() {
         "linuxPackages_zen" "linuxPackages" "linuxPackages_latest")
 
     echo ""
-    STATE_VERSION=$(prompt_with_default "Enter NixOS state version" "25.05")
+    STATE_VERSION=$(prompt_with_default "Enter NixOS state version" "25.11")
 
     echo ""
     if prompt_yes_no "Enable hibernation support?" "n"; then
