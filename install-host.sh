@@ -23,7 +23,11 @@ readonly NC='\033[0m' # No Color
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOTFILES_ROOT="$SCRIPT_DIR"
 DRY_RUN=0
-PASSWORD_HASH_FILE=""  # Set by add_user_to_config if user is added
+PASSWORD_HASH_FILE=""  # Set by collect_user_details if user needs to be added
+USER_NEEDS_ADDING=false  # Track if user entry needs to be manually added
+USER_FULL_NAME=""
+USER_HASH_FILE=""
+USER_GROUPS=()
 
 # ============================================================================
 # LOGGING FUNCTIONS
@@ -164,31 +168,39 @@ check_user_in_config() {
     fi
 }
 
-add_user_to_config() {
+collect_user_details() {
     local username="$1"
-    local users_nix="${DOTFILES_ROOT}/modules/users.nix"
-
-    log_section "Adding User to Configuration"
 
     # Get user details
-    local full_name
-    full_name=$(prompt_with_default "Enter full name for $username" "$username")
+    USER_FULL_NAME=$(prompt_with_default "Enter full name for $username" "$username")
 
     # Get password hash file location
-    local hash_file
-    hash_file=$(prompt_with_default "Password hash file path" "/persist/${username}_password_hash")
+    USER_HASH_FILE=$(prompt_with_default "Password hash file path" "/persist/${username}_password_hash")
 
     # Ask about extra groups
     log_info "User groups (wheel is required for sudo access):"
-    local groups=("wheel")
+    USER_GROUPS=("wheel")
 
     if prompt_yes_no "Add nordvpn group access?" "n"; then
-        groups+=("nordvpn")
+        USER_GROUPS+=("nordvpn")
     fi
 
     if prompt_yes_no "Add libvirtd group access (for virtual machines)?" "n"; then
-        groups+=("libvirtd")
+        USER_GROUPS+=("libvirtd")
     fi
+
+    # Set password hash file for later use
+    PASSWORD_HASH_FILE="$USER_HASH_FILE"
+
+    return 0
+}
+
+generate_users_nix_entry() {
+    local username="$1"
+    local full_name="$2"
+    local hash_file="$3"
+    shift 3
+    local groups=("$@")
 
     # Format groups array for Nix
     local groups_str="[ "
@@ -197,45 +209,13 @@ add_user_to_config() {
     done
     groups_str+="]"
 
-    # Create the user entry
-    local user_entry="    ${username} = {
-      description = \"${full_name}\";
-      hashedPasswordFile = \"${hash_file}\";
+    cat <<EOF
+    ${username} = {
+      description = "${full_name}";
+      hashedPasswordFile = "${hash_file}";
       extraGroups = ${groups_str};
-    };"
-
-    if [[ $DRY_RUN -eq 1 ]]; then
-        log_info "[DRY RUN] Would add to users.nix:"
-        echo "$user_entry"
-        return 0
-    fi
-
-    # Create backup
-    cp "$users_nix" "${users_nix}.bak"
-    log_info "Created backup: ${users_nix}.bak"
-
-    # Find the userConfigs section and add the new user
-    # We'll add it before the closing brace of userConfigs
-    awk -v user="$username" -v entry="$user_entry" '
-    /^[[:space:]]*};$/ && in_userconfigs {
-        print entry
-        print $0
-        in_userconfigs=0
-        next
-    }
-    /userConfigs = {/ {
-        in_userconfigs=1
-    }
-    {print}
-    ' "$users_nix" > "${users_nix}.tmp"
-
-    mv "${users_nix}.tmp" "$users_nix"
-    log_success "Added user '$username' to users.nix"
-
-    # Update the password hash file variable
-    PASSWORD_HASH_FILE="$hash_file"
-
-    return 0
+    };
+EOF
 }
 
 # ============================================================================
@@ -388,14 +368,16 @@ gather_host_info() {
     echo ""
     if ! check_user_in_config "$USERNAME"; then
         echo ""
-        if prompt_yes_no "User not found in configuration. Add user to users.nix?" "y"; then
-            if ! add_user_to_config "$USERNAME"; then
-                die "Failed to add user to configuration"
+        log_warn "User '$USERNAME' will need to be added to modules/users.nix"
+        if prompt_yes_no "Collect user details now?" "y"; then
+            if ! collect_user_details "$USERNAME"; then
+                die "Failed to collect user details"
             fi
+            USER_NEEDS_ADDING=true
         else
-            log_error "User must be added to modules/users.nix before installation"
-            log_error "Please add the user manually and run this script again"
-            exit 1
+            log_error "You must add the user to modules/users.nix before installation"
+            log_error "The script will show you what to add at the end"
+            USER_NEEDS_ADDING=true
         fi
     fi
 
@@ -969,6 +951,20 @@ show_manual_steps() {
     echo -e "${YELLOW}The following entries need to be manually added to your configuration:${NC}"
     echo ""
 
+    # users.nix entry (if user needs to be added)
+    if [[ "$USER_NEEDS_ADDING" == true ]]; then
+        echo -e "${CYAN}═══ FILE: modules/users.nix ═══${NC}"
+        echo -e "${YELLOW}Location:${NC} Inside 'userConfigs = {' attribute set, add:"
+        echo ""
+        if [[ -n "$USER_FULL_NAME" ]]; then
+            generate_users_nix_entry "$USERNAME" "$USER_FULL_NAME" "$USER_HASH_FILE" "${USER_GROUPS[@]}"
+        else
+            # Provide a template if user didn't collect details
+            generate_users_nix_entry "$USERNAME" "Full Name" "/persist/${USERNAME}_password_hash" "wheel"
+        fi
+        echo ""
+    fi
+
     # hosts/default.nix entry
     echo -e "${CYAN}═══ FILE: hosts/default.nix ═══${NC}"
     echo -e "${YELLOW}Location:${NC} Inside 'hostConfigs = {' attribute set, add:"
@@ -1001,23 +997,47 @@ show_next_steps() {
     echo "   - ${DOTFILES_ROOT}/hosts/${HOSTNAME}/configuration.nix"
     echo "   - ${DOTFILES_ROOT}/hosts/${HOSTNAME}/hardware-configuration.nix"
     echo ""
-    echo "2. Manually add host entries to:"
-    echo "   - ${DOTFILES_ROOT}/hosts/default.nix"
-    echo "   - ${DOTFILES_ROOT}/flake.nix"
-    echo "   (See manual configuration steps above)"
-    echo ""
-    echo "3. Validate configuration:"
+    if [[ "$USER_NEEDS_ADDING" == true ]]; then
+        echo "2. Manually add user entry to:"
+        echo "   - ${DOTFILES_ROOT}/modules/users.nix"
+        echo "   (See manual configuration steps above)"
+        echo ""
+        echo "3. Manually add host entries to:"
+        echo "   - ${DOTFILES_ROOT}/hosts/default.nix"
+        echo "   - ${DOTFILES_ROOT}/flake.nix"
+        echo "   (See manual configuration steps above)"
+        echo ""
+        echo "4. Validate configuration:"
+    else
+        echo "2. Manually add host entries to:"
+        echo "   - ${DOTFILES_ROOT}/hosts/default.nix"
+        echo "   - ${DOTFILES_ROOT}/flake.nix"
+        echo "   (See manual configuration steps above)"
+        echo ""
+        echo "3. Validate configuration:"
+    fi
     echo "   cd ${DOTFILES_ROOT}"
     echo "   nix flake check"
     echo ""
-    echo "4. Install NixOS:"
-    echo "   nixos-install --flake ${DOTFILES_ROOT}#${HOSTNAME}"
-    echo ""
-    echo "5. Set root password when prompted"
-    echo "   (This will be lost after first boot due to impermanence)"
-    echo ""
-    echo "6. Reboot into your new system:"
-    echo "   reboot"
+    if [[ "$USER_NEEDS_ADDING" == true ]]; then
+        echo "5. Install NixOS:"
+        echo "   nixos-install --flake ${DOTFILES_ROOT}#${HOSTNAME}"
+        echo ""
+        echo "6. Set root password when prompted"
+        echo "   (This will be lost after first boot due to impermanence)"
+        echo ""
+        echo "7. Reboot into your new system:"
+        echo "   reboot"
+    else
+        echo "4. Install NixOS:"
+        echo "   nixos-install --flake ${DOTFILES_ROOT}#${HOSTNAME}"
+        echo ""
+        echo "5. Set root password when prompted"
+        echo "   (This will be lost after first boot due to impermanence)"
+        echo ""
+        echo "6. Reboot into your new system:"
+        echo "   reboot"
+    fi
     echo ""
 }
 
