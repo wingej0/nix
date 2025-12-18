@@ -64,6 +64,24 @@ let
       # desktops.xfce
       # desktops.cinnamon
     ];
+
+    dis-winget = [
+      ./dis-winget/configuration.nix
+
+      # Desktop environment
+      desktops.gnome
+      # desktops.plasma
+      # desktops.cosmic
+      # desktops.xfce
+      # desktops.cinnamon
+      # desktops.qtile
+
+      # Optional modules
+      ./../modules/ai.nix
+      ./../modules/mongodb.nix
+      ./../modules/n8n.nix
+    ];
+
   };
 in
 {
