@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     # Home Manager
     home-manager = {
@@ -40,21 +41,27 @@
     };
   };
 
-  outputs = { nixpkgs, ... } @ inputs: 
+  outputs = { nixpkgs, nixpkgs-stable, ... } @ inputs: 
   {
     nixosConfigurations = {
-      # Personal laptop (System76 Darter-Pro)
+      # Personal laptop (System76 Darter-Pro) - Using unstable
       darter-pro = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
           username = "wingej0";
           hostname = "darter-pro";
+          # Make stable packages available for mixing if needed
+          pkgs-stable = import nixpkgs-stable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
         };
         modules = [
           ./hosts
         ];
       };
-      nix-vm = nixpkgs.lib.nixosSystem {
+      # Virtual machine - Using stable
+      nix-vm = nixpkgs-stable.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
           username = "wingej0";

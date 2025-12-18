@@ -28,6 +28,7 @@ USER_NEEDS_ADDING=false  # Track if user entry needs to be manually added
 USER_FULL_NAME=""
 USER_HASH_FILE=""
 USER_GROUPS=()
+NIXPKGS_BRANCH=""  # stable or unstable
 
 # ============================================================================
 # LOGGING FUNCTIONS
@@ -385,6 +386,11 @@ gather_host_info() {
     # Desktop environment
     DESKTOP=$(prompt_selection "Select desktop environment:" \
         "qtile" "gnome" "plasma" "cosmic" "xfce" "cinnamon")
+
+    echo ""
+    # NixOS branch selection
+    NIXPKGS_BRANCH=$(prompt_selection "Select NixOS branch:" \
+        "unstable" "stable")
 
     echo ""
     # Optional modules
@@ -756,9 +762,31 @@ generate_hosts_default_entry() {
 generate_flake_entry() {
     local hostname="$1"
     local username="$2"
+    local branch="$3"
 
-    cat <<EOF
+    if [[ "$branch" == "unstable" ]]; then
+        cat <<EOF
+      # Using unstable
       ${hostname} = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          username = "${username}";
+          hostname = "${hostname}";
+          # Make stable packages available for mixing if needed
+          pkgs-stable = import nixpkgs-stable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
+        modules = [
+          ./hosts
+        ];
+      };
+EOF
+    else
+        cat <<EOF
+      # Using stable
+      ${hostname} = nixpkgs-stable.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
           username = "${username}";
@@ -769,6 +797,7 @@ generate_flake_entry() {
         ];
       };
 EOF
+    fi
 }
 
 # ============================================================================
@@ -857,6 +886,7 @@ show_summary() {
     echo -e "${CYAN}Hostname:${NC} $HOSTNAME"
     echo -e "${CYAN}Username:${NC} $USERNAME"
     echo -e "${CYAN}Desktop:${NC} $DESKTOP"
+    echo -e "${CYAN}NixOS Branch:${NC} $NIXPKGS_BRANCH"
     echo -e "${CYAN}Optional Modules:${NC} ${OPTIONAL_MODULES[*]:-none}"
     echo -e "${CYAN}Timezone:${NC} $TIMEZONE"
     echo -e "${CYAN}Locale:${NC} $LOCALE"
@@ -975,7 +1005,7 @@ show_manual_steps() {
     echo -e "${CYAN}═══ FILE: flake.nix ═══${NC}"
     echo -e "${YELLOW}Location:${NC} Inside 'nixosConfigurations = {' attribute set, add:"
     echo ""
-    generate_flake_entry "$HOSTNAME" "$USERNAME"
+    generate_flake_entry "$HOSTNAME" "$USERNAME" "$NIXPKGS_BRANCH"
     echo ""
 
     echo -e "${CYAN}═══ Validation ═══${NC}"
