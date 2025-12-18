@@ -1,4 +1,4 @@
-{ config, inputs, username, hostname, ... }:
+{ config, inputs, username, hostname, useStableBranch ? false, ... }:
 let
   # User configuration mapping
   userConfigs = {
@@ -11,10 +11,15 @@ let
 
   # Get the current user's config
   userConfig = userConfigs.${username};
+
+  # Select the appropriate home-manager based on branch
+  homeManagerModule = if useStableBranch
+    then inputs.home-manager-stable.nixosModules.home-manager
+    else inputs.home-manager.nixosModules.home-manager;
 in
 {
     imports = [
-        inputs.home-manager.nixosModules.home-manager
+        homeManagerModule
     ];
 
     users.users.${username} = {

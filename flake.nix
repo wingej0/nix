@@ -3,10 +3,16 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
-    # Home Manager
+    # Home Manager (for unstable)
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Home Manager (for stable)
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     
     impermanence.url = "github:nix-community/impermanence";
@@ -66,6 +72,7 @@
           inherit inputs;
           username = "wingej0";
           hostname = "nix-vm";
+          useStableBranch = true;
         };
         modules = [
           ./hosts

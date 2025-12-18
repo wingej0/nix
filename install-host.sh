@@ -791,6 +791,7 @@ EOF
           inherit inputs;
           username = "${username}";
           hostname = "${hostname}";
+          useStableBranch = true;
         };
         modules = [
           ./hosts
