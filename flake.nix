@@ -91,6 +91,19 @@
           ./hosts
         ];
       };
+
+      # Using stable
+      the-holysheet = nixpkgs-stable.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          username = "jwinget";
+          hostname = "the-holysheet";
+          useStableBranch = true;
+        };
+        modules = [
+          ./hosts
+        ];
+      };
     };
   };
 }
