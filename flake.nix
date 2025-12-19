@@ -56,6 +56,7 @@
           inherit inputs;
           username = "wingej0";
           hostname = "darter-pro";
+          useStableBranch = false;
           # Make stable packages available for mixing if needed
           pkgs-stable = import nixpkgs-stable {
             system = "x86_64-linux";

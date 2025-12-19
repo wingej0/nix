@@ -34,12 +34,12 @@ let
       ./darter-pro/configuration.nix
 
       # Desktop environment
-      # desktops.gnome
+      desktops.gnome
       # desktops.plasma
       # desktops.cosmic
       # desktops.xfce
       # desktops.cinnamon
-      desktops.qtile
+      # desktops.qtile
 
       # System76 drivers
       ./../modules/system76.nix
@@ -80,6 +80,9 @@ let
       ./../modules/ai.nix
       ./../modules/mongodb.nix
       ./../modules/n8n.nix
+
+      # Nvidia Driver
+      ./../modules/nvidia.nix
     ];
 
   };
