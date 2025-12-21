@@ -23,4 +23,7 @@
             ];
         };
     };
+
+  # Open MongoDB port in firewall
+  networking.firewall.allowedTCPPorts = [ 27017 ];
 }
