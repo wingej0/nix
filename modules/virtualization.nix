@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 {
     environment.systemPackages = with pkgs; [
         virt-manager
@@ -12,5 +12,14 @@
     virtualisation.podman = {
         enable = true;
         dockerCompat = true;
+    };
+
+    # Persist distrobox containers
+    environment.persistence."/persist" = {
+        users.${username} = {
+            directories = [
+                ".local/share/containers"
+            ];
+        };
     };
 }

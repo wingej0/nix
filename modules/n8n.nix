@@ -89,6 +89,24 @@
         '';
       };
     };
+
+    # Localhost virtualHost for OAuth callbacks (Desktop App credentials)
+    virtualHosts."localhost" = {
+      forceSSL = true;
+      sslCertificate = "/persist/ssl/localhost.crt";
+      sslCertificateKey = "/persist/ssl/localhost.key";
+
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:5678";
+        proxyWebsockets = true;
+        extraConfig = ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        '';
+      };
+    };
   };
 
   # Open HTTPS port
@@ -103,7 +121,7 @@
 
   # Script to generate self-signed certificate if it doesn't exist
   systemd.services.n8n-ssl-setup = {
-    description = "Generate self-signed SSL certificate for n8n";
+    description = "Generate self-signed SSL certificates for n8n";
     wantedBy = [ "multi-user.target" ];
     before = [ "nginx.service" ];
 
@@ -114,13 +132,15 @@
 
     script = ''
       CERT_DIR="/persist/ssl"
-      CERT_FILE="$CERT_DIR/${config.networking.hostName}.local.crt"
-      KEY_FILE="$CERT_DIR/${config.networking.hostName}.local.key"
 
       mkdir -p "$CERT_DIR"
 
+      # Generate certificate for hostname.local
+      CERT_FILE="$CERT_DIR/${config.networking.hostName}.local.crt"
+      KEY_FILE="$CERT_DIR/${config.networking.hostName}.local.key"
+
       if [ ! -f "$CERT_FILE" ] || [ ! -f "$KEY_FILE" ]; then
-        echo "Generating self-signed certificate for n8n..."
+        echo "Generating self-signed certificate for ${config.networking.hostName}.local..."
         ${pkgs.openssl}/bin/openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
           -keyout "$KEY_FILE" \
           -out "$CERT_FILE" \
@@ -129,12 +149,34 @@
         chmod 640 "$KEY_FILE"
         chgrp nginx "$KEY_FILE" 2>/dev/null || true
         chmod 644 "$CERT_FILE"
-        echo "Certificate generated successfully!"
+        echo "Certificate for ${config.networking.hostName}.local generated successfully!"
       else
-        echo "SSL certificate already exists. Fixing permissions..."
+        echo "SSL certificate for ${config.networking.hostName}.local already exists. Fixing permissions..."
         chmod 640 "$KEY_FILE"
         chgrp nginx "$KEY_FILE" 2>/dev/null || true
         chmod 644 "$CERT_FILE"
+      fi
+
+      # Generate certificate for localhost (for OAuth callbacks)
+      LOCALHOST_CERT_FILE="$CERT_DIR/localhost.crt"
+      LOCALHOST_KEY_FILE="$CERT_DIR/localhost.key"
+
+      if [ ! -f "$LOCALHOST_CERT_FILE" ] || [ ! -f "$LOCALHOST_KEY_FILE" ]; then
+        echo "Generating self-signed certificate for localhost..."
+        ${pkgs.openssl}/bin/openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
+          -keyout "$LOCALHOST_KEY_FILE" \
+          -out "$LOCALHOST_CERT_FILE" \
+          -subj "/C=US/ST=State/L=City/O=Organization/CN=localhost"
+
+        chmod 640 "$LOCALHOST_KEY_FILE"
+        chgrp nginx "$LOCALHOST_KEY_FILE" 2>/dev/null || true
+        chmod 644 "$LOCALHOST_CERT_FILE"
+        echo "Certificate for localhost generated successfully!"
+      else
+        echo "SSL certificate for localhost already exists. Fixing permissions..."
+        chmod 640 "$LOCALHOST_KEY_FILE"
+        chgrp nginx "$LOCALHOST_KEY_FILE" 2>/dev/null || true
+        chmod 644 "$LOCALHOST_CERT_FILE"
       fi
     '';
   };
