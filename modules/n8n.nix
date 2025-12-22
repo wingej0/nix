@@ -15,8 +15,8 @@
       N8N_PORT = "5678";
       N8N_PROTOCOL = "https";
 
-      # Webhook configuration for remote access
-      WEBHOOK_URL = "https://${config.networking.hostName}.local:443";
+      # Webhook configuration - using localhost for OAuth compatibility
+      WEBHOOK_URL = "https://localhost";
 
       # Security - disable metrics endpoint
       N8N_METRICS = "false";
