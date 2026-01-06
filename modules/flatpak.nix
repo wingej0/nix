@@ -24,6 +24,10 @@
         ];
     };
 
+    # Firewall rules for gnome-network-displays (WiFi Display/Miracast)
+    networking.firewall.allowedTCPPorts = [ 7236 7250 ];
+    networking.firewall.allowedUDPPorts = [ 7236 ];
+
     # Persist any folders for flatpaks
     environment.persistence."/persist" = {
         users.${username} = {

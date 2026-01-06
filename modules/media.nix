@@ -13,6 +13,7 @@
         loupe
         czkawka-full
         lollypop
+        handbrake
     ];
 
     environment.persistence."/persist" = {
