@@ -398,16 +398,6 @@ def init_widgets(monitor):
             padding = 10,
             **dark_widgets
         ),
-        widget.Clock(
-            foreground=colors['color15'],
-            font="Fira Code Nerd Font Bold",
-            fontsize=12,
-            format=' %b %d | %I:%M %p',
-            mouse_callbacks={
-                'Button1' : lazy.spawn('wlogout'),
-            },
-            **dark_widgets
-        ),
         widget.Sep(
             linewidth = 0,
             padding = 15,
@@ -442,6 +432,17 @@ def init_widgets(monitor):
             **light_widgets
         )
 
+        clock = widget.Clock(
+            foreground=colors['color15'],
+            font="Fira Code Nerd Font Bold",
+            fontsize=12,
+            format=' %b %d | %I:%M %p',
+            mouse_callbacks={
+                'Button1' : lazy.spawn('xfce4-session-logout'),
+            },
+            **dark_widgets
+        )
+
     elif qtile.core.name == "wayland":
         clipboard = widget.TextBox(
             foreground=colors['color0'],
@@ -465,7 +466,19 @@ def init_widgets(monitor):
             **light_widgets
         )
 
+        clock = widget.Clock(
+            foreground=colors['color15'],
+            font="Fira Code Nerd Font Bold",
+            fontsize=12,
+            format=' %b %d | %I:%M %p',
+            mouse_callbacks={
+                'Button1' : lazy.spawn('wlogout'),
+            },
+            **dark_widgets
+        )
+
     widgets_list.insert(50, clipboard)
     widgets_list.insert(51, screenshot)
+    widgets_list.insert(58, clock)
 
     return widgets_list
