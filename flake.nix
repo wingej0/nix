@@ -74,6 +74,11 @@
           username = "wingej0";
           hostname = "nix-vm";
           useStableBranch = true;
+          # Make pkgs-stable available for modules that need it
+          pkgs-stable = import nixpkgs-stable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
         };
         modules = [
           ./hosts
@@ -86,6 +91,11 @@
           username = "jwinget";
           hostname = "dis-winget";
           useStableBranch = true;
+          # Make pkgs-stable available for modules that need it (like office.nix)
+          pkgs-stable = import nixpkgs-stable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
         };
         modules = [
           ./hosts
@@ -99,6 +109,11 @@
           username = "jwinget";
           hostname = "the-holysheet";
           useStableBranch = true;
+          # Make pkgs-stable available for modules that need it (like office.nix)
+          pkgs-stable = import nixpkgs-stable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
         };
         modules = [
           ./hosts
