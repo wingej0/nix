@@ -13,7 +13,14 @@
       WorkingDirectory = "/home/jwinget/Desktop/sjsd_data_pipeline";
 
       # Run the pipeline with cleanup and email notifications
-      ExecStart = "${pkgs.bash}/bin/bash -c 'cd /home/jwinget/Desktop/sjsd_data_pipeline && nix-shell --run \"python main.py --cleanup --notify\"'";
+      # Use full path to nix-shell from the nix package
+      ExecStart = "${pkgs.bash}/bin/bash -c 'cd /home/jwinget/Desktop/sjsd_data_pipeline && ${pkgs.nix}/bin/nix-shell --run \"python main.py --cleanup --notify\"'";
+
+      # Set up environment for nix commands
+      Environment = [
+        "PATH=/run/current-system/sw/bin:/usr/bin:/bin"
+        "NIX_PATH=nixpkgs=${pkgs.path}"
+      ];
 
       # Logging
       StandardOutput = "journal";
