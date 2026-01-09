@@ -74,13 +74,13 @@
           ./hosts
         ];
       };
-      # Using stable
-      dis-winget = nixpkgs-stable.lib.nixosSystem {
+      # Using unstable
+      dis-winget = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
           username = "jwinget";
           hostname = "dis-winget";
-          useStableBranch = true;
+          useStableBranch = false;
         };
         modules = [
           ./hosts
