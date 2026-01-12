@@ -7,6 +7,8 @@
         insomnia
         unixODBC
         unixODBCDrivers.msodbcsql18
+        nodejs
+        jq
     ];
 
     environment.unixODBCDrivers = with pkgs.unixODBCDrivers; [ msodbcsql18 ];

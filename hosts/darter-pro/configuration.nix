@@ -48,6 +48,23 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Declarative printer configuration (Canon at 10.40.0.70)
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "Canon-GPR53";
+        location = "10.40.0.70";
+        description = "Canon GPR-53 PostScript Printer";
+        deviceUri = "lpd://10.40.0.70";
+        model = "drv:///sample.drv/generpcl.ppd";
+        ppdOptions = {
+          PageSize = "Letter";
+        };
+      }
+    ];
+    ensureDefaultPrinter = "Canon-GPR53";
+  };
+
   # Sound
   services.pipewire = {
     enable = true;

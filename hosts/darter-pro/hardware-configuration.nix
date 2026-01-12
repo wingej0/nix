@@ -41,37 +41,37 @@
   fileSystems."/home/wingej0/Vault" =
     { device = "/dev/disk/by-label/vault";
       fsType = "btrfs";
-      options = [ "subvol=vault" "compress=zstd" ];
+      options = [ "subvol=vault" "compress=zstd" "x-gvfs-hide" ];
     };
 
   fileSystems."/home/wingej0/Dev" =
     { device = "/dev/disk/by-label/vault";
       fsType = "btrfs";
-      options = [ "subvol=dev" "compress=zstd" ];
+      options = [ "subvol=dev" "compress=zstd" "x-gvfs-hide" ];
     };
 
   fileSystems."/home/wingej0/Music" =
     { device = "/dev/disk/by-label/vault";
       fsType = "btrfs";
-      options = [ "subvol=music" "compress=zstd" ];
+      options = [ "subvol=music" "compress=zstd" "x-gvfs-hide" ];
     };
 
   fileSystems."/home/wingej0/Pictures" =
     { device = "/dev/disk/by-label/vault";
       fsType = "btrfs";
-      options = [ "subvol=pictures" "compress=zstd" ];
+      options = [ "subvol=pictures" "compress=zstd" "x-gvfs-hide" ];
     };
 
   fileSystems."/home/wingej0/Documents" =
     { device = "/dev/disk/by-label/vault";
       fsType = "btrfs";
-      options = [ "subvol=documents" "compress=zstd" ];
+      options = [ "subvol=documents" "compress=zstd" "x-gvfs-hide" ];
     };
 
   fileSystems."/home/wingej0/Videos" =
     { device = "/dev/disk/by-label/vault";
       fsType = "btrfs";
-      options = [ "subvol=videos" "compress=zstd" ];
+      options = [ "subvol=videos" "compress=zstd" "x-gvfs-hide" ];
     };
 
   fileSystems."/var/lib/immich" =

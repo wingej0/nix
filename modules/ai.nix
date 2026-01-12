@@ -12,6 +12,9 @@
                 ".gemini"
                 ".claude"
             ];
+            files = [
+                ".claude.json"
+            ];
         };
     };
 }

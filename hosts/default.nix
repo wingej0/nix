@@ -36,15 +36,16 @@ let
       # Desktop environment
       # desktops.gnome
       # desktops.plasma
-      # desktops.cosmic
+      desktops.cosmic
       # desktops.xfce
       # desktops.cinnamon
-      desktops.qtile
+      # desktops.qtile
 
       # System76 drivers
       ./../modules/system76.nix
 
       # Additional packages
+      ./../modules/rclone.nix
       ./../modules/nordvpn.nix
       ./../modules/office.nix
       ./../modules/flatpak.nix
