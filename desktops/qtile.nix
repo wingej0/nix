@@ -64,6 +64,8 @@
         brightnessctl
         xwayland
         nwg-look
+        wdisplays
+        kanshi
     ];
 
     programs.xwayland.enable = true;
@@ -124,6 +126,7 @@
     home-manager.users.${username} = {
         home.file = {
             ".config/dunst".source = ./../home/configs/dunst;
+            ".config/kanshi".source = ./../home/configs/kanshi;
             ".config/qtile".source = ./../home/configs/qtile;
             ".config/rofi".source = ./../home/configs/rofi;
             ".config/swappy".source = ./../home/configs/swappy;

@@ -1,0 +1,16 @@
+# Kanshi display configuration
+# Use 'kanshictl reload' to reload after changes
+# Use 'wlr-randr' to find output names and modes
+
+# Docked at desk with 3 external monitors
+profile docked {
+    output eDP-1 disable
+    output DP-7 mode 1280x720@60Hz position 0,0 transform 90
+    output DP-6 mode 1920x1080@60Hz position 720,0
+    output DP-5 mode 1920x1080@60Hz position 2640,0
+}
+
+# Laptop only (undocked)
+profile undocked {
+    output eDP-1 enable mode 1920x1080@60Hz position 0,0
+}
