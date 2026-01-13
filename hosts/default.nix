@@ -81,6 +81,7 @@ let
       ./../modules/ai.nix
       ./../modules/mongodb.nix
       ./../modules/n8n.nix
+      ./../modules/ollama.nix
 
       # Nvidia Driver
       ./../modules/nvidia.nix
