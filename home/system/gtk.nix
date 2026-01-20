@@ -24,13 +24,13 @@
         };
 
         theme = {
-            name = "Orchis";
-            package = pkgs.orchis-theme;
+            name = "Qogir";
+            package = pkgs.qogir-theme;
         };
 
         iconTheme = {
-            name = "Tela";
-            package = pkgs.tela-icon-theme;
+            name = "Qogir";
+            package = pkgs.qogir-icon-theme;
         };
 
         gtk3 = {

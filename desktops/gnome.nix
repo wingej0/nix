@@ -13,7 +13,7 @@
         # Gnome extensions
         pkgs.gnome-tweaks
         gnomeExtensions.dash-to-dock
-        gnomeExtensions.blur-my-shell
+        # gnomeExtensions.blur-my-shell
         gnomeExtensions.appindicator
         gnomeExtensions.caffeine
         gnomeExtensions.clipboard-indicator
@@ -99,7 +99,7 @@
                     enabled-extensions = [
                         "AlphabeticalAppGrid@stuarthayhurst"
                         "appindicatorsupport@rgcjonas.gmail.com"
-                        "blur-my-shell@aunetx"
+                        # "blur-my-shell@aunetx"
                         "caffeine@patapon.info"
                         "clipboard-indicator@tudmotu.com"
                         "dash-to-dock@micxgx.gmail.com"
@@ -114,7 +114,7 @@
                 };
 
                 "org/gnome/shell/extensions/user-theme" = {
-                    name = "Orchis";
+                    name = "Qogir";
                 };
 
                 "org/gnome/desktop/interface" = {
@@ -229,11 +229,13 @@
                     running-indicator-style = "DASHES";
                     show-mounts = false;
                     show-trash = false;
+                    transparency-mode = "FIXED";
+                    background-opacity = 0.8;
                 };
 
-                "org/gnome/shell/extensions/blur-my-shell/panel" = {
-                    pipeline = "pipeline_default_rounded";
-                };
+                # "org/gnome/shell/extensions/blur-my-shell/panel" = {
+                #     pipeline = "pipeline_default";
+                # };
 
                 "org/gnome/shell/extensions/tiling-assistant" = {
                     window-gap = 8;
