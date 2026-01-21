@@ -1,16 +1,18 @@
 { config, lib, pkgs, inputs, username, ... }:
 {
     # Enable the X11 windowing system.
-    services.xserver.enable = true;
+    # services.xserver.enable = true;
 
     services.displayManager.sddm = {
         enable = true;
+	    wayland.enable = true;
     };
+    
     services.xserver.windowManager.qtile = {
-        enable = true;
-        extraPackages = python3Packages: with python3Packages; [
-            qtile-extras
-        ];
+    	enable = true;
+    	extraPackages = python3Packages: with python3Packages; [
+    		qtile-extras
+    	];
     };
 
     # services.xserver.windowManager.qtile = {
