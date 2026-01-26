@@ -34,12 +34,7 @@ let
       ./darter-pro/configuration.nix
 
       # Desktop environment
-      # desktops.gnome
-      # desktops.plasma
       desktops.cosmic
-      # desktops.xfce
-      # desktops.cinnamon
-      # desktops.qtile
 
       # System76 drivers
       ./../modules/system76.nix
@@ -71,12 +66,7 @@ let
 
       # Desktop environment
       desktops.gnome
-      # desktops.plasma
-      # desktops.cosmic
-      # desktops.xfce
-      # desktops.cinnamon
-      # desktops.qtile
-
+      
       # Optional modules
       ./../modules/ai.nix
       ./../modules/mongodb.nix
@@ -92,11 +82,6 @@ let
 
       # Desktop environment
       desktops.gnome
-      # desktops.plasma
-      # desktops.cosmic
-      # desktops.xfce
-      # desktops.cinnamon
-      # desktops.qtile
 
       # Optional modules
       ./../modules/office.nix
