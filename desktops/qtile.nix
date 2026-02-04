@@ -1,34 +1,32 @@
 { config, lib, pkgs, inputs, username, ... }:
 {
     # Enable the X11 windowing system.
-    # services.xserver.enable = true;
+    services.xserver.enable = true;
 
     services.displayManager.sddm = {
         enable = true;
 	    wayland.enable = true;
     };
     
-    services.xserver.windowManager.qtile = {
-    	enable = true;
-    	extraPackages = python3Packages: with python3Packages; [
-    		qtile-extras
-    	];
-    };
-
     # services.xserver.windowManager.qtile = {
-    #   enable = true;
-    #   package = inputs.qtile-flake.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    #   extraPackages = python3Packages:
-    #     with python3Packages; [
-    #       (qtile-extras.overridePythonAttrs (oldAttrs: {
-    #         src = inputs.qtile-extras-flake.outPath;
-    #         doCheck = false;
-    #         propagatedBuildInputs =
-    #           (oldAttrs.propagatedBuildInputs or [])
-    #           ++ (with pkgs.python3Packages; [anyio]);
-    #       }))
-    #     ];
+    # 	enable = true;
+    # 	extraPackages = python3Packages: with python3Packages; [
+    # 		qtile-extras
+    # 	];
     # };
+
+    services.xserver.windowManager.qtile = {
+      enable = true;
+      package = inputs.qtile-flake.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      extraPackages = python3Packages:
+        with python3Packages; [
+          (qtile-extras.overridePythonAttrs {
+            src = inputs.qtile-extras-flake.outPath;
+            doCheck = false;
+            patches = [];
+          })
+        ];
+    };
 
     hardware.bluetooth.enable = true;
     services.udisks2.enable = true;

@@ -1,9 +1,14 @@
-{ config, pkgs, username, ... }:
+{ config, pkgs, inputs, username, ... }:
+let
+    pkgs-stable = import inputs.nixpkgs-stable {
+        system = pkgs.system;
+        config.allowUnfree = true;
+    };
+in
 {
     environment.systemPackages = with pkgs; [
         # Media
         obs-studio
-        kdePackages.kdenlive
         mpv
         audacity
         gimp
@@ -13,7 +18,10 @@
         loupe
         czkawka-full
         lollypop
-        handbrake
+
+        # From stable branch
+        pkgs-stable.kdePackages.kdenlive
+        pkgs-stable.handbrake
     ];
 
     environment.persistence."/persist" = {
