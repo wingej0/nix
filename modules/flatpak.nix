@@ -18,7 +18,7 @@
     # Install flatpaks declaratively
     services.flatpak = {
         packages = [
-            "app.zen_browser.zen"
+            # "app.zen_browser.zen"
             "us.zoom.Zoom"
             "org.gnome.NetworkDisplays"
         ];
@@ -33,7 +33,7 @@
         users.${username} = {
             directories = [
                 ".local/share/flatpak"
-                ".var/app/app.zen_browser.zen"
+                # ".var/app/app.zen_browser.zen"
                 ".var/app/us.zoom.Zoom"
             ];
         };

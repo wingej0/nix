@@ -1,10 +1,10 @@
-{ config, pkgs, username, ... }:
+{ config, pkgs, inputs, username, ... }:
 {
-    # Note: I have installed the Zen browser as a flatpak in flatpak.nix
     environment.systemPackages = with pkgs; [
         # Browsers
         google-chrome
         brave
+        inputs.zen-browser.packages.${pkgs.system}.twilight
     ];
 
     environment.persistence."/persist" = {
@@ -12,6 +12,7 @@
             directories = [
                 ".config/google-chrome"
                 ".config/BraveSoftware"
+                ".zen"
             ];
         };
     };

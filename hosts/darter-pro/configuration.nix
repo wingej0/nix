@@ -56,7 +56,7 @@
         location = "10.40.0.70";
         description = "Canon GPR-53 PostScript Printer";
         deviceUri = "lpd://10.40.0.70";
-        model = "drv:///sample.drv/generpcl.ppd";
+        model = "drv:///sample.drv/generic.ppd";
         ppdOptions = {
           PageSize = "Letter";
         };

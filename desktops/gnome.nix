@@ -71,7 +71,7 @@
                     disable-user-extensions = false;
 
                     favorite-apps = [
-                        "app.zen_browser.zen.desktop"
+                        "zen-twilight.desktop"
                         "google-chrome.desktop"
                         "Mailspring.desktop"
                         "chrome-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default.desktop"
@@ -232,10 +232,6 @@
                     transparency-mode = "FIXED";
                     background-opacity = 0.8;
                 };
-
-                # "org/gnome/shell/extensions/blur-my-shell/panel" = {
-                #     pipeline = "pipeline_default";
-                # };
 
                 "org/gnome/shell/extensions/tiling-assistant" = {
                     window-gap = 8;

@@ -7,6 +7,8 @@
         mattermost-desktop
         mailspring
         caprine
+        zenity # for mailspring notifications
+        libnotify
     ];
 
     environment.persistence."/persist" = {
