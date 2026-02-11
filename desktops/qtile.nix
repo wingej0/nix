@@ -43,6 +43,8 @@
 
         # File Manager
         thunar
+        tumbler
+        ffmpegthumbnailer
 
         # Wayland Programs
         rofi
@@ -50,7 +52,6 @@
         slurp
         swappy
         wf-recorder
-        zenity
         wl-clipboard
         cliphist
         swayidle
@@ -66,6 +67,7 @@
         nwg-look
         wdisplays
         kanshi
+        libnotify
     ];
 
     programs.xwayland.enable = true;
@@ -96,6 +98,7 @@
         };
     };
 
+    services.tumbler.enable = true;
     services.gnome.gnome-keyring.enable = true;
     security.pam.services.sddm.enableGnomeKeyring = true;
 
@@ -118,6 +121,9 @@
                 ".cache/qtile"
                 ".cache/rofi"
                 ".cache/wlogout"
+
+                # Thumbnails
+                ".cache/thumbnails"
             ];
         };
     };

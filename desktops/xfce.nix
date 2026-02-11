@@ -3,23 +3,25 @@
     services.xserver = {
         enable = true;
 
-        # windowManager.qtile = {
-        #     enable = true;
-        #     package = inputs.qtile-flake.packages.${pkgs.system}.default;
-        #     extraPackages = python3Packages:
-        #         with python3Packages; [
-        #             (qtile-extras.overridePythonAttrs (oldAttrs: {
-        #                 src = inputs.qtile-extras-flake.outPath;
-        #             }))
-        #         ];
-        # };
-
         windowManager.qtile = {
             enable = true;
-            extraPackages = python3Packages: with python3Packages; [
-                qtile-extras
+            package = inputs.qtile-flake.packages.${pkgs.stdenv.hostPlatform.system}.default;
+            extraPackages = python3Packages:
+                with python3Packages; [
+                (qtile-extras.overridePythonAttrs {
+                    src = inputs.qtile-extras-flake.outPath;
+                    doCheck = false;
+                    patches = [];
+                })
             ];
         };
+
+        # windowManager.qtile = {
+        #     enable = true;
+        #     extraPackages = python3Packages: with python3Packages; [
+        #         qtile-extras
+        #     ];
+        # };
 
         desktopManager = {
             xterm.enable = false;

@@ -34,8 +34,8 @@ let
       ./darter-pro/configuration.nix
 
       # Desktop environment
-      desktops.qtile
-
+      desktops.xfce
+      
       # System76 drivers
       ./../modules/system76.nix
 
