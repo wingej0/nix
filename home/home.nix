@@ -10,20 +10,6 @@
     ./system/default-apps.nix
   ];
 
-  # Edit Mailspring desktop file
-  xdg.desktopEntries.Mailspring = {
-    name="Mailspring";
-    exec="mailspring --password-store=${"gnome-libsecret"} %U";
-    icon="mailspring";
-  };
-
-  # Edit MongoDB Compass desktop file
-  xdg.desktopEntries.mongodb-compass = {
-    name="MongoDB Compass";
-    exec="mongodb-compass --password-store=${"gnome-libsecret"} --ignore-additional-command-line-flags %U";
-    icon="mongodb-compass";
-  };
-
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.

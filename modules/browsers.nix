@@ -2,7 +2,12 @@
 {
     environment.systemPackages = with pkgs; [
         # Browsers
-        google-chrome
+        (google-chrome.override {
+            commandLineArgs = [
+                "--enable-features=VaapiVideoDecodeLinuxGL,VaapiVideoEncoder"
+                "--ozone-platform-hint=auto"
+            ];
+        })
         brave
         inputs.zen-browser.packages.${pkgs.system}.twilight
     ];

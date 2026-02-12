@@ -1,5 +1,16 @@
 { config, pkgs, username, ... }:
 {
+    nixpkgs.overlays = [
+        (final: prev: {
+            mongodb-compass = prev.mongodb-compass.overrideAttrs (oldAttrs: {
+                postFixup = (oldAttrs.postFixup or "") + ''
+                    wrapProgram $out/bin/mongodb-compass \
+                        --add-flags "--password-store=gnome-libsecret --ignore-additional-command-line-flags"
+                '';
+            });
+        })
+    ];
+
     environment.systemPackages = with pkgs; [
         # Development
         vscode-fhs
