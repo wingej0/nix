@@ -60,6 +60,7 @@
                 ".histfile"
                 ".zsh_history"
                 ".cache/wallust/sequences"
+                ".config/monitors.xml"
             ];
         };
     };

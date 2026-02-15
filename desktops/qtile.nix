@@ -1,11 +1,27 @@
 { config, lib, pkgs, inputs, username, ... }:
 {
     # Enable the X11 windowing system.
-    services.xserver.enable = true;
+    # services.xserver.enable = true;
 
-    services.displayManager.sddm = {
+    services.greetd = {
         enable = true;
-	    wayland.enable = true;
+        settings = {
+            default_session = {
+                command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-user-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
+                user = "greeter";
+            };
+        };
+    };
+
+    # Prevent boot text artifacts on the greetd screen
+    systemd.services.greetd.serviceConfig = {
+        Type = "idle";
+        StandardInput = "tty";
+        StandardOutput = "tty";
+        StandardError = "journal";
+        TTYReset = true;
+        TTYVHangup = true;
+        TTYVTDisallocate = true;
     };
     
     # services.xserver.windowManager.qtile = {
@@ -55,7 +71,7 @@
         wl-clipboard
         cliphist
         swayidle
-        swaylock-effects
+        swaylock
         polkit_gnome
         wlogout
         ffmpeg
@@ -100,7 +116,7 @@
 
     services.tumbler.enable = true;
     services.gnome.gnome-keyring.enable = true;
-    security.pam.services.sddm.enableGnomeKeyring = true;
+    security.pam.services.greetd.enableGnomeKeyring = true;
 
     # Enable pam for swaylock, so it will actually unlock
     security.pam.services.swaylock = {};
@@ -112,6 +128,9 @@
 
     # Persistence
     environment.persistence."/persist" = {
+        directories = [
+            "/var/cache/tuigreet" # Remember last user/session
+        ];
         users.${username} = {
             directories = [
                 # Qtile

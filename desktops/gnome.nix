@@ -25,6 +25,7 @@
         gnome-calculator
         gnome-remote-desktop
 	    openssl
+        ffmpegthumbnailer
     ];
 
     # Persistence
@@ -35,6 +36,7 @@
             ];
             directories = [
                 ".local/share/gnome-remote-desktop"
+                ".cache/thumbnails"
             ];
         };
     };
