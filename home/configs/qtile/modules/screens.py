@@ -17,12 +17,12 @@ screens = [
         wallpaper_mode="fill"
     ),
     Screen(
-        name="HDMI-1",
+        name="HDMI-A-1",
         wallpaper='~/Pictures/current_wallpaper.jpg',
         wallpaper_mode="fill"
     ),
     Screen(
-        name="DP-1-2",
+        name="DP-7",
         top=bar.Bar(
             widgets=init_widgets(1),
             background='#0000003f',
@@ -34,7 +34,7 @@ screens = [
         wallpaper_mode="fill"
     ),
     Screen(
-        name="DP-1-3",
+        name="DP-6",
         top=bar.Bar(
             widgets=init_widgets(1),
             background='#0000003f',
