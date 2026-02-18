@@ -1,4 +1,4 @@
-{ config, inputs, username, hostname, useStableBranch ? false, ... }:
+{ config, inputs, username, hostname, stateVersion, useStableBranch ? false, ... }:
 let
   # User configuration mapping
   userConfigs = {
@@ -39,13 +39,13 @@ in
     home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = { inherit inputs username hostname; };
+        extraSpecialArgs = { inherit inputs username hostname stateVersion; };
 
         users.${username} = {
             imports = [ ./../home/home.nix ];
             programs.home-manager.enable = true;
             home = {
-                stateVersion = "25.05";
+                stateVersion = stateVersion;
                 username = "${username}";
                 homeDirectory = "/home/${username}";
             };

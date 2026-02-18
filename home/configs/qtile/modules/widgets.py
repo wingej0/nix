@@ -223,11 +223,6 @@ def init_widgets(monitor):
             padding = 10,
             **mid_widgets
         ),
-        widget.CapsNumLockIndicator(
-            padding = 10,
-            update_interval = 0.2,
-            **widget_defaults
-        ),
         widget.Spacer(),
         widget.Sep(
             linewidth = 0,
@@ -260,7 +255,7 @@ def init_widgets(monitor):
         ),
         widget.Spacer(),
         widget.Mpris2(
-            display_metadata = ['xesam:title', 'xesam:artist', 'xesam:album'],
+            format = "{xesam:title} - {xesam:artist} - {xesam:album}",
             fmt = "{}",
             padding = 10,
             paused_text = " {track}",
@@ -436,7 +431,7 @@ def init_widgets(monitor):
             foreground=colors['color15'],
             font="Fira Code Nerd Font Bold",
             fontsize=12,
-            format=' %b %d | %I:%M %p',
+            format='%b %d | %I:%M %p',
             mouse_callbacks={
                 'Button1' : lazy.spawn('xfce4-session-logout'),
             },
@@ -470,7 +465,7 @@ def init_widgets(monitor):
             foreground=colors['color15'],
             font="Fira Code Nerd Font Bold",
             fontsize=12,
-            format=' %b %d | %I:%M %p',
+            format='%b %d | %I:%M %p',
             mouse_callbacks={
                 'Button1' : lazy.spawn('wlogout'),
             },
@@ -479,6 +474,6 @@ def init_widgets(monitor):
 
     widgets_list.insert(50, clipboard)
     widgets_list.insert(51, screenshot)
-    widgets_list.insert(58, clock)
+    widgets_list.insert(57, clock)
 
     return widgets_list

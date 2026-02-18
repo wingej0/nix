@@ -1,13 +1,11 @@
 { config, lib, pkgs, inputs, username, ... }:
 {
-    # Enable the X11 windowing system.
-    # services.xserver.enable = true;
 
     services.greetd = {
         enable = true;
         settings = {
             default_session = {
-                command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-user-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
+                command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-user-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
                 user = "greeter";
             };
         };
@@ -23,24 +21,25 @@
         TTYVHangup = true;
         TTYVTDisallocate = true;
     };
-    
+
     # services.xserver.windowManager.qtile = {
-    # 	enable = true;
-    # 	extraPackages = python3Packages: with python3Packages; [
-    # 		qtile-extras
-    # 	];
+    #   enable = true;
+    #   package = inputs.qtile-flake.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    #   extraPackages = python3Packages:
+    #     with python3Packages; [
+    #       (qtile-extras.overridePythonAttrs {
+    #         src = inputs.qtile-extras-flake.outPath;
+    #         doCheck = false;
+    #         patches = [];
+    #       })
+    #     ];
     # };
 
     services.xserver.windowManager.qtile = {
       enable = true;
-      package = inputs.qtile-flake.packages.${pkgs.stdenv.hostPlatform.system}.default;
       extraPackages = python3Packages:
         with python3Packages; [
-          (qtile-extras.overridePythonAttrs {
-            src = inputs.qtile-extras-flake.outPath;
-            doCheck = false;
-            patches = [];
-          })
+          qtile-extras
         ];
     };
 

@@ -1,5 +1,18 @@
 # NixOS Configuration with Impermanence
 
+This repository contains a modular NixOS configuration featuring "Erase Your Darlings" impermanence (Btrfs rollback on boot), dynamic desktop environment selection, and centralized system management.
+
+## Project Architecture
+
+This project follows a **DRY (Don't Repeat Yourself)** modular structure:
+
+- **`modules/common-system.nix`**: Centralized home for shared system settings (Bootloader, Bluetooth, Sound, Printing, etc.).
+- **`flake.nix`**: The entry point. It manages `stateVersion` as a `specialArg`, ensuring both the system and Home Manager are perfectly synchronized.
+- **`hosts/`**: Contains machine-specific settings. Host configurations are **minimal**, only overriding what is unique to that hardware.
+- **`desktops/`**: Plug-and-play desktop environments (GNOME, Plasma, Cosmic, Qtile, etc.).
+
+---
+
 ## Automated Installation (Recommended)
 
 ### 1. Partition and Format Drives
@@ -72,7 +85,7 @@ The script will:
   - Btrfs mount options and subvolumes
   - `neededForBoot = true` for /persist
   - `noatime` for /nix
-- Generate configuration.nix with your settings
+- Generate a **minimal** configuration.nix (shared settings are handled by `common-system.nix`)
 - Create password hash in `/mnt/persist/password_hash` (or custom location for new users)
 - Display the configuration snippets you need to add manually
 
@@ -84,13 +97,13 @@ After the script completes, you need to manually add the generated entries to tw
 ```bash
 vim hosts/default.nix
 ```
-Add the entry shown by the script inside the `hostConfigs = {` section.
+Add the host configuration block (associating the machine with its desktop and optional modules).
 
 **Edit `flake.nix`:**
 ```bash
 vim flake.nix
 ```
-Add the entry shown by the script inside the `nixosConfigurations = {` section.
+Add the `nixosSystem` block. Ensure you include the `stateVersion = "XX.XX";` in `specialArgs` as shown by the script.
 
 ### 6. Validate Configuration
 
@@ -193,12 +206,25 @@ mkpasswd -m sha-512 <password> > /mnt/persist/youruser_password_hash
 chmod 600 /mnt/persist/youruser_password_hash
 ```
 
-### 6. Configure Basic System (Optional)
+### 6. Configure Basic System
 
-If needed, edit configuration.nix to add additional packages or settings:
+Create a minimal `configuration.nix` for your new host. Shared settings are automatically imported via the host registry.
 
 ```bash
 vim /mnt/etc/nixos/configuration.nix
+```
+
+Example minimal `configuration.nix`:
+```nix
+{ config, lib, pkgs, ... }:
+
+{
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
+  networking.hostName = "your-hostname";
+}
 ```
 
 ### 7. Install NixOS

@@ -4,9 +4,6 @@
         ./../modules/cosmic-bg.nix
     ];
     
-    # Enable xserver
-    services.xserver.enable = true;
-
     # Enable Cosmic
     services.displayManager.cosmic-greeter.enable = true;
     services.desktopManager.cosmic.enable = true;

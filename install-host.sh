@@ -682,49 +682,9 @@ generate_configuration_nix() {
     ./hardware-configuration.nix
   ];
 
-  # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Kernel
-  boot.kernelPackages = pkgs.${kernel};
-${hibernation_config}
   # Networking
   networking.hostName = "${hostname}";
-  networking.networkmanager.enable = true;
-
-  # Bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-
-  # Time zone
-  time.timeZone = "${timezone}";
-
-  # Locale
-  i18n.defaultLocale = "${locale}";
-
-  # Keymap
-  services.xserver.xkb.layout = "us";
-
-  # Printing
-  services.printing.enable = true;
-
-  # Sound (PipeWire)
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
-
-  # Enable appimage support
-  programs.appimage.enable = true;
-  programs.appimage.binfmt = true;
-
-  # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config.allowUnfree = true;
-
-  # State version
-  system.stateVersion = "${state_version}";
+${hibernation_config}
 }
 EOF
 }
@@ -763,6 +723,7 @@ generate_flake_entry() {
     local hostname="$1"
     local username="$2"
     local branch="$3"
+    local state_version="${STATE_VERSION}"
 
     if [[ "$branch" == "unstable" ]]; then
         cat <<EOF
@@ -772,11 +733,7 @@ generate_flake_entry() {
           inherit inputs;
           username = "${username}";
           hostname = "${hostname}";
-          # Make stable packages available for mixing if needed
-          pkgs-stable = import nixpkgs-stable {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-          };
+          stateVersion = "${state_version}";
         };
         modules = [
           ./hosts
@@ -791,6 +748,7 @@ EOF
           inherit inputs;
           username = "${username}";
           hostname = "${hostname}";
+          stateVersion = "${state_version}";
           useStableBranch = true;
         };
         modules = [

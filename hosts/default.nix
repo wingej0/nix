@@ -2,6 +2,7 @@
 let
   # Modules shared across all hosts
   commonModules = [
+    ./../modules/common-system.nix
     ./../modules/users.nix
     ./../modules/impermanence.nix
     ./../modules/persist.nix
@@ -34,8 +35,8 @@ let
       ./darter-pro/configuration.nix
 
       # Desktop environment
-      desktops.qtile
-      
+      desktops.cosmic
+
       # System76 drivers
       ./../modules/system76.nix
 

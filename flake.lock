@@ -265,42 +265,6 @@
         "type": "github"
       }
     },
-    "qtile-extras-flake": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1767289299,
-        "narHash": "sha256-E5Vhs10FEBMxLVs42t+do7ohwv9E37rrGaV4O0cfijY=",
-        "owner": "elparaguayo",
-        "repo": "qtile-extras",
-        "rev": "5385980865656e7d1013826c33e9e7d3d95719dd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "elparaguayo",
-        "repo": "qtile-extras",
-        "type": "github"
-      }
-    },
-    "qtile-flake": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1771073964,
-        "narHash": "sha256-i7ZB0Z1unv4/Ll9tEF8Uf3MGKxuUMEv88dUBmPJuts0=",
-        "owner": "qtile",
-        "repo": "qtile",
-        "rev": "62d5cbdd09733506c26dc6240f76a9bfc9c770e1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "qtile",
-        "repo": "qtile",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "cosmic-applets-collection": "cosmic-applets-collection",
@@ -312,8 +276,6 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "nur": "nur",
         "plasma-manager": "plasma-manager",
-        "qtile-extras-flake": "qtile-extras-flake",
-        "qtile-flake": "qtile-flake",
         "zen-browser": "zen-browser"
       }
     },

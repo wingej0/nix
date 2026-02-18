@@ -37,16 +37,16 @@
     };
 
     # Qtile
-    qtile-flake = {
-      url = "github:qtile/qtile";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # qtile-flake = {
+    #   url = "github:qtile/qtile";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Qtile Extras
-    qtile-extras-flake = {
-      url = "github:elparaguayo/qtile-extras";
-      flake = false;
-    };
+    # qtile-extras-flake = {
+    #   url = "github:elparaguayo/qtile-extras";
+    #   flake = false;
+    # };
 
     # Zen Browser
     zen-browser = {
@@ -66,6 +66,7 @@
           inherit inputs;
           username = "wingej0";
           hostname = "darter-pro";
+          stateVersion = "25.05";
           useStableBranch = false;
         };
         modules = [
@@ -78,6 +79,7 @@
           inherit inputs;
           username = "wingej0";
           hostname = "nix-vm";
+          stateVersion = "25.05";
           useStableBranch = true;
         };
         modules = [
@@ -90,6 +92,7 @@
           inherit inputs;
           username = "jwinget";
           hostname = "dis-winget";
+          stateVersion = "25.11";
           useStableBranch = false;
         };
         modules = [
@@ -103,6 +106,7 @@
           inherit inputs;
           username = "jwinget";
           hostname = "the-holysheet";
+          stateVersion = "25.11";
           useStableBranch = true;
         };
         modules = [
