@@ -22,26 +22,26 @@
         TTYVTDisallocate = true;
     };
 
-    # services.xserver.windowManager.qtile = {
-    #   enable = true;
-    #   package = inputs.qtile-flake.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    #   extraPackages = python3Packages:
-    #     with python3Packages; [
-    #       (qtile-extras.overridePythonAttrs {
-    #         src = inputs.qtile-extras-flake.outPath;
-    #         doCheck = false;
-    #         patches = [];
-    #       })
-    #     ];
-    # };
-
     services.xserver.windowManager.qtile = {
       enable = true;
+      package = inputs.qtile-flake.packages.${pkgs.stdenv.hostPlatform.system}.default;
       extraPackages = python3Packages:
         with python3Packages; [
-          qtile-extras
+          (qtile-extras.overridePythonAttrs {
+            src = inputs.qtile-extras-flake.outPath;
+            doCheck = false;
+            patches = [];
+          })
         ];
     };
+
+    # services.xserver.windowManager.qtile = {
+    #   enable = true;
+    #   extraPackages = python3Packages:
+    #     with python3Packages; [
+    #       qtile-extras
+    #     ];
+    # };
 
     hardware.bluetooth.enable = true;
     services.udisks2.enable = true;
@@ -69,8 +69,7 @@
         wf-recorder
         wl-clipboard
         cliphist
-        swayidle
-        swaylock
+        gtklock
         polkit_gnome
         wlogout
         ffmpeg
@@ -113,12 +112,28 @@
         };
     };
 
+    # Lock screen before suspend/hibernate
+    systemd.services.lock-before-sleep = {
+        description = "Lock screen before sleep";
+        before = [ "sleep.target" ];
+        wantedBy = [ "sleep.target" ];
+        serviceConfig = {
+            Type = "forking";
+            User = username;
+        };
+        environment = {
+            XDG_RUNTIME_DIR = "/run/user/1000";
+            WAYLAND_DISPLAY = "wayland-1";
+        };
+        script = "${pkgs.gtklock}/bin/gtklock -d";
+    };
+
     services.tumbler.enable = true;
     services.gnome.gnome-keyring.enable = true;
     security.pam.services.greetd.enableGnomeKeyring = true;
 
-    # Enable pam for swaylock, so it will actually unlock
-    security.pam.services.swaylock = {};
+    # Enable pam for gtklock, so it will actually unlock
+    security.pam.services.gtklock = {};
 
     environment.sessionVariables = {
         NIXOS_OZONE_WL = "1";
@@ -154,7 +169,7 @@
             ".config/qtile".source = ./../home/configs/qtile;
             ".config/rofi".source = ./../home/configs/rofi;
             ".config/swappy".source = ./../home/configs/swappy;
-            ".config/swaylock".source = ./../home/configs/swaylock;
+            ".config/gtklock".source = ./../home/configs/gtklock;
             ".config/wlogout".source = ./../home/configs/wlogout;
         };
         home.pointerCursor = {

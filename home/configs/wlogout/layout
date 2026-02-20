@@ -1,12 +1,12 @@
 {
     "label" : "lock",
-    "action" : "sleep 1; swaylock",
+    "action" : "sleep 1; gtklock",
     "text" : "Lock",
     "keybind" : "l"
 }
 {
     "label" : "hibernate",
-    "action" : "sleep 1; systemctl hibernate",
+    "action" : "gtklock -d && systemctl hibernate",
     "text" : "Hibernate",
     "keybind" : "h"
 }
@@ -24,7 +24,7 @@
 }
 {
     "label" : "suspend",
-    "action" : "sleep 1; systemctl suspend; swaylock",
+    "action" : "gtklock -d && systemctl suspend",
     "text" : "Suspend",
     "keybind" : "u"
 }

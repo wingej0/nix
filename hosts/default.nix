@@ -35,7 +35,7 @@ let
       ./darter-pro/configuration.nix
 
       # Desktop environment
-      desktops.cosmic
+      desktops.qtile
 
       # System76 drivers
       ./../modules/system76.nix

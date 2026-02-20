@@ -1,0 +1,21 @@
+window {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#clock-label {
+    font-size: 96px;
+    font-family: "FiraCode Nerd Font";
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+#body {
+    font-family: "FiraCode Nerd Font";
+}
+
+entry {
+    font-family: "FiraCode Nerd Font";
+    font-size: 16px;
+}

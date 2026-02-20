@@ -230,7 +230,7 @@ elif qtile.core.name == "wayland":
     keys.extend([
         Key([mod, "shift"], "r", lazy.reload_config(),
             desc="Reload Qtile config"),
-        Key([mod], "Escape", lazy.spawn("swaylock"),
+        Key([mod], "Escape", lazy.spawn("gtklock -d"),
             desc="Lock screen"),
         Key(["control", "mod1"], "delete", lazy.spawn("wlogout"),
             desc="Launch powermenu"),

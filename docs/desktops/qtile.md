@@ -14,8 +14,8 @@
 ![wlogout Power Menu](../images/qtile-wayland/wlogout.png)
 *wlogout power menu (Ctrl+Alt+Delete)*
 
-![Swaylock](../images/qtile-wayland/swaylock.png)
-*swaylock lock screen with wallpaper background*
+![gtklock](../images/qtile-wayland/gtklock.png)
+*gtklock lock screen with wallpaper background*
 
 ![Screenshot Workflow](../images/qtile-wayland/screenshot-workflow.png)
 *Screenshot via grim/slurp with Swappy annotation editor*
@@ -28,30 +28,30 @@
 ## Architecture
 
 ```
-SDDM (Wayland) ─── login ───▶ Qtile (wlroots compositor)
-                                 ├── kanshi          (automatic display profile switching)
-                                 ├── swayidle        (idle timeout → swaylock after 10 min)
-                                 ├── dunst           (notification daemon)
-                                 ├── cliphist        (clipboard history via wl-clipboard)
-                                 ├── polkit-gnome    (authentication agent)
-                                 ├── Variety         (wallpaper rotation)
-                                 ├── wallust         (color theme from wallpaper)
-                                 ├── Rofi            (application launcher)
-                                 ├── swaylock        (lock screen)
-                                 └── wlogout         (power menu)
+tuigreet ─── login ───▶ Qtile (wlroots compositor)
+                           ├── kanshi          (automatic display profile switching)
+                           ├── dunst           (notification daemon)
+                           ├── cliphist        (clipboard history via wl-clipboard)
+                           ├── polkit-gnome    (authentication agent)
+                           ├── Variety         (wallpaper rotation)
+                           ├── wallust         (color theme from wallpaper)
+                           ├── Rofi            (application launcher)
+                           ├── gtklock         (lock screen)
+                           └── wlogout         (power menu)
 ```
 
 ### How It Fits Together
 
-Unlike the XFCE desktop, there is no desktop environment session wrapping Qtile. SDDM launches Qtile directly as a Wayland compositor. On first startup, `wayland-autostart.sh` runs to initialize all supporting daemons:
+Unlike the XFCE desktop, there is no desktop environment session wrapping Qtile. tuigreet launches Qtile directly as a Wayland compositor. On first startup, `wayland-autostart.sh` runs to initialize all supporting daemons:
 
 1. **D-Bus** environment is updated for `WAYLAND_DISPLAY` and `XDG_CURRENT_DESKTOP`
 2. **kanshi** starts for automatic multi-monitor profile switching
 3. **polkit-gnome** agent starts for privilege escalation prompts
-4. **swayidle** starts with a 10-minute timeout to trigger swaylock
-5. **dunst** starts as the notification daemon
-6. **cliphist** begins watching the Wayland clipboard (text and images)
-7. **Variety** starts for wallpaper management
+4. **dunst** starts as the notification daemon
+5. **cliphist** begins watching the Wayland clipboard (text and images)
+6. **Variety** starts for wallpaper management
+
+Screen locking is handled by **gtklock**, triggered manually via `Super + Escape` or automatically before suspend/hibernate via a systemd `lock-before-sleep` service. There is no idle timeout -- locking is manual only.
 
 Qtile's `config.py` also sets Wayland-specific environment variables:
 
@@ -78,7 +78,7 @@ wl_input_rules = {
 | Kanshi | `home/configs/kanshi/config` | Symlinked to `~/.config/kanshi` |
 | Rofi | `home/configs/rofi/` | Symlinked to `~/.config/rofi` |
 | Swappy | `home/configs/swappy/config` | Symlinked to `~/.config/swappy` |
-| Swaylock | `home/configs/swaylock/config` | Symlinked to `~/.config/swaylock` |
+| gtklock | `home/configs/gtklock/` (config.ini, style.css) | Symlinked to `~/.config/gtklock` |
 | wlogout | `home/configs/wlogout/` (layout, style, icons) | Symlinked to `~/.config/wlogout` |
 | Polkit agent | systemd user service in `qtile.nix` | Nix module |
 | Cursor theme | `home.pointerCursor` in `qtile.nix` | Nix module (Bibata-Modern-Classic, 24px) |
@@ -93,12 +93,12 @@ Everything is fully declarative through Nix and config files checked into this r
 | Display manager | LightDM | SDDM |
 | Compositor | Picom (separate) | Built into Qtile |
 | Clipboard | Greenclip | cliphist + wl-clipboard |
-| Lock screen | xflock4 | swaylock-effects |
+| Lock screen | xflock4 | gtklock |
 | Power menu | XFCE session logout | wlogout |
 | Screenshots | xfce4-screenshooter | grim + slurp + swappy |
 | Notifications | XFCE notification daemon | dunst |
 | Display management | N/A | kanshi (auto profiles) |
-| Idle management | N/A | swayidle |
+| Idle management | N/A | N/A (manual lock only) |
 | Auth agent | XFCE session | polkit-gnome (systemd) |
 | Session services | XFCE (keyring, Blueman, etc.) | gnome-keyring + standalone tools |
 
@@ -154,17 +154,18 @@ Mouse actions on notifications: left-click closes, middle-click triggers action,
 
 ---
 
-## Lock Screen (Swaylock)
+## Lock Screen (gtklock)
 
-Swaylock-effects provides the lock screen, triggered by `Super + Escape` or automatically after 10 minutes of idle (via swayidle).
+gtklock provides the lock screen, triggered manually by `Super + Escape` or automatically before suspend/hibernate via a systemd service. There is no idle timeout.
 
 - **Background:** Current wallpaper (`~/Pictures/current_wallpaper.jpg`)
-- **Clock:** Shows current time and date
-- **Indicator:** 200px radius circle with 20px ring thickness
-- **Colors:** White ring, semi-transparent black interior
-- **Fade-in:** 1 second animation
+- **Clock:** Large time display (96px FiraCode Nerd Font)
+- **Behavior:** Input prompt hidden after 15 seconds of inactivity, reappears on keypress
+- **Styling:** Custom GTK CSS (`home/configs/gtklock/style.css`)
 
-PAM is configured for swaylock in the Nix module (`security.pam.services.swaylock = {};`) so it can actually authenticate and unlock.
+PAM is configured for gtklock in the Nix module (`security.pam.services.gtklock = {};`) so it can actually authenticate and unlock.
+
+A systemd `lock-before-sleep` service ensures the screen locks before suspend/hibernate, even when triggered from the command line.
 
 ---
 
@@ -174,11 +175,11 @@ wlogout provides a graphical power menu triggered by `Ctrl + Alt + Delete` or by
 
 | Action | Keybind | Command |
 |--------|---------|---------|
-| Lock | `l` | `swaylock` |
-| Hibernate | `h` | `systemctl hibernate` |
+| Lock | `l` | `gtklock` |
+| Hibernate | `h` | `gtklock -d && systemctl hibernate` |
 | Exit (logout) | `e` | `qtile cmd-obj -o cmd -f shutdown` |
 | Shutdown | `s` | `systemctl poweroff` |
-| Suspend | `u` | `systemctl suspend` then `swaylock` |
+| Suspend | `u` | `gtklock -d && systemctl suspend` |
 | Reboot | `r` | `systemctl reboot` |
 
 Each action includes a 1-second delay and has a custom icon in `home/configs/wlogout/icons/`.
@@ -314,7 +315,7 @@ All layouts use an **8px margin** between windows and a **4px border** (focused 
 | `Super + b` | Launch Firefox |
 | `Super + m` | Launch Mailspring |
 | `Super + v` | Open clipboard history (cliphist via Rofi) |
-| `Super + Escape` | Lock screen (swaylock) |
+| `Super + Escape` | Lock screen (gtklock) |
 | `Ctrl + Alt + Delete` | Open power menu (wlogout) |
 | `Super + Print` | Screenshot / GIF recorder |
 
@@ -437,8 +438,7 @@ These packages are installed specifically by the Qtile Wayland desktop module:
 | `wf-recorder` | Screen recording |
 | `wl-clipboard` | Wayland clipboard utilities |
 | `cliphist` | Clipboard history manager |
-| `swayidle` | Idle management daemon |
-| `swaylock-effects` | Lock screen with visual effects |
+| `gtklock` | GTK3-based lock screen |
 | `polkit_gnome` | Authentication agent |
 | `wlogout` | Power/logout menu |
 | `ffmpeg` | Video processing (GIF conversion) |
@@ -483,9 +483,8 @@ The following paths survive reboots via the impermanence module:
 - **Change layouts:** Edit `home/configs/qtile/modules/layouts.py`
 - **Modify bar widgets:** Edit `home/configs/qtile/modules/widgets.py`
 - **Adjust display profiles:** Edit `home/configs/kanshi/config`, reload with `kanshictl reload`
-- **Change lock screen appearance:** Edit `home/configs/swaylock/config`
+- **Change lock screen appearance:** Edit `home/configs/gtklock/style.css` and `home/configs/gtklock/config.ini`
 - **Customize notifications:** Edit `home/configs/dunst/dunstrc`
 - **Edit power menu actions:** Edit `home/configs/wlogout/layout`
-- **Change idle timeout:** Edit the `swayidle` line in `home/configs/qtile/scripts/wayland-autostart.sh` (currently 600 seconds)
 - **Configure GTK theme:** Run `nwg-look`
 - **Switch to this desktop:** In `hosts/default.nix`, set `desktops.qtile` in your host's config list and rebuild
