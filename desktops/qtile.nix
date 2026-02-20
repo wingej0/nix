@@ -74,7 +74,6 @@
         wlogout
         ffmpeg
         wlr-randr
-        dunst
         playerctl
         brightnessctl
         xwayland
@@ -163,8 +162,11 @@
 
     # Config files
     home-manager.users.${username} = {
+        services.dunst = {
+            enable = true;
+            configFile = ./../home/configs/dunst/dunstrc;
+        };
         home.file = {
-            ".config/dunst".source = ./../home/configs/dunst;
             ".config/kanshi".source = ./../home/configs/kanshi;
             ".config/qtile".source = ./../home/configs/qtile;
             ".config/rofi".source = ./../home/configs/rofi;

@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY
 
 # Display management
 kanshi &
 
 # Polkit agent
 systemctl --user start polkit-gnome-authentication-agent-1 &
-dunst &
 system76-power daemon &
 wl-paste --type text --watch cliphist store &
 wl-paste --type image --watch cliphist store &
