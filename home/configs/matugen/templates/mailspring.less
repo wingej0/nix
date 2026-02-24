@@ -1,0 +1,48 @@
+@import "base/ui-variables";
+
+@gray-base: #ffffff;
+@gray-darker: darken(@gray-base, 13.5%);
+@gray-dark: darken(@gray-base, 20%);
+@gray: darken(@gray-base, 33.5%);
+@gray-light: darken(@gray-base, 46.7%);
+@gray-lighter: darken(@gray-base, 92.5%);
+@white: {{colors.surface.default.hex}};
+
+@accent-primary: {{colors.primary.default.hex}};
+@accent-primary-dark: {{colors.primary_container.default.hex}};
+
+@background-primary: {{colors.surface_container.default.hex}};
+@background-off-primary: {{colors.surface_container.default.hex}};
+@background-secondary: {{colors.background.default.hex}};
+@background-tertiary: {{colors.surface_container_high.default.hex}};
+
+@border-color-primary: lighten(@background-primary, 5%);
+@border-color-secondary: lighten(@background-secondary, 5%);
+@border-color-tertiary: lighten(@background-tertiary, 5%);
+@border-color-divider: {{colors.outline_variant.default.hex}};
+
+@text-color: {{colors.on_surface.default.hex}};
+@text-color-subtle: fadeout(@text-color, 20%);
+@text-color-very-subtle: fadeout(@text-color, 40%);
+@text-color-inverse: {{colors.surface.default.hex}};
+@text-color-inverse-subtle: fadeout(@text-color-inverse, 20%);
+@text-color-inverse-very-subtle: fadeout(@text-color-inverse, 50%);
+@text-color-heading: {{colors.on_surface.default.hex}};
+
+@text-color-link: @accent-primary;
+@text-color-link-hover: @accent-primary-dark;
+@text-color-link-active: @accent-primary-dark;
+
+@btn-default-bg-color: {{colors.surface_container_high.default.hex}};
+@dropdown-default-bg-color: {{colors.surface_container_high.default.hex}};
+
+@input-bg: {{colors.surface_container_low.default.hex}};
+@input-border: @border-color-divider;
+
+@list-bg: {{colors.surface_container_low.default.hex}};
+@list-border: {{colors.outline_variant.default.hex}};
+@list-selected-color: {{colors.on_primary.default.hex}};
+@list-focused-color: {{colors.on_surface.default.hex}};
+
+@toolbar-background-color: {{colors.background.default.hex}};
+@panel-background-color: {{colors.background.default.hex}};
