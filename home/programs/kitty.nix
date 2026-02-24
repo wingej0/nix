@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   programs.kitty = {
     enable = true;
@@ -6,66 +7,15 @@
       size = 10;
     };
     settings = {
-        tab_bar_style = "powerline";
-        tab_powerline_style = "round";
         hide_window_decorations = true;
         background_opacity = 0.8;
         window_padding_width = 10;
         confirm_os_window_close = 0;
-
-        url_color = "#8be9fd";
-
-        active_tab_background = "#f8f8f2";
-        active_tab_foreground = "#282a36";
-        inactive_tab_background = "#6272a4";
-        inactive_tab_foreground = "#282a36";
-
-        foreground = "#f8f8f2";
-        background = "#282a36";
-        selection_foreground = "#ffffff";
-        selection_background = "#44475a";
-        cursor = "#f8f8f2";
-        cursor_text_color = "background";
-
-        # black
-        color0 = "#21222c";
-        color8 = "#6272a4";
-
-        # red
-        color1 = "#ff5555";
-        color9 = "#ff6e6e";
-
-        # green
-        color2 = "#50fa7b";
-        color10 = "#69ff94";
-
-        # yellow
-        color3 = "#f1fa8c";
-        color11 = "#ffffa5";
-
-        # blue
-        color4 = "#bd93f9";
-        color12 = "#d6acff";
-
-        # magenta
-        color5 = "#ff79c6";
-        color13 = "#ff92df";
-
-        # cyan
-        color6 = "#8be9fd";
-        color14 = "#a4ffff";
-
-        # white
-        color7 = "#f8f8f2";
-        color15 = "#ffffff";
-
-        # Marks
-        mark1_foreground = "#282a36";
-        mark1_background = "#ff5555";
-
-        # Splits/Windows
-        active_border_color = "#f8f8f2";
-        inactive_border_color = "#6272a4";
     };
+    extraConfig = ''
+      # DMS/matugen dynamic theme (wallpaper-matched colors + tabs)
+      include ${config.home.homeDirectory}/.config/kitty/dank-theme.conf
+      include ${config.home.homeDirectory}/.config/kitty/dank-tabs.conf
+    '';
   };
 }

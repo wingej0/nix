@@ -75,6 +75,8 @@
 
     # Config files
     home-manager.users.${username} = {
+        imports = [ ./../home/system/gtk.nix ];
+
         xfconf.settings = {
             xfce4-session = {
                 "general/SaveOnExit" = false;

@@ -55,6 +55,24 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+
+    # Niri compositor (declarative Nix config)
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # DankMaterialShell (complete desktop shell)
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # DMS plugin registry (community plugins)
+    dms-plugin-registry = {
+      url = "github:AvengeMedia/dms-plugin-registry";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, nixpkgs-stable, ... } @ inputs: 

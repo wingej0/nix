@@ -4,7 +4,7 @@
         enable = true;
         settings = {
             "org/gnome/desktop/interface" = {
-                color-scheme = "prefer-light";
+                color-scheme = "prefer-dark";
                 cursor-theme = "Bibata-Modern-Classic";
             };
         };
@@ -24,13 +24,13 @@
         };
 
         theme = {
-            name = "Qogir";
-            package = pkgs.qogir-theme;
+            name = "adw-gtk3-dark";
+            package = pkgs.adw-gtk3;
         };
 
         iconTheme = {
-            name = "Qogir";
-            package = pkgs.qogir-icon-theme;
+            name = "Adwaita";
+            package = pkgs.adwaita-icon-theme;
         };
 
         gtk3 = {
@@ -41,7 +41,7 @@
 
         gtk4 = {
             extraConfig = {
-                gtk-application-prefer-dark-theme = 0;
+                gtk-application-prefer-dark-theme = 1;
             };
         };
     };

@@ -15,7 +15,10 @@
     };
 
     home-manager.users.${username} = {
-        imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
+        imports = [
+            inputs.plasma-manager.homeModules.plasma-manager
+            ./../home/system/gtk.nix
+        ];
 
         programs.plasma = {
             enable = true;

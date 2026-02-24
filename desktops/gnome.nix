@@ -42,6 +42,7 @@
     };
 
     home-manager.users.${username} = {
+        imports = [ ./../home/system/gtk.nix ];
 
         # Enable gnome-remote-desktop using the official systemd service
         systemd.user.services.gnome-remote-desktop = {
@@ -116,7 +117,7 @@
                 };
 
                 "org/gnome/shell/extensions/user-theme" = {
-                    name = "Qogir";
+                    name = "Adwaita";
                 };
 
                 "org/gnome/desktop/interface" = {
@@ -258,13 +259,13 @@
 
             gtk3 = {
                 extraConfig = {
-                    gtk-application-prefer-dark-theme = 0;
+                    gtk-application-prefer-dark-theme = lib.mkForce 0;
                 };
             };
 
             gtk4 = {
                 extraConfig = {
-                    gtk-application-prefer-dark-theme = 0;
+                    gtk-application-prefer-dark-theme = lib.mkForce 0;
                 };
             };
 

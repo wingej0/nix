@@ -9,6 +9,10 @@
 
     services.gnome.gnome-keyring.enable = true;
 
+    home-manager.users.${username} = {
+        imports = [ ./../home/system/gtk.nix ];
+    };
+
     # Persistence
     environment.persistence."/persist" = {
         users.${username} = {

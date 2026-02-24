@@ -23,6 +23,10 @@
         inputs.cosmic-applets-collection.packages."${pkgs.system}".default
     ];
 
+    home-manager.users.${username} = {
+        imports = [ ./../home/system/gtk.nix ];
+    };
+
     # Persistence
     environment.persistence."/persist" = {
         users.${username} = {

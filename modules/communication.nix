@@ -23,6 +23,8 @@
         zenity
     ];
 
+    services.dbus.packages = [ pkgs.gcr ];
+
     environment.persistence."/persist" = {
         users.${username} = {
             directories = [

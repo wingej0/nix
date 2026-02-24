@@ -1,11 +1,10 @@
 { config, pkgs, stateVersion, ... }:
 
 {
-  imports = 
+  imports =
   [
     ./programs/fastfetch.nix
     ./programs/zsh.nix
-    ./system/gtk.nix
     ./programs/kitty.nix
     ./system/default-apps.nix
   ];

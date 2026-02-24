@@ -27,6 +27,7 @@ let
     xfce = ./../desktops/xfce.nix;
     cinnamon = ./../desktops/cinnamon.nix;
     qtile = ./../desktops/qtile.nix;
+    niri = ./../desktops/niri.nix;
   };
 
   # Host-specific configurations
@@ -35,7 +36,8 @@ let
       ./darter-pro/configuration.nix
 
       # Desktop environment
-      desktops.qtile
+      desktops.niri
+      # desktops.cosmic
 
       # System76 drivers
       ./../modules/system76.nix

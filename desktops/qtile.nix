@@ -162,6 +162,8 @@
 
     # Config files
     home-manager.users.${username} = {
+        imports = [ ./../home/system/gtk.nix ];
+
         services.dunst = {
             enable = true;
             configFile = ./../home/configs/dunst/dunstrc;
