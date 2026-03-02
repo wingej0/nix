@@ -22,11 +22,7 @@ let
   # Desktop options (uncomment one per host)
   desktops = {
     gnome = ./../desktops/gnome.nix;
-    plasma = ./../desktops/plasma.nix;
     cosmic = ./../desktops/cosmic.nix;
-    xfce = ./../desktops/xfce.nix;
-    cinnamon = ./../desktops/cinnamon.nix;
-    qtile = ./../desktops/qtile.nix;
     niri = ./../desktops/niri.nix;
   };
 
@@ -48,8 +44,8 @@ let
       ./../modules/office.nix
       ./../modules/flatpak.nix
       ./../modules/ai.nix
-      ./../modules/mongodb.nix
-      ./../modules/n8n.nix
+      # ./../modules/mongodb.nix
+      # ./../modules/n8n.nix
       ./../modules/immich.nix
     ];
 
@@ -58,10 +54,6 @@ let
 
       # Desktop environment
       desktops.gnome
-      # desktops.qtile
-      # desktops.cosmic
-      # desktops.xfce
-      # desktops.cinnamon
     ];
 
     dis-winget = [

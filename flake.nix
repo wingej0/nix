@@ -29,25 +29,6 @@
     # Cosmic Applets
     cosmic-applets-collection.url = "github:wingej0/ext-cosmic-applets-flake";
 
-    # Plasma Manager
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
-    # Qtile
-    qtile-flake = {
-      url = "github:qtile/qtile";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Qtile Extras
-    qtile-extras-flake = {
-      url = "github:elparaguayo/qtile-extras";
-      flake = false;
-    };
-
     # Zen Browser
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";

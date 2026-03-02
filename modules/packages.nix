@@ -24,11 +24,9 @@
         bat
         system-config-printer
         oh-my-posh
-        gearlever
+        # gearlever
         deja-dup
         inotify-tools
-        variety
-        wallust
         bitwarden-desktop
     ];
 }

@@ -10,6 +10,9 @@
     networking.firewall.allowedUDPPorts = [ 3389 ];
 
     environment.systemPackages = with pkgs; [
+        variety
+        wallust
+
         # Gnome extensions
         pkgs.gnome-tweaks
         gnomeExtensions.dash-to-dock
@@ -20,7 +23,6 @@
         gnomeExtensions.alphabetical-app-grid
         gnomeExtensions.tiling-assistant
         gnomeExtensions.user-themes
-        gnomeExtensions.gnordvpn-local
 
         gnome-calculator
         gnome-remote-desktop
@@ -37,12 +39,24 @@
             directories = [
                 ".local/share/gnome-remote-desktop"
                 ".cache/thumbnails"
+                ".config/variety"
             ];
         };
     };
 
     home-manager.users.${username} = {
         imports = [ ./../home/system/gtk.nix ];
+
+        programs.zsh.initContent = ''
+            cat ~/.cache/wallust/sequences
+        '';
+
+        home.file.".config/variety/scripts/set_wallpaper" = {
+            source = ./../home/configs/variety/set_wallpaper;
+            executable = true;
+        };
+
+        home.file.".config/wallust".source = ./../home/configs/wallust;
 
         # Enable gnome-remote-desktop using the official systemd service
         systemd.user.services.gnome-remote-desktop = {

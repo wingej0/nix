@@ -32,6 +32,7 @@
     programs.niri.package = pkgs.niri-unstable;
 
     # Services
+    services.upower.enable = true;
     services.udisks2.enable = true;
     services.gvfs.enable = true;
     services.tumbler.enable = true;
@@ -42,9 +43,14 @@
 
     xdg.portal = {
         enable = true;
-        config.common.default = "*";
+        config.common = {
+            default = [ "gtk" ];
+            "org.freedesktop.portal.ScreenCast" = [ "gnome" ];
+            "org.freedesktop.portal.Screenshot" = [ "gnome" ];
+        };
         extraPortals = with pkgs; [
             xdg-desktop-portal-gtk
+            xdg-desktop-portal-gnome
         ];
     };
 
@@ -59,7 +65,6 @@
         # DMS dependencies
         wl-clipboard
         cliphist
-        matugen
 
         # GTK themes (available for DMS dynamic theming)
         adw-gtk3
@@ -162,12 +167,6 @@
         home.file.".config/matugen/templates/btop.theme".source = ../home/configs/matugen/templates/btop.theme;
         home.file.".config/matugen/templates/yazi-theme.toml".source = ../home/configs/matugen/templates/yazi-theme.toml;
         home.file.".config/matugen/templates/telegram.tdesktop-theme".source = ../home/configs/matugen/templates/telegram.tdesktop-theme;
-        home.file.".config/matugen/templates/mailspring.less".source = ../home/configs/matugen/templates/mailspring.less;
-
-        # Mailspring — static theme files (matugen generates ui-variables.less on wallpaper change)
-        home.file.".config/Mailspring/packages/dank-material/package.json".source = ../home/configs/mailspring-theme/package.json;
-        home.file.".config/Mailspring/packages/dank-material/styles/index.less".source = ../home/configs/mailspring-theme/styles/index.less;
-
         # btop — matugen generates ~/.config/btop/themes/dank-material.theme
         # Select it once via btop UI: Options (F2) > Color theme > dank-material
 

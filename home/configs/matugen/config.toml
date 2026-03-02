@@ -12,6 +12,3 @@ output_path = '~/.config/yazi/theme.toml'
 input_path = '~/.config/matugen/templates/telegram.tdesktop-theme'
 output_path = '~/.config/telegram-theme/colors.tdesktop-theme'
 
-[templates.mailspring]
-input_path = '~/.config/matugen/templates/mailspring.less'
-output_path = '~/.config/Mailspring/packages/dank-material/styles/ui-variables.less'

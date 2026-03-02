@@ -18,6 +18,9 @@
     };
 
     environment.systemPackages = with pkgs; [
+        variety
+        wallust
+
         # cosmic
         cosmic-ext-tweaks
         inputs.cosmic-applets-collection.packages."${pkgs.system}".default
@@ -25,6 +28,17 @@
 
     home-manager.users.${username} = {
         imports = [ ./../home/system/gtk.nix ];
+
+        programs.zsh.initContent = ''
+            cat ~/.cache/wallust/sequences
+        '';
+
+        home.file.".config/variety/scripts/set_wallpaper" = {
+            source = ./../home/configs/variety/set_wallpaper;
+            executable = true;
+        };
+
+        home.file.".config/wallust".source = ./../home/configs/wallust;
     };
 
     # Persistence
