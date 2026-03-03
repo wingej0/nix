@@ -28,8 +28,10 @@
 
     # Niri compositor (unstable for include directive support, needed for DMS dynamic colors)
     nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-    programs.niri.enable = true;
-    programs.niri.package = pkgs.niri-unstable;
+    programs.niri = {
+        enable = true;
+        package = pkgs.niri-unstable;
+    };
 
     # Services
     services.upower.enable = true;
@@ -43,15 +45,7 @@
 
     xdg.portal = {
         enable = true;
-        config.common = {
-            default = [ "gtk" ];
-            "org.freedesktop.portal.ScreenCast" = [ "gnome" ];
-            "org.freedesktop.portal.Screenshot" = [ "gnome" ];
-        };
-        extraPortals = with pkgs; [
-            xdg-desktop-portal-gtk
-            xdg-desktop-portal-gnome
-        ];
+        extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
     };
 
     environment.systemPackages = with pkgs; [
@@ -76,7 +70,6 @@
         ELECTRON_OZONE_PLATFORM_HINT = "auto";
         MOZ_ENABLE_WAYLAND = "1";
         QT_QPA_PLATFORMTHEME = "gtk3";
-        BAT_THEME = "ansi";
     };
 
     # Persistence
@@ -139,29 +132,6 @@
         xdg.configFile."gtk-3.0/gtk.css".force = true;
         xdg.configFile."gtk-4.0/gtk.css".force = true;
 
-        # Zen Browser — import DMS dynamic colors + keep transparency mod active on unfocus
-        # Prerequisite: set toolkit.legacyUserProfileCustomizations.stylesheets = true in about:config
-        home.file.".zen/mgvcz5v0.Default Profile/chrome/userChrome.css".force = true;
-        home.file.".zen/mgvcz5v0.Default Profile/chrome/userChrome.css".text = ''
-          @import url("../../../../.config/DankMaterialShell/zen/userChrome.css");
-
-          /* Keep transparent-zen mod active even when the window is unfocused */
-          #main-window:-moz-window-inactive {
-            --zen-main-browser-background: transparent !important;
-            background-color: transparent !important;
-          }
-
-          #main-window:-moz-window-inactive #zen-main-app-wrapper,
-          #main-window:-moz-window-inactive #browser,
-          #main-window:-moz-window-inactive #navigator-toolbox,
-          #main-window:-moz-window-inactive #zen-toolbar-background,
-          #main-window:-moz-window-inactive .zen-toolbar-background,
-          #main-window:-moz-window-inactive #tabbrowser-tabpanels,
-          #main-window:-moz-window-inactive #appcontent {
-            background-color: transparent !important;
-          }
-        '';
-
         # Matugen user templates — btop + yazi color schemes generated on wallpaper change
         home.file.".config/matugen/config.toml".source = ../home/configs/matugen/config.toml;
         home.file.".config/matugen/templates/btop.theme".source = ../home/configs/matugen/templates/btop.theme;
@@ -169,6 +139,18 @@
         home.file.".config/matugen/templates/telegram.tdesktop-theme".source = ../home/configs/matugen/templates/telegram.tdesktop-theme;
         # btop — matugen generates ~/.config/btop/themes/dank-material.theme
         # Select it once via btop UI: Options (F2) > Color theme > dank-material
+
+        # Anytype — redirect stdout/stderr to avoid EPIPE errors when launched from GUI
+        # (Electron writes logs to stdout/stderr; without a terminal these are broken pipes,
+        # causing EPIPE cascades that make startup appear to hang)
+        # xdg.desktopEntries.anytype = {
+        #     name = "Anytype";
+        #     exec = "bash -c 'anytype %U </dev/null >/dev/null 2>&1'";
+        #     icon = "anytype";
+        #     comment = "P2P note-taking tool";
+        #     categories = [ "Utility" "Office" "Calendar" "ProjectManagement" ];
+        #     mimeType = [ "x-scheme-handler/anytype" ];
+        # };
 
         # DankMaterialShell
         programs.dank-material-shell = {
