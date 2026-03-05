@@ -1,5 +1,6 @@
 { config, pkgs, username, ... }:
 {
+    # Mailspring moved to flatpak (com.getmailspring.Mailspring) — see modules/flatpak.nix
     nixpkgs.overlays = [
         (final: prev: {
             mailspring = prev.mailspring.overrideAttrs (oldAttrs: {
@@ -15,11 +16,7 @@
 
     environment.systemPackages = with pkgs; [
         # Communication
-        telegram-desktop
-        discord
-        mattermost-desktop
         mailspring
-        caprine
         zenity
     ];
 
@@ -28,11 +25,7 @@
     environment.persistence."/persist" = {
         users.${username} = {
             directories = [
-                ".local/share/TelegramDesktop"
-                ".config/discord"
-                ".config/Mattermost"
                 ".config/Mailspring"
-                ".config/Caprine"
             ];
         };
     };

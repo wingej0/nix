@@ -47,7 +47,6 @@
                 ".config/gh"
                 ".config/nordvpn"
                 ".config/sh.cider.genten"
-                ".config/remmina"
                 ".zsh"
 		        ".config/dconf"
                 ".config/variety"

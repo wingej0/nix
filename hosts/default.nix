@@ -41,7 +41,6 @@ let
       # Additional packages
       ./../modules/rclone.nix
       ./../modules/nordvpn.nix
-      ./../modules/office.nix
       ./../modules/flatpak.nix
       ./../modules/ai.nix
       # ./../modules/mongodb.nix
@@ -79,7 +78,6 @@ let
       desktops.gnome
 
       # Optional modules
-      ./../modules/office.nix
       ./../modules/ai.nix
       ./../modules/mongodb.nix
     ];

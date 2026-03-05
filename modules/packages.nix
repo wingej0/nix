@@ -13,8 +13,6 @@
         fzf
         fastfetch
         veracrypt
-        remmina
-        popsicle
         gparted
         bibata-cursors
         eza
@@ -25,8 +23,6 @@
         system-config-printer
         oh-my-posh
         # gearlever
-        deja-dup
         inotify-tools
-        bitwarden-desktop
     ];
 }

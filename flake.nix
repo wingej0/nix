@@ -29,14 +29,6 @@
     # Cosmic Applets
     cosmic-applets-collection.url = "github:wingej0/ext-cosmic-applets-flake";
 
-    # Zen Browser
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
     # Niri compositor (declarative Nix config)
     niri = {
       url = "github:sodiboo/niri-flake";

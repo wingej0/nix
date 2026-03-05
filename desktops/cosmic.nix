@@ -33,11 +33,6 @@
             cat ~/.cache/wallust/sequences
         '';
 
-        home.file.".config/variety/scripts/set_wallpaper" = {
-            source = ./../home/configs/variety/set_wallpaper;
-            executable = true;
-        };
-
         home.file.".config/wallust".source = ./../home/configs/wallust;
     };
 
