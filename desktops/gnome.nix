@@ -39,7 +39,6 @@
             directories = [
                 ".local/share/gnome-remote-desktop"
                 ".cache/thumbnails"
-                ".config/variety"
             ];
         };
     };
