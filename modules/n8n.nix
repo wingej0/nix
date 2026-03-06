@@ -20,6 +20,9 @@
 
       # Security - disable metrics endpoint
       N8N_METRICS = "false";
+
+      # Disable the task runner process
+      N8N_RUNNERS_ENABLED = "false";
     };
   };
 

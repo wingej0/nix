@@ -2,16 +2,16 @@
 {
     environment.systemPackages = with pkgs; [
         # Games
-        scid-vs-pc
+        # scid-vs-pc
         stockfish
         lc0
     ];
 
-    environment.persistence."/persist" = {
-        users.${username} = {
-            directories = [
-                ".scidvspc"
-            ];
-        };
-    };
+    # environment.persistence."/persist" = {
+    #     users.${username} = {
+    #         directories = [
+    #             ".scidvspc"
+    #         ];
+    #     };
+    # };
 }

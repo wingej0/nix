@@ -53,16 +53,19 @@
             # Development
             "com.mongodb.Compass"
             "rest.insomnia.Insomnia"
+            "org.gnome.TextEditor"
 
             # Games
             "org.gnome.TwentyFortyEight"
+            "io.github.whelanh.scidCommunity"
 
             # System Utilities
             "com.github.tchx84.Flatseal"
             "org.remmina.Remmina"
             "com.system76.Popsicle"
-            "org.gnome.DejaDup"
+            "org.gnome.World.PikaBackup"
             "com.bitwarden.desktop"
+            "com.borgbase.Vorta"
         ];
     };
 
@@ -121,9 +124,13 @@
                 ".var/app/com.mongodb.Compass"
                 ".var/app/rest.insomnia.Insomnia"
 
+                # Games
+                ".var/app/io.github.whelanh.scidCommunity"
+
                 # System Utilities
                 ".var/app/com.bitwarden.desktop"
                 ".var/app/org.remmina.Remmina"
+                ".var/app/com.borgbase.Vorta"
             ];
         };
     };

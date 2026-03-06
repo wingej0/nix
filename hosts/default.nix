@@ -12,8 +12,6 @@ let
     ./../modules/ssh.nix
     ./../modules/mdns.nix
     ./../modules/virtualization.nix
-    ./../modules/browsers.nix
-    ./../modules/communication.nix
     ./../modules/games.nix
     ./../modules/media.nix
     ./../modules/development.nix
@@ -43,8 +41,8 @@ let
       ./../modules/nordvpn.nix
       ./../modules/flatpak.nix
       ./../modules/ai.nix
-      # ./../modules/mongodb.nix
-      # ./../modules/n8n.nix
+      ./../modules/mongodb.nix
+      ./../modules/n8n.nix
       ./../modules/immich.nix
     ];
 
