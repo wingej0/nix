@@ -89,7 +89,7 @@
                     favorite-apps = [
                         "zen-twilight.desktop"
                         "google-chrome.desktop"
-                        "Mailspring.desktop"
+                        "eu.betterbird.Betterbird.desktop"
                         "chrome-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default.desktop"
                         "chrome-mdpkiolbdkhdjpekfbkbmhigcaggjagi-Default.desktop"
                         "org.telegram.desktop.desktop"

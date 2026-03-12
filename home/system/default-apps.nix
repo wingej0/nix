@@ -14,25 +14,8 @@
             "image/png" = "org.gnome.Loupe.desktop";
             "image/*" = "org.gnome.Loupe.desktop";
             "x-scheme-handler/terminal" = "kitty.desktop";
-            "x-scheme-handler/mailto" = "com.getmailspring.Mailspring.desktop";
-            "x-scheme-handler/mailspring" = "com.getmailspring.Mailspring.desktop";
-        };
-    };
-
-    # Override Mailspring desktop entry to pass --password-store=gnome-libsecret,
-    # required for keyring access on non-GNOME desktops (e.g. Niri).
-    xdg.desktopEntries."com.getmailspring.Mailspring" = {
-        name = "Mailspring";
-        comment = "The best email app for people and teams at work";
-        genericName = "Mail Client";
-        exec = "flatpak run --branch=stable --arch=x86_64 --command=mailspring com.getmailspring.Mailspring --password-store=gnome-libsecret %U";
-        icon = "com.getmailspring.Mailspring";
-        categories = [ "Network" "Email" ];
-        mimeType = [ "x-scheme-handler/mailto" "x-scheme-handler/mailspring" ];
-        startupNotify = true;
-        settings = {
-            StartupWMClass = "Mailspring";
-            X-Flatpak = "com.getmailspring.Mailspring";
+            "x-scheme-handler/mailto" = "eu.betterbird.Betterbird.desktop";
+            "message/rfc822" = "eu.betterbird.Betterbird.desktop";
         };
     };
 }

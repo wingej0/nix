@@ -38,6 +38,7 @@
             "io.anytype.anytype"
             "org.onlyoffice.desktopeditors"
             "org.gnome.Evince"
+            "org.gnome.gitlab.somas.Apostrophe"
 
             # Media
             "com.obsproject.Studio"
@@ -49,6 +50,7 @@
             "org.gnome.Loupe"
             "org.gnome.Lollypop"
             "com.github.qarmin.czkawka"
+            "org.inkscape.Inkscape"
 
             # Development
             "com.mongodb.Compass"
@@ -85,6 +87,11 @@
         };
     };
 
+    # Per-app overrides
+    services.flatpak.overrides."eu.betterbird.Betterbird" = {
+        Context.filesystems = [ "xdg-documents" "xdg-pictures" "xdg-desktop" ];
+    };
+
     # Firewall rules for gnome-network-displays (WiFi Display/Miracast)
     networking.firewall.allowedTCPPorts = [ 7236 7250 ];
     networking.firewall.allowedUDPPorts = [ 7236 ];
@@ -113,12 +120,15 @@
                 # Office
                 ".var/app/io.anytype.anytype"
                 ".var/app/org.onlyoffice.desktopeditors"
+                ".var/app/org.gnome.gitlab.somas.Apostrophe"
+                "org.gnome.gitlab.somas.Apostrophe.Plugin.TexLive"
 
                 # Media
                 ".var/app/com.obsproject.Studio"
                 ".var/app/org.gnome.Lollypop"
                 ".var/app/org.gimp.GIMP"
                 ".var/app/org.audacityteam.Audacity"
+                ".var/app/org.inkscape.Inkscape"
 
                 # Development
                 ".var/app/com.mongodb.Compass"
