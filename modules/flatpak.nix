@@ -26,6 +26,7 @@
             "com.google.Chrome"
             "com.brave.Browser"
             "app.zen_browser.zen"
+            "com.vivaldi.Vivaldi"
 
             # Communication
             "org.telegram.desktop"
@@ -109,6 +110,7 @@
                 ".var/app/com.google.Chrome"
                 ".var/app/com.brave.Browser"
                 ".var/app/app.zen_browser.zen"
+                ".var/app/com.vivaldi.Vivaldi"
 
                 # Communication
                 ".var/app/org.telegram.desktop"

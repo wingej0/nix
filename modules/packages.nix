@@ -24,5 +24,6 @@
         oh-my-posh
         # gearlever
         inotify-tools
+        hugo
     ];
 }
